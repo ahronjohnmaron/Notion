@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SBM Training Calendar & List - Full Schedule</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .emoji-icon {
+            font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
+        }
+        /* Custom scrollbar for table */
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 8px;
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #d1d5db; 
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #9ca3af; 
+        }
+        
+        /* Subtle animation for the tab transition */
+        .animate-fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-[#fcfcfc] text-[#37352f] font-sans antialiased pb-32 relative min-h-screen">
+
+    <!-- Floating Back Button -->
+    <div class="fixed top-4 left-4 md:top-6 md:left-6 z-50">
+        <button onclick="history.back()" class="flex items-center text-[15px] text-gray-800 bg-white/80 hover:bg-white backdrop-blur-md px-3 py-1.5 rounded-md shadow-sm transition-all group font-medium border border-gray-200">
+            <svg class="w-4 h-4 mr-1 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            Back
+        </button>
+    </div>
+
+    <!-- Main Content Container -->
+    <main class="max-w-[1200px] w-full mx-auto px-6 md:px-12 mt-24 flex flex-col gap-8 animate-fade-in">
+
+        <!-- Page Title -->
+        <div class="flex flex-col relative border-b border-gray-200 pb-6">
+            <div class="mb-4 flex">
+                <span class="text-[78px] leading-none emoji-icon drop-shadow-sm select-none">🗓️</span>
+            </div>
+            <h1 class="text-[40px] font-bold leading-[1.2] tracking-tight text-[#37352f]">SBM Training Calendar</h1>
+            <p class="text-gray-500 mt-2 font-medium">April 2026 - August 2026 Interactive Schedule</p>
+        </div>
+
+        <!-- View Toggles -->
+        <div class="flex items-center space-x-2 pb-2">
+            <button id="tab-calendar" class="px-3 py-1.5 text-sm font-medium rounded-md bg-gray-200 text-gray-900 transition-colors flex items-center gap-2">
+                <svg class="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                </svg>
+                SBM Calendar
+            </button>
+            <button id="tab-list" class="px-3 py-1.5 text-sm font-medium rounded-md text-gray-500 hover:bg-gray-100 transition-colors flex items-center gap-2">
+                <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
+                </svg>
+                SBM List
+            </button>
+        </div>
+
+        <!-- ============================== -->
+        <!--        CALENDAR VIEW           -->
+        <!-- ============================== -->
+        <div id="calendar-view" class="flex flex-col gap-12 w-full animate-fade-in">
+            
+            <!-- APRIL 2026 CALENDAR -->
+            <section class="block w-full">
+                <div class="flex items-center justify-between mb-4 mt-2">
+                    <h2 class="text-2xl font-bold text-gray-800 tracking-tight">April 2026</h2>
+                    <div class="flex items-center space-x-1">
+                        <button class="p-1.5 hover:bg-gray-200 rounded text-gray-500"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg></button>
+                        <span class="px-2 text-sm font-medium text-gray-700">Today</span>
+                        <button class="p-1.5 hover:bg-gray-200 rounded text-gray-500"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></button>
+                    </div>
+                </div>
+                <div class="grid grid-cols-7 gap-px bg-gray-200 border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Sun</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Mon</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Tue</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Wed</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Thu</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Fri</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Sat</div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">29</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">30</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">31</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">Apr 1</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">2</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">3</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">4</span></div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">5</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">6</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">7</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">8</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">9</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">10</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">11</span></div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">12</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">13</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">14</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">15</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">16</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">17</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-purple-100 text-purple-800 px-1.5 py-1 rounded truncate hover:bg-purple-200 transition-colors">🧑‍💻 Tech Thursday</a></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">18</span></div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">19</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">20</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">21</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-yellow-100 text-yellow-800 px-1.5 py-1 rounded truncate hover:bg-yellow-200 transition-colors">😊 Marketing Mondays</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-orange-100 text-orange-800 px-1.5 py-1 rounded truncate hover:bg-orange-200 transition-colors">🔶 Invite a Friend!</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-blue-100 text-blue-800 px-1.5 py-1 rounded truncate hover:bg-blue-200 transition-colors">🌀 Transformation Tuesdays</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">22</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-yellow-200 text-yellow-900 px-1.5 py-1 rounded truncate hover:bg-yellow-300 transition-colors">🌟 SMART Business</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">23</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">24</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-purple-100 text-purple-800 px-1.5 py-1 rounded truncate hover:bg-purple-200 transition-colors">🧑‍💻 Tech Thursday</a></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">25</span></div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">26</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">27</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">28</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-blue-100 text-blue-800 px-1.5 py-1 rounded truncate hover:bg-blue-200 transition-colors">🌀 Transformation Tuesdays</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">29</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-white bg-red-500 rounded-full w-5 h-5 flex items-center justify-center font-medium ml-1">30</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-pink-100 text-pink-800 px-1.5 py-1 rounded truncate hover:bg-pink-200 transition-colors">⭐ Spirit Driven Success</a></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">May 1</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">2</span></div>
+                </div>
+            </section>
+
+            <!-- MAY 2026 CALENDAR -->
+            <section class="block w-full mt-2">
+                <div class="flex items-center justify-between mb-4 mt-2">
+                    <h2 class="text-2xl font-bold text-gray-800 tracking-tight">May 2026</h2>
+                </div>
+                <div class="grid grid-cols-7 gap-px bg-gray-200 border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Sun</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Mon</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Tue</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Wed</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Thu</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Fri</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Sat</div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">26</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">27</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">28</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">29</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">30</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">1</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-purple-100 text-purple-800 px-1.5 py-1 rounded truncate hover:bg-purple-200 transition-colors">🧑‍💻 Tech Thursday</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-slate-100 text-slate-800 px-1.5 py-1 rounded truncate hover:bg-slate-200 transition-colors">📈 Onboarding</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-red-100 text-red-800 px-1.5 py-1 rounded truncate hover:bg-red-200 transition-colors">💰 Sales Training</a></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">2</span></div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">3</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">4</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">5</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-indigo-100 text-indigo-800 px-1.5 py-1 rounded truncate hover:bg-indigo-200 transition-colors">🚀 Marketing & Imp...</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-orange-100 text-orange-800 px-1.5 py-1 rounded truncate hover:bg-orange-200 transition-colors">🔶 Take Your Offer</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-blue-100 text-blue-800 px-1.5 py-1 rounded truncate hover:bg-blue-200 transition-colors">🌀 Transformation...</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">6</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">7</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">8</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-purple-100 text-purple-800 px-1.5 py-1 rounded truncate hover:bg-purple-200 transition-colors">🧑‍💻 Tech Thursday</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-slate-100 text-slate-800 px-1.5 py-1 rounded truncate hover:bg-slate-200 transition-colors">📈 Onboarding</a></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">9</span></div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">10</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">11</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">12</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-blue-100 text-blue-800 px-1.5 py-1 rounded truncate hover:bg-blue-200 transition-colors">🌀 Transformation...</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">13</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-yellow-200 text-yellow-900 px-1.5 py-1 rounded truncate hover:bg-yellow-300 transition-colors">🌟 SMART Business</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">14</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">15</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-purple-100 text-purple-800 px-1.5 py-1 rounded truncate hover:bg-purple-200 transition-colors">🧑‍💻 Tech Thursday</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-slate-100 text-slate-800 px-1.5 py-1 rounded truncate hover:bg-slate-200 transition-colors">📈 Onboarding</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-red-100 text-red-800 px-1.5 py-1 rounded truncate hover:bg-red-200 transition-colors">💰 Sales Training</a></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">16</span></div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">17</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">18</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">19</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-orange-100 text-orange-800 px-1.5 py-1 rounded truncate hover:bg-orange-200 transition-colors">🔶 Invite a Friend!</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-blue-100 text-blue-800 px-1.5 py-1 rounded truncate hover:bg-blue-200 transition-colors">🌀 Transformation...</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">20</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">21</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-indigo-100 text-indigo-800 px-1.5 py-1 rounded truncate hover:bg-indigo-200 transition-colors">🚀 Marketing & Imp...</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">22</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-purple-100 text-purple-800 px-1.5 py-1 rounded truncate hover:bg-purple-200 transition-colors">🧑‍💻 Tech Thursday</a></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">23</span></div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">24</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1 border-t-2 border-red-400"><span class="text-xs text-gray-800 font-medium ml-1">25</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-red-50 text-red-900 border border-red-200 px-1.5 py-1 rounded truncate hover:bg-red-100 transition-colors">🇺🇸 MEMORIAL DAY</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">26</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">27</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-yellow-200 text-yellow-900 px-1.5 py-1 rounded truncate hover:bg-yellow-300 transition-colors">🌟 SMART Business</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">28</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-pink-100 text-pink-800 px-1.5 py-1 rounded truncate hover:bg-pink-200 transition-colors">⭐ Spirit Driven Su...</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">29</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-purple-100 text-purple-800 px-1.5 py-1 rounded truncate hover:bg-purple-200 transition-colors">🧑‍💻 Tech Thursday</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-slate-100 text-slate-800 px-1.5 py-1 rounded truncate hover:bg-slate-200 transition-colors">📈 Onboarding</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-red-100 text-red-800 px-1.5 py-1 rounded truncate hover:bg-red-200 transition-colors">💰 Sales Training</a></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">30</span></div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">31</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">Jun 1</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">2</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">3</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">4</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">5</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">6</span></div>
+                </div>
+            </section>
+
+            <!-- JUNE 2026 CALENDAR -->
+            <section class="block w-full mt-2">
+                <div class="flex items-center justify-between mb-4 mt-2">
+                    <h2 class="text-2xl font-bold text-gray-800 tracking-tight">June 2026</h2>
+                </div>
+                <div class="grid grid-cols-7 gap-px bg-gray-200 border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Sun</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Mon</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Tue</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Wed</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Thu</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Fri</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Sat</div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">31</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">Jun 1</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">2</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-orange-100 text-orange-800 px-1.5 py-1 rounded truncate hover:bg-orange-200 transition-colors">🔶 Take Your Offer</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">3</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">4</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-indigo-100 text-indigo-800 px-1.5 py-1 rounded truncate hover:bg-indigo-200 transition-colors">🚀 Marketing & Imp...</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">5</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-purple-100 text-purple-800 px-1.5 py-1 rounded truncate hover:bg-purple-200 transition-colors">🧑‍💻 Tech Thursday</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-slate-100 text-slate-800 px-1.5 py-1 rounded truncate hover:bg-slate-200 transition-colors">📈 Onboarding</a></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">6</span></div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">7</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">8</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">9</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">10</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-yellow-200 text-yellow-900 px-1.5 py-1 rounded truncate hover:bg-yellow-300 transition-colors">🌟 SMART Business</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">11</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">12</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-purple-100 text-purple-800 px-1.5 py-1 rounded truncate hover:bg-purple-200 transition-colors">🧑‍💻 Tech Thursday</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-slate-100 text-slate-800 px-1.5 py-1 rounded truncate hover:bg-slate-200 transition-colors">📈 Onboarding</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-red-100 text-red-800 px-1.5 py-1 rounded truncate hover:bg-red-200 transition-colors">💰 Sales Training</a></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">13</span></div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">14</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">15</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">16</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-orange-100 text-orange-800 px-1.5 py-1 rounded truncate hover:bg-orange-200 transition-colors">🔶 Invite a Friend!</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">17</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-blue-100 text-blue-800 px-1.5 py-1 rounded truncate hover:bg-blue-200 transition-colors">🌀 Transformation...</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">18</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-indigo-100 text-indigo-800 px-1.5 py-1 rounded truncate hover:bg-indigo-200 transition-colors">🚀 Marketing & Imp...</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">19</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-purple-100 text-purple-800 px-1.5 py-1 rounded truncate hover:bg-purple-200 transition-colors">🧑‍💻 Tech Thursday</a></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">20</span></div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">21</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">22</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">23</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">24</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-yellow-200 text-yellow-900 px-1.5 py-1 rounded truncate hover:bg-yellow-300 transition-colors">🌟 SMART Business</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">25</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-pink-100 text-pink-800 px-1.5 py-1 rounded truncate hover:bg-pink-200 transition-colors">⭐ Spirit Driven Su...</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">26</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-purple-100 text-purple-800 px-1.5 py-1 rounded truncate hover:bg-purple-200 transition-colors">🧑‍💻 Tech Thursday</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-slate-100 text-slate-800 px-1.5 py-1 rounded truncate hover:bg-slate-200 transition-colors">📈 Onboarding</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-red-100 text-red-800 px-1.5 py-1 rounded truncate hover:bg-red-200 transition-colors">💰 Sales Training</a></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">27</span></div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">28</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">29</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">30</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">Jul 1</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">2</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">3</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">4</span></div>
+                </div>
+            </section>
+
+            <!-- JULY 2026 CALENDAR -->
+            <section class="block w-full mt-2">
+                <div class="flex items-center justify-between mb-4 mt-2">
+                    <h2 class="text-2xl font-bold text-gray-800 tracking-tight">July 2026</h2>
+                </div>
+                <div class="grid grid-cols-7 gap-px bg-gray-200 border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Sun</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Mon</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Tue</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Wed</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Thu</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Fri</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Sat</div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">28</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">29</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">30</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">Jul 1</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">2</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">3</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-purple-100 text-purple-800 px-1.5 py-1 rounded truncate hover:bg-purple-200 transition-colors">🧑‍💻 Tech Thursday</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-slate-100 text-slate-800 px-1.5 py-1 rounded truncate hover:bg-slate-200 transition-colors">📈 Onboarding</a></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">4</span></div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">5</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">6</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">7</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-orange-100 text-orange-800 px-1.5 py-1 rounded truncate hover:bg-orange-200 transition-colors">🔶 Take Your Offer</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">8</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">9</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">10</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-purple-100 text-purple-800 px-1.5 py-1 rounded truncate hover:bg-purple-200 transition-colors">🧑‍💻 Tech Thursday</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-slate-100 text-slate-800 px-1.5 py-1 rounded truncate hover:bg-slate-200 transition-colors">📈 Onboarding</a></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">11</span></div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">12</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">13</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">14</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">15</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">16</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">17</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-purple-100 text-purple-800 px-1.5 py-1 rounded truncate hover:bg-purple-200 transition-colors">🧑‍💻 Tech Thursday</a></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">18</span></div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">19</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">20</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">21</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-orange-100 text-orange-800 px-1.5 py-1 rounded truncate hover:bg-orange-200 transition-colors">🔶 Invite a Friend!</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">22</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">23</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">24</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-purple-100 text-purple-800 px-1.5 py-1 rounded truncate hover:bg-purple-200 transition-colors">🧑‍💻 Tech Thursday</a></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">25</span></div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">26</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">27</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">28</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">29</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">30</span><a href="https://us02web.zoom.us/j/81944157644" target="_blank" class="block w-full text-[10px] leading-tight bg-pink-100 text-pink-800 px-1.5 py-1 rounded truncate hover:bg-pink-200 transition-colors">⭐ Spirit Driven Success</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">31</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">Aug 1</span></div>
+                </div>
+            </section>
+
+            <!-- AUGUST 2026 CALENDAR -->
+            <section class="block w-full mt-2 mb-12">
+                <div class="flex items-center justify-between mb-4 mt-2">
+                    <h2 class="text-2xl font-bold text-gray-800 tracking-tight">August 2026</h2>
+                </div>
+                <div class="grid grid-cols-7 gap-px bg-gray-200 border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Sun</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Mon</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Tue</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Wed</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Thu</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Fri</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Sat</div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">26</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">27</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">28</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">29</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">30</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">31</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">Aug 1</span></div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">2</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">3</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">4</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">5</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">6</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">7</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">8</span></div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">9</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">10</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">11</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">12</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">13</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">14</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">15</span></div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">16</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">17</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">18</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">19</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">20</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">21</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">22</span></div>
+
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">23</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">24</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">25</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">26</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1">
+                        <span class="text-xs text-gray-800 font-medium ml-1">27</span>
+                        <a href="https://us02web.zoom.us/j/81944157644" target="_blank" class="block w-full text-[10px] leading-tight bg-pink-100 text-pink-800 px-1.5 py-1 rounded truncate hover:bg-pink-200 transition-colors">⭐ Spirit Driven Success</a>
+                    </div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">28</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">29</span></div>
+
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">30</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">31</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">Sep 1</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">2</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">3</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">4</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">5</span></div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ============================== -->
+        <!--           LIST VIEW            -->
+        <!-- ============================== -->
+        <div id="list-view" class="hidden w-full animate-fade-in">
+            <div class="overflow-x-auto bg-white border border-gray-200 rounded-lg shadow-sm custom-scrollbar pb-8">
+                <table class="w-full text-left border-collapse whitespace-nowrap table-auto">
+                    <thead>
+                        <tr class="bg-gray-50 border-b border-gray-200 text-xs text-gray-500 uppercase tracking-wider sticky top-0 z-10 shadow-sm">
+                            <th class="px-6 py-4 font-semibold text-gray-600 w-1/3">Name</th>
+                            <th class="px-6 py-4 font-semibold text-gray-600 w-1/4">Event Date</th>
+                            <th class="px-6 py-4 font-semibold text-gray-600 w-1/4">Location</th>
+                            <th class="px-6 py-4 font-semibold text-gray-600 w-1/6">Add to Calendar</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-[13.5px] text-gray-700 divide-y divide-gray-100">
+                        
+                        <!-- April Row 0 -->
+                        <tr class="hover:bg-emerald-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-emerald-400 bg-emerald-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">✅</span><span>Accountability</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">April 13, 2026 11:00 PM → April 14</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/83619785720" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/836...</a></td>
+                            <td class="px-6 py-3.5"><a href="#" target="_blank" class="inline-flex items-center text-gray-600 hover:text-emerald-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-emerald-50 transition-all border border-gray-200 hover:border-emerald-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- April Row 1 -->
+                        <tr class="hover:bg-emerald-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-emerald-400 bg-emerald-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">✅</span><span>Accountability</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">April 14, 2026 4:00 AM → 5:00 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/83619785720" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/836...</a></td>
+                            <td class="px-6 py-3.5"><a href="#" target="_blank" class="inline-flex items-center text-gray-600 hover:text-emerald-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-emerald-50 transition-all border border-gray-200 hover:border-emerald-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- April Row 2 -->
+                        <tr class="hover:bg-purple-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-purple-400 bg-purple-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">🧑‍💻</span><span>Tech Thursday</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">April 17, 2026 12:00 AM → 1:00 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/9438690585" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/943...</a></td>
+                            <td class="px-6 py-3.5"><a href="#" target="_blank" class="inline-flex items-center text-gray-600 hover:text-purple-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-purple-50 transition-all border border-gray-200 hover:border-purple-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- April Row 3 -->
+                        <tr class="hover:bg-yellow-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-yellow-400 bg-yellow-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">😊</span><span>Marketing Mondays</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">April 21, 2026 3:00 AM → 4:00 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://zoom.us/j/98110397121" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">zoom.us/j/98110397121</a></td>
+                            <td class="px-6 py-3.5"><a href="#" target="_blank" class="inline-flex items-center text-gray-600 hover:text-yellow-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-yellow-50 transition-all border border-gray-200 hover:border-yellow-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- April Row 4 -->
+                        <tr class="hover:bg-blue-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-blue-400 bg-blue-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">🌀</span><span>Transformation Tuesdays</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">April 28, 2026 11:00 PM → April 29</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/82192419566" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/821...</a></td>
+                            <td class="px-6 py-3.5"><a href="#" target="_blank" class="inline-flex items-center text-gray-600 hover:text-blue-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-blue-50 transition-all border border-gray-200 hover:border-blue-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- May Row 0 -->
+                        <tr class="hover:bg-emerald-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-emerald-400 bg-emerald-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">✅</span><span>Accountability</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">April 30, 2026 4:00 AM → 5:00 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/83619785720" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/836...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Accountability&dates=20260430T040000/20260430T053000&location=https://us02web.zoom.us/j/83619785720" target="_blank" class="inline-flex items-center text-gray-600 hover:text-emerald-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-emerald-50 transition-all border border-gray-200 hover:border-emerald-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- May Row 1 -->
+                        <tr class="hover:bg-pink-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-pink-400 bg-pink-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">⭐</span><span>Spirit Driven Success (optional)</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">April 30, 2026 9:00 AM → 10:00 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/81944157644" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/819...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%20Spirit%20Driven%20Success%20(optional)&dates=20260430T090000/20260430T103000&location=https://us02web.zoom.us/j/81944157644" target="_blank" class="inline-flex items-center text-gray-600 hover:text-pink-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-pink-50 transition-all border border-gray-200 hover:border-pink-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- May Row 2 -->
+                        <tr class="hover:bg-purple-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-purple-400 bg-purple-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">🧑‍💻</span><span>Tech Thursday</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">May 1, 2026 12:00 AM → 1:00 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/9438690585" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/943...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Tech%20Thursday&dates=20260501T000000/20260501T013000&location=https://us02web.zoom.us/j/9438690585" target="_blank" class="inline-flex items-center text-gray-600 hover:text-purple-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-purple-50 transition-all border border-gray-200 hover:border-purple-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- May Row 3 -->
+                        <tr class="hover:bg-slate-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-slate-400 bg-slate-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">📈</span><span>Onboarding</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">May 1, 2026 3:00 AM → 5:30 AM</td>
+                            <td class="px-6 py-3.5 text-gray-400 italic">No Location Listed</td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Onboarding&dates=20260501T030000/20260501T043000" target="_blank" class="inline-flex items-center text-gray-600 hover:text-slate-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-slate-50 transition-all border border-gray-200 hover:border-slate-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- May Row 4 -->
+                        <tr class="hover:bg-red-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-red-400 bg-red-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">💰</span><span>Sales Training</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">May 1, 2026 6:30 AM → 7:30 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/81160199662" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/811...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Sales%20Training&dates=20260501T063000/20260501T080000&location=https://us02web.zoom.us/j/81160199662" target="_blank" class="inline-flex items-center text-gray-600 hover:text-red-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-red-50 transition-all border border-gray-200 hover:border-red-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- May Row 5 -->
+                        <tr class="hover:bg-emerald-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-emerald-400 bg-emerald-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">✅</span><span>Accountability</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">May 4, 2026 11:00 PM → May 5 12:00 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/83619785720" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/836...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Accountability&dates=20260504T230000/20260505T003000&location=https://us02web.zoom.us/j/83619785720" target="_blank" class="inline-flex items-center text-gray-600 hover:text-emerald-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-emerald-50 transition-all border border-gray-200 hover:border-emerald-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- May Row 6 -->
+                        <tr class="hover:bg-indigo-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-indigo-400 bg-indigo-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">🚀</span><span>Marketing & Implementation</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">May 5, 2026 3:00 AM → 4:00 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/87199463695" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/871...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Marketing%20%26%20Implementation%20&dates=20260505T030000/20260505T043000&location=https://us02web.zoom.us/j/87199463695" target="_blank" class="inline-flex items-center text-gray-600 hover:text-indigo-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-indigo-50 transition-all border border-gray-200 hover:border-indigo-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- May Row 7 -->
+                        <tr class="hover:bg-emerald-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-emerald-400 bg-emerald-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">✅</span><span>Accountability</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">May 5, 2026 4:00 AM → 5:00 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/83619785720" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/836...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Accountability&dates=20260505T040000/20260505T053000&location=https://us02web.zoom.us/j/83619785720" target="_blank" class="inline-flex items-center text-gray-600 hover:text-emerald-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-emerald-50 transition-all border border-gray-200 hover:border-emerald-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- May Row 8 -->
+                        <tr class="hover:bg-orange-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-orange-400 bg-orange-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">🔶</span><span>Take Your Offer From "Setup" to "Sold Out"</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">May 5, 2026 5:00 AM → 8:00 AM</td>
+                            <td class="px-6 py-3.5 text-gray-400 italic">No Location Listed</td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Take%20Your%20Offer%20From%20%22Setup%22%20to%20%22Sold%20Out%22%20$30-100k%20Months%20Event&dates=20260505T050000/20260505T063000" target="_blank" class="inline-flex items-center text-gray-600 hover:text-orange-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-orange-50 transition-all border border-gray-200 hover:border-orange-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- May Row 9 -->
+                        <tr class="hover:bg-blue-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-blue-400 bg-blue-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">🌀</span><span>Transformation Tuesdays</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">May 5, 2026 11:00 PM → May 6 12:00 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/82192419566" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/821...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Transformation%20Tuesdays&dates=20260505T230000/20260506T003000&location=https://us02web.zoom.us/j/82192419566" target="_blank" class="inline-flex items-center text-gray-600 hover:text-blue-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-blue-50 transition-all border border-gray-200 hover:border-blue-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- May Row 10 -->
+                        <tr class="hover:bg-purple-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-purple-400 bg-purple-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">🧑‍💻</span><span>Tech Thursday</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">May 8, 2026 12:00 AM → 1:00 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/9438690585" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/943...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Tech%20Thursday&dates=20260508T000000/20260508T013000&location=https://us02web.zoom.us/j/9438690585" target="_blank" class="inline-flex items-center text-gray-600 hover:text-purple-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-purple-50 transition-all border border-gray-200 hover:border-purple-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- May Row 11 -->
+                        <tr class="hover:bg-slate-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-slate-400 bg-slate-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">📈</span><span>Onboarding</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">May 8, 2026 3:00 AM → 5:30 AM</td>
+                            <td class="px-6 py-3.5 text-gray-400 italic">No Location Listed</td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Onboarding%20&dates=20260508T030000/20260508T043000" target="_blank" class="inline-flex items-center text-gray-600 hover:text-slate-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-slate-50 transition-all border border-gray-200 hover:border-slate-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- May Row 12 -->
+                        <tr class="hover:bg-emerald-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-emerald-400 bg-emerald-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">✅</span><span>Accountability</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">May 11, 2026 11:00 PM → May 12 12:00 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/83619785720" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/836...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Accountability&dates=20260511T230000/20260512T003000&location=https://us02web.zoom.us/j/83619785720" target="_blank" class="inline-flex items-center text-gray-600 hover:text-emerald-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-emerald-50 transition-all border border-gray-200 hover:border-emerald-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- May Row 13 -->
+                        <tr class="hover:bg-emerald-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-emerald-400 bg-emerald-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">✅</span><span>Accountability</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">May 12, 2026 4:00 AM → 5:00 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/83619785720" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/836...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Accountability&dates=20260512T040000/20260512T053000&location=https://us02web.zoom.us/j/83619785720" target="_blank" class="inline-flex items-center text-gray-600 hover:text-emerald-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-emerald-50 transition-all border border-gray-200 hover:border-emerald-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- May Row 14 -->
+                        <tr class="hover:bg-blue-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-blue-400 bg-blue-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">🌀</span><span>Transformation Tuesdays</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">May 12, 2026 11:00 PM → May 13 12:00 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/82192419566" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/821...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Transformation%20Tuesdays%20&dates=20260512T230000/20260513T003000&location=https://us02web.zoom.us/j/82192419566" target="_blank" class="inline-flex items-center text-gray-600 hover:text-blue-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-blue-50 transition-all border border-gray-200 hover:border-blue-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- May Row 15 -->
+                        <tr class="hover:bg-yellow-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-yellow-400 bg-yellow-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">🌟</span><span>SMART Business Mastermind</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">May 13, 2026 2:00 AM → 4:00 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/83942595716" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/839...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=SMART%20Business%20Mastermind&dates=20260513T020000/20260513T033000&location=https://us02web.zoom.us/j/83942595716" target="_blank" class="inline-flex items-center text-gray-600 hover:text-yellow-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-yellow-50 transition-all border border-gray-200 hover:border-yellow-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- May Row 16 -->
+                        <tr class="hover:bg-purple-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-purple-400 bg-purple-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">🧑‍💻</span><span>Tech Thursday</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">May 15, 2026 12:00 AM → 1:00 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/9438690585" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/943...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Tech%20Thursday&dates=20260515T000000/20260515T013000&location=https://us02web.zoom.us/j/9438690585" target="_blank" class="inline-flex items-center text-gray-600 hover:text-purple-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-purple-50 transition-all border border-gray-200 hover:border-purple-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- May Row 17 -->
+                        <tr class="hover:bg-slate-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-slate-400 bg-slate-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">📈</span><span>Onboarding</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">May 15, 2026 3:00 AM → 5:30 AM</td>
+                            <td class="px-6 py-3.5 text-gray-400 italic">No Location Listed</td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Onboarding&dates=20260515T030000/20260515T043000" target="_blank" class="inline-flex items-center text-gray-600 hover:text-slate-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-slate-50 transition-all border border-gray-200 hover:border-slate-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- May Row 18 -->
+                        <tr class="hover:bg-red-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-red-400 bg-red-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">💰</span><span>Sales Training</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">May 15, 2026 6:30 AM → 7:30 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/81160199662" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/811...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Sales%20Training&dates=20260515T063000/20260515T080000&location=https://us02web.zoom.us/j/81160199662" target="_blank" class="inline-flex items-center text-gray-600 hover:text-red-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-red-50 transition-all border border-gray-200 hover:border-red-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- May Row 19 -->
+                        <tr class="hover:bg-emerald-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-emerald-400 bg-emerald-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">✅</span><span>Accountability</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">May 18, 2026 11:00 PM → May 19 12:00 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/83619785720" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/836...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Accountability%20&dates=20260518T230000/20260519T003000&location=https://us02web.zoom.us/j/83619785720" target="_blank" class="inline-flex items-center text-gray-600 hover:text-emerald-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-emerald-50 transition-all border border-gray-200 hover:border-emerald-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- May Row 20 -->
+                        <tr class="hover:bg-emerald-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-emerald-400 bg-emerald-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">✅</span><span>Accountability</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">May 19, 2026 4:00 AM → 5:00 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/83619785720" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/836...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Accountability&dates=20260519T040000/20260519T053000&location=https://us02web.zoom.us/j/83619785720" target="_blank" class="inline-flex items-center text-gray-600 hover:text-emerald-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-emerald-50 transition-all border border-gray-200 hover:border-emerald-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- May Row 21 -->
+                        <tr class="hover:bg-orange-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-orange-400 bg-orange-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">🔶</span><span>Invite a Friend! - SBM Summit</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">May 19, 2026 5:00 AM → 8:00 AM</td>
+                            <td class="px-6 py-3.5 text-gray-400 italic">No Location Listed</td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Invite%20a%20Friend!%20-%20SBM%20Summit&dates=20260519T050000/20260519T063000" target="_blank" class="inline-flex items-center text-gray-600 hover:text-orange-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-orange-50 transition-all border border-gray-200 hover:border-orange-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- May Row 22 -->
+                        <tr class="hover:bg-blue-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-blue-400 bg-blue-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">🌀</span><span>Transformation Tuesdays</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">May 19, 2026 11:00 PM → May 20 12:00 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/82192419566" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/821...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Transformation%20Tuesdays%20&dates=20260519T230000/20260520T003000&location=https://us02web.zoom.us/j/82192419566" target="_blank" class="inline-flex items-center text-gray-600 hover:text-blue-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-blue-50 transition-all border border-gray-200 hover:border-blue-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- May Row 23 -->
+                        <tr class="hover:bg-indigo-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-indigo-400 bg-indigo-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">🚀</span><span>Marketing & Implementation</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">May 21, 2026 3:00 AM → 4:00 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/87199463695" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/871...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Marketing%20%26%20Implementation&dates=20260521T030000/20260521T043000&location=https://us02web.zoom.us/j/87199463695" target="_blank" class="inline-flex items-center text-gray-600 hover:text-indigo-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-indigo-50 transition-all border border-gray-200 hover:border-indigo-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- May Row 24 -->
+                        <tr class="hover:bg-purple-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-purple-400 bg-purple-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">🧑‍💻</span><span>Tech Thursday</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">May 22, 2026 12:00 AM → 1:00 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/9438690585" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/943...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Tech%20Thursday&dates=20260522T000000/20260522T013000&location=https://us02web.zoom.us/j/9438690585" target="_blank" class="inline-flex items-center text-gray-600 hover:text-purple-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-purple-50 transition-all border border-gray-200 hover:border-purple-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- May Row 25 -->
+                        <tr class="hover:bg-red-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-gray-400 bg-gray-100/50 font-medium text-gray-900">
+                                <span class="text-base select-none">🇺🇸</span><span>MEMORIAL DAY</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">May 25, 2026</td>
+                            <td class="px-6 py-3.5 text-gray-400 italic">No Location Listed</td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=MEMORIAL%20DAY%20&dates=20260525T000000/20260525T013000" target="_blank" class="inline-flex items-center text-gray-600 hover:text-red-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-red-50 transition-all border border-gray-200 hover:border-red-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- May Row 26 -->
+                        <tr class="hover:bg-yellow-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-yellow-400 bg-yellow-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">🌟</span><span>SMART Business Mastermind</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">May 27, 2026 6:00 AM → 8:00 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/83942595716" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/839...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=SMART%20Business%20Mastermind%20&dates=20260527T060000/20260527T073000&location=https://us02web.zoom.us/j/83942595716" target="_blank" class="inline-flex items-center text-gray-600 hover:text-yellow-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-yellow-50 transition-all border border-gray-200 hover:border-yellow-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- May Row 27 -->
+                        <tr class="hover:bg-pink-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-pink-400 bg-pink-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">⭐</span><span>Spirit Driven Success (optional)</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">May 28, 2026 9:00 AM → 10:00 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/81944157644" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/819...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%20Spirit%20Driven%20Success%20(optional)%20&dates=20260528T090000/20260528T103000&location=https://us02web.zoom.us/j/81944157644" target="_blank" class="inline-flex items-center text-gray-600 hover:text-pink-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-pink-50 transition-all border border-gray-200 hover:border-pink-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- May Row 28 -->
+                        <tr class="hover:bg-purple-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-purple-400 bg-purple-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">🧑‍💻</span><span>Tech Thursday</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">May 29, 2026 12:00 AM → 1:00 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/9438690585" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/943...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Tech%20Thursday&dates=20260529T000000/20260529T013000&location=https://us02web.zoom.us/j/9438690585" target="_blank" class="inline-flex items-center text-gray-600 hover:text-purple-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-purple-50 transition-all border border-gray-200 hover:border-purple-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- May Row 29 -->
+                        <tr class="hover:bg-slate-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-slate-400 bg-slate-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">📈</span><span>Onboarding</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">May 29, 2026 3:00 AM → 5:30 AM</td>
+                            <td class="px-6 py-3.5 text-gray-400 italic">No Location Listed</td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Onboarding&dates=20260529T030000/20260529T043000" target="_blank" class="inline-flex items-center text-gray-600 hover:text-slate-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-slate-50 transition-all border border-gray-200 hover:border-slate-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- May Row 30 -->
+                        <tr class="hover:bg-red-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-red-400 bg-red-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">💰</span><span>Sales Training</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">May 29, 2026 6:30 AM → 7:30 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/81160199662" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/811...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Sales%20Training%20&dates=20260529T063000/20260529T080000&location=https://us02web.zoom.us/j/81160199662" target="_blank" class="inline-flex items-center text-gray-600 hover:text-red-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-red-50 transition-all border border-gray-200 hover:border-red-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- June Row 1 -->
+                        <tr class="hover:bg-emerald-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-emerald-400 bg-emerald-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">✅</span><span>Accountability</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">June 1, 2026 11:00 PM → June 2 12:00 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/83619785720" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/836...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Accountability&dates=20260601T230000/20260602T003000&location=https://us02web.zoom.us/j/83619785720" target="_blank" class="inline-flex items-center text-gray-600 hover:text-emerald-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-emerald-50 transition-all border border-gray-200 hover:border-emerald-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- June Row 2 -->
+                        <tr class="hover:bg-emerald-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-emerald-400 bg-emerald-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">✅</span><span>Accountability</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">June 2, 2026 4:00 AM → 5:00 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/83619785720" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/836...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Accountability&dates=20260602T040000/20260602T053000&location=https://us02web.zoom.us/j/83619785720" target="_blank" class="inline-flex items-center text-gray-600 hover:text-emerald-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-emerald-50 transition-all border border-gray-200 hover:border-emerald-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- June Row 3 -->
+                        <tr class="hover:bg-orange-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-orange-400 bg-orange-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">🔶</span><span>Take Your Offer From "Setup" to "Sold Out"</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">June 2, 2026 5:00 AM → 8:00 AM</td>
+                            <td class="px-6 py-3.5 text-gray-400 italic">No Location Listed</td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Take%20Your%20Offer%20From%20%22Setup%22%20to%20%22Sold%20Out%22%20$30-100k%20Months%20Event&dates=20260602T050000/20260602T063000" target="_blank" class="inline-flex items-center text-gray-600 hover:text-orange-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-orange-50 transition-all border border-gray-200 hover:border-orange-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- June Row 4 -->
+                        <tr class="hover:bg-indigo-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-indigo-400 bg-indigo-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">🚀</span><span>Marketing & Implementation</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">June 4, 2026 3:00 AM → 4:00 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/87199463695" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/871...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Marketing%20%26%20Implementation%20&dates=20260604T030000/20260604T043000&location=https://us02web.zoom.us/j/87199463695" target="_blank" class="inline-flex items-center text-gray-600 hover:text-indigo-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-indigo-50 transition-all border border-gray-200 hover:border-indigo-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- June Row 5 -->
+                        <tr class="hover:bg-purple-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-purple-400 bg-purple-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">🧑‍💻</span><span>Tech Thursday</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">June 5, 2026 12:00 AM → 1:00 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/9438690585" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/943...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Tech%20Thursday%20&dates=20260605T000000/20260605T013000&location=https://us02web.zoom.us/j/9438690585" target="_blank" class="inline-flex items-center text-gray-600 hover:text-purple-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-purple-50 transition-all border border-gray-200 hover:border-purple-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- June Row 6 -->
+                        <tr class="hover:bg-slate-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-slate-400 bg-slate-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">📈</span><span>Onboarding</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">June 5, 2026 3:00 AM → 5:30 AM</td>
+                            <td class="px-6 py-3.5 text-gray-400 italic">No Location Listed</td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Onboarding&dates=20260605T030000/20260605T043000" target="_blank" class="inline-flex items-center text-gray-600 hover:text-slate-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-slate-50 transition-all border border-gray-200 hover:border-slate-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- June Row 7 -->
+                        <tr class="hover:bg-emerald-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-emerald-400 bg-emerald-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">✅</span><span>Accountability</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">June 8, 2026 11:00 PM → June 9 12:00 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/83619785720" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/836...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Accountability&dates=20260608T230000/20260609T003000&location=https://us02web.zoom.us/j/83619785720" target="_blank" class="inline-flex items-center text-gray-600 hover:text-emerald-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-emerald-50 transition-all border border-gray-200 hover:border-emerald-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- June Row 8 -->
+                        <tr class="hover:bg-emerald-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-emerald-400 bg-emerald-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">✅</span><span>Accountability</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">June 9, 2026 4:00 AM → 5:00 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/83619785720" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/836...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Accountability&dates=20260609T040000/20260609T053000&location=https://us02web.zoom.us/j/83619785720" target="_blank" class="inline-flex items-center text-gray-600 hover:text-emerald-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-emerald-50 transition-all border border-gray-200 hover:border-emerald-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- June Row 9 -->
+                        <tr class="hover:bg-yellow-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-yellow-400 bg-yellow-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">🌟</span><span>SMART Business Mastermind</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">June 10, 2026 3:00 AM → 5:00 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/83942595716" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/839...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=SMART%20Business%20Mastermind&dates=20260610T030000/20260610T043000&location=https://us02web.zoom.us/j/83942595716" target="_blank" class="inline-flex items-center text-gray-600 hover:text-yellow-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-yellow-50 transition-all border border-gray-200 hover:border-yellow-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- June Row 10 -->
+                        <tr class="hover:bg-purple-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-purple-400 bg-purple-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">🧑‍💻</span><span>Tech Thursday</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">June 12, 2026 12:00 AM → 1:00 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/9438690585" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/943...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Tech%20Thursday&dates=20260612T000000/20260612T013000&location=https://us02web.zoom.us/j/9438690585" target="_blank" class="inline-flex items-center text-gray-600 hover:text-purple-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-purple-50 transition-all border border-gray-200 hover:border-purple-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- June Row 11 -->
+                        <tr class="hover:bg-slate-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-slate-400 bg-slate-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">📈</span><span>Onboarding</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">June 12, 2026 3:00 AM → 5:30 AM</td>
+                            <td class="px-6 py-3.5 text-gray-400 italic">No Location Listed</td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Onboarding&dates=20260612T030000/20260612T043000" target="_blank" class="inline-flex items-center text-gray-600 hover:text-slate-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-slate-50 transition-all border border-gray-200 hover:border-slate-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- June Row 12 -->
+                        <tr class="hover:bg-red-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-red-400 bg-red-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">💰</span><span>Sales Training</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">June 12, 2026 6:30 AM → 7:30 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/81160199662" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/811...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Sales%20Training%20&dates=20260612T063000/20260612T080000&location=https://us02web.zoom.us/j/81160199662" target="_blank" class="inline-flex items-center text-gray-600 hover:text-red-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-red-50 transition-all border border-gray-200 hover:border-red-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- June Row 13 -->
+                        <tr class="hover:bg-emerald-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-emerald-400 bg-emerald-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">✅</span><span>Accountability</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">June 15, 2026 11:00 PM → June 16 12:00 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/83619785720" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/836...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Accountability&dates=20260615T230000/20260616T003000&location=https://us02web.zoom.us/j/83619785720" target="_blank" class="inline-flex items-center text-gray-600 hover:text-emerald-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-emerald-50 transition-all border border-gray-200 hover:border-emerald-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- June Row 14 -->
+                        <tr class="hover:bg-emerald-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-emerald-400 bg-emerald-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">✅</span><span>Accountability</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">June 16, 2026 4:00 AM → 5:00 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/83619785720" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/836...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Accountability&dates=20260616T040000/20260616T053000&location=https://us02web.zoom.us/j/83619785720" target="_blank" class="inline-flex items-center text-gray-600 hover:text-emerald-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-emerald-50 transition-all border border-gray-200 hover:border-emerald-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- June Row 15 -->
+                        <tr class="hover:bg-orange-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-orange-400 bg-orange-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">🔶</span><span>Invite a Friend! - SBM Summit</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">June 16, 2026 5:00 AM → 8:00 AM</td>
+                            <td class="px-6 py-3.5 text-gray-400 italic">No Location Listed</td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Invite%20a%20Friend!%20-%20SBM%20Summit&dates=20260616T050000/20260616T063000" target="_blank" class="inline-flex items-center text-gray-600 hover:text-orange-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-orange-50 transition-all border border-gray-200 hover:border-orange-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+                        
+                        <!-- June Row 16 -->
+                        <tr class="hover:bg-indigo-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-indigo-400 bg-indigo-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">🚀</span><span>Marketing & Implementation</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">June 18, 2026 3:00 AM → 4:00 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/87199463695" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/871...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Marketing%20%26%20Implementation%20&dates=20260618T030000/20260618T043000&location=https://us02web.zoom.us/j/87199463695" target="_blank" class="inline-flex items-center text-gray-600 hover:text-indigo-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-indigo-50 transition-all border border-gray-200 hover:border-indigo-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- June Row 17 -->
+                        <tr class="hover:bg-purple-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-purple-400 bg-purple-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">🧑‍💻</span><span>Tech Thursday</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">June 19, 2026 12:00 AM → 1:00 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/9438690585" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/943...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Tech%20Thursday&dates=20260619T000000/20260619T013000&location=https://us02web.zoom.us/j/9438690585" target="_blank" class="inline-flex items-center text-gray-600 hover:text-purple-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-purple-50 transition-all border border-gray-200 hover:border-purple-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- June Row 18 -->
+                        <tr class="hover:bg-emerald-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-emerald-400 bg-emerald-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">✅</span><span>Accountability</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">June 22, 2026 11:00 PM → June 23 12:00 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/83619785720" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/836...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Accountability&dates=20260622T230000/20260623T003000&location=https://us02web.zoom.us/j/83619785720" target="_blank" class="inline-flex items-center text-gray-600 hover:text-emerald-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-emerald-50 transition-all border border-gray-200 hover:border-emerald-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- June Row 19 -->
+                        <tr class="hover:bg-emerald-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-emerald-400 bg-emerald-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">✅</span><span>Accountability</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">June 23, 2026 4:00 AM → 5:00 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/83619785720" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/836...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Accountability&dates=20260623T040000/20260623T053000&location=https://us02web.zoom.us/j/83619785720" target="_blank" class="inline-flex items-center text-gray-600 hover:text-emerald-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-emerald-50 transition-all border border-gray-200 hover:border-emerald-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- June Row 20 -->
+                        <tr class="hover:bg-yellow-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-yellow-400 bg-yellow-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">🌟</span><span>SMART Business Mastermind</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">June 24, 2026 2:00 AM → 4:00 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/83942595716" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/839...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=SMART%20Business%20Mastermind&dates=20260624T020000/20260624T033000&location=https://us02web.zoom.us/j/83942595716" target="_blank" class="inline-flex items-center text-gray-600 hover:text-yellow-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-yellow-50 transition-all border border-gray-200 hover:border-yellow-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- June Row 21 -->
+                        <tr class="hover:bg-pink-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-pink-400 bg-pink-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">⭐</span><span>Spirit Driven Success (optional)</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">June 25, 2026 9:00 AM → 10:00 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/81944157644" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/819...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%20Spirit%20Driven%20Success%20(optional)%20&dates=20260625T090000/20260625T103000&location=https://us02web.zoom.us/j/81944157644" target="_blank" class="inline-flex items-center text-gray-600 hover:text-pink-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-pink-50 transition-all border border-gray-200 hover:border-pink-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- June Row 22 -->
+                        <tr class="hover:bg-purple-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-purple-400 bg-purple-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">🧑‍💻</span><span>Tech Thursday</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">June 26, 2026 12:00 AM → 1:00 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/9438690585" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/943...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Tech%20Thursday&dates=20260626T000000/20260626T013000&location=https://us02web.zoom.us/j/9438690585" target="_blank" class="inline-flex items-center text-gray-600 hover:text-purple-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-purple-50 transition-all border border-gray-200 hover:border-purple-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- June Row 23 -->
+                        <tr class="hover:bg-slate-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-slate-400 bg-slate-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">📈</span><span>Onboarding</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">June 26, 2026 3:00 AM → 5:30 AM</td>
+                            <td class="px-6 py-3.5 text-gray-400 italic">No Location Listed</td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Onboarding&dates=20260626T030000/20260626T043000" target="_blank" class="inline-flex items-center text-gray-600 hover:text-slate-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-slate-50 transition-all border border-gray-200 hover:border-slate-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- June Row 24 -->
+                        <tr class="hover:bg-red-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-red-400 bg-red-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">💰</span><span>Sales Training</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">June 26, 2026 6:30 AM → 7:30 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/81160199662" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/811...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Sales%20Training&dates=20260626T063000/20260626T080000&location=https://us02web.zoom.us/j/81160199662" target="_blank" class="inline-flex items-center text-gray-600 hover:text-red-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-red-50 transition-all border border-gray-200 hover:border-red-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- June Row 25 -->
+                        <tr class="hover:bg-emerald-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-emerald-400 bg-emerald-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">✅</span><span>Accountability</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">June 29, 2026 11:00 PM → June 30 12:00 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/83619785720" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/836...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Accountability&dates=20260629T230000/20260630T003000&location=https://us02web.zoom.us/j/83619785720" target="_blank" class="inline-flex items-center text-gray-600 hover:text-emerald-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-emerald-50 transition-all border border-gray-200 hover:border-emerald-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- June Row 26 -->
+                        <tr class="hover:bg-emerald-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-emerald-400 bg-emerald-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">✅</span><span>Accountability</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">June 30, 2026 4:00 AM → 5:00 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/83619785720" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/836...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Accountability%20&dates=20260630T040000/20260630T053000&location=https://us02web.zoom.us/j/83619785720" target="_blank" class="inline-flex items-center text-gray-600 hover:text-emerald-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-emerald-50 transition-all border border-gray-200 hover:border-emerald-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- July Row 1 -->
+                        <tr class="hover:bg-purple-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-purple-400 bg-purple-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">🧑‍💻</span><span>Tech Thursday</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">July 3, 2026 12:00 AM → 1:00 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/9438690585" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/943...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Tech%20Thursday%20&dates=20260703T000000/20260703T013000&location=https://us02web.zoom.us/j/9438690585" target="_blank" class="inline-flex items-center text-gray-600 hover:text-purple-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-purple-50 transition-all border border-gray-200 hover:border-purple-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- July Row 2 -->
+                        <tr class="hover:bg-slate-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-slate-400 bg-slate-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">📈</span><span>Onboarding</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">July 3, 2026 3:00 AM → 5:30 AM</td>
+                            <td class="px-6 py-3.5 text-gray-400 italic">No Location Listed</td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Onboarding%20&dates=20260703T030000/20260703T043000" target="_blank" class="inline-flex items-center text-gray-600 hover:text-slate-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-slate-50 transition-all border border-gray-200 hover:border-slate-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- July Row 3 -->
+                        <tr class="hover:bg-orange-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-orange-400 bg-orange-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">🔶</span><span>Take Your Offer From "Setup" to "Sold Out"</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">July 7, 2026 5:00 AM → 8:00 AM</td>
+                            <td class="px-6 py-3.5 text-gray-400 italic">No Location Listed</td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Take%20Your%20Offer%20From%20%22Setup%22%20to%20%22Sold%20Out%22%20$30-100k%20Months%20Event%20&dates=20260707T050000/20260707T063000" target="_blank" class="inline-flex items-center text-gray-600 hover:text-orange-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-orange-50 transition-all border border-gray-200 hover:border-orange-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- July Row 4 -->
+                        <tr class="hover:bg-purple-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-purple-400 bg-purple-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">🧑‍💻</span><span>Tech Thursday</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">July 10, 2026 12:00 AM → 1:00 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/9438690585" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/943...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Tech%20Thursday%20&dates=20260710T000000/20260710T013000&location=https://us02web.zoom.us/j/9438690585" target="_blank" class="inline-flex items-center text-gray-600 hover:text-purple-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-purple-50 transition-all border border-gray-200 hover:border-purple-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- July Row 5 -->
+                        <tr class="hover:bg-slate-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-slate-400 bg-slate-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">📈</span><span>Onboarding</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">July 10, 2026 3:00 AM → 5:30 AM</td>
+                            <td class="px-6 py-3.5 text-gray-400 italic">No Location Listed</td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Onboarding%20&dates=20260710T030000/20260710T043000" target="_blank" class="inline-flex items-center text-gray-600 hover:text-slate-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-slate-50 transition-all border border-gray-200 hover:border-slate-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- July Row 6 -->
+                        <tr class="hover:bg-purple-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-purple-400 bg-purple-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">🧑‍💻</span><span>Tech Thursday</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">July 17, 2026 12:00 AM → 1:00 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/9438690585" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/943...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Tech%20Thursday%20&dates=20260717T000000/20260717T013000&location=https://us02web.zoom.us/j/9438690585" target="_blank" class="inline-flex items-center text-gray-600 hover:text-purple-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-purple-50 transition-all border border-gray-200 hover:border-purple-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- July Row 7 -->
+                        <tr class="hover:bg-orange-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-orange-400 bg-orange-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">🔶</span><span>Invite a Friend! - SBM Summit</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">July 21, 2026 5:00 AM → 8:00 AM</td>
+                            <td class="px-6 py-3.5 text-gray-400 italic">No Location Listed</td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Invite%20a%20Friend!%20-%20SBM%20Summit%20&dates=20260721T050000/20260721T063000" target="_blank" class="inline-flex items-center text-gray-600 hover:text-orange-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-orange-50 transition-all border border-gray-200 hover:border-orange-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- July Row 8 -->
+                        <tr class="hover:bg-purple-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-purple-400 bg-purple-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">🧑‍💻</span><span>Tech Thursday</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">July 24, 2026 12:00 AM → 1:00 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/9438690585" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/943...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Tech%20Thursday%20&dates=20260724T000000/20260724T013000&location=https://us02web.zoom.us/j/9438690585" target="_blank" class="inline-flex items-center text-gray-600 hover:text-purple-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-purple-50 transition-all border border-gray-200 hover:border-purple-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- July Row 9 -->
+                        <tr class="hover:bg-slate-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-slate-400 bg-slate-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">📈</span><span>Onboarding</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">July 31, 2026 3:00 AM → 5:30 AM</td>
+                            <td class="px-6 py-3.5 text-gray-400 italic">No Location Listed</td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Onboarding&dates=20260731T030000/20260731T043000" target="_blank" class="inline-flex items-center text-gray-600 hover:text-slate-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-slate-50 transition-all border border-gray-200 hover:border-slate-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                        <!-- August Row 1 -->
+                        <tr class="hover:bg-pink-50/50 transition-colors group">
+                            <td class="px-6 py-3.5 flex items-center gap-2 border-l-4 border-pink-400 bg-pink-50/30 font-medium text-gray-900">
+                                <span class="text-base select-none">⭐</span><span>Spirit Driven Success (optional)</span>
+                            </td>
+                            <td class="px-6 py-3.5 text-gray-600 tabular-nums">August 27, 2026 9:00 AM → 10:30 AM</td>
+                            <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/81944157644" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/819...</a></td>
+                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%20Spirit%20Driven%20Success%20(optional)%20&dates=20260827T090000/20260827T103000&location=https://us02web.zoom.us/j/81944157644" target="_blank" class="inline-flex items-center text-gray-600 hover:text-pink-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-pink-50 transition-all border border-gray-200 hover:border-pink-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- UI Logic for Tabs -->
+    <script>
+        const tabCalendar = document.getElementById('tab-calendar');
+        const tabList = document.getElementById('tab-list');
+        const viewCalendar = document.getElementById('calendar-view');
+        const viewList = document.getElementById('list-view');
+
+        tabCalendar.addEventListener('click', () => {
+            // Show Calendar View
+            viewCalendar.classList.remove('hidden');
+            viewList.classList.add('hidden');
+            
+            // Set Active Tab Styles
+            tabCalendar.classList.add('bg-gray-200', 'text-gray-900');
+            tabCalendar.classList.remove('text-gray-500', 'hover:bg-gray-100');
+            tabCalendar.querySelector('svg').classList.remove('text-gray-500');
+            tabCalendar.querySelector('svg').classList.add('text-gray-700');
+            
+            // Set Inactive Tab Styles
+            tabList.classList.remove('bg-gray-200', 'text-gray-900');
+            tabList.classList.add('text-gray-500', 'hover:bg-gray-100');
+        });
+
+        tabList.addEventListener('click', () => {
+            // Show List View
+            viewList.classList.remove('hidden');
+            viewCalendar.classList.add('hidden');
+            
+            // Set Active Tab Styles
+            tabList.classList.add('bg-gray-200', 'text-gray-900');
+            tabList.classList.remove('text-gray-500', 'hover:bg-gray-100');
+            tabList.querySelector('svg').classList.remove('text-gray-500');
+            tabList.querySelector('svg').classList.add('text-gray-700');
+            
+            // Set Inactive Tab Styles
+            tabCalendar.classList.remove('bg-gray-200', 'text-gray-900');
+            tabCalendar.classList.add('text-gray-500', 'hover:bg-gray-100');
+        });
+    </script>
+</body>
+</html>
