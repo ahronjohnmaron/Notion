@@ -9,7 +9,7 @@
         .emoji-icon {
             font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
         }
-        /* Custom scrollbar for table and calendar grids */
+        /* Custom scrollbar for table */
         .custom-scrollbar::-webkit-scrollbar {
             height: 8px;
             width: 8px;
@@ -35,13 +35,217 @@
             from { opacity: 0; transform: translateY(5px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        /* ========== EVENT DETAIL MODAL ========== */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.35);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+            padding: 16px;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .modal-content {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 12px 48px rgba(0,0,0,0.18), 0 0 0 1px rgba(0,0,0,0.06);
+            max-width: 560px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: translateY(12px);
+            transition: transform 0.2s ease;
+        }
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+        }
+        .modal-close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 28px;
+            height: 28px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            color: #9ca3af;
+            transition: background 0.15s, color 0.15s;
+        }
+        .modal-close:hover {
+            background: #f3f4f6;
+            color: #374151;
+        }
+        .modal-header {
+            position: relative;
+            padding: 40px 48px 0;
+        }
+        .modal-emoji {
+            font-size: 64px;
+            line-height: 1;
+            margin-bottom: 12px;
+            display: block;
+            font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji";
+        }
+        .modal-title {
+            font-size: 30px;
+            font-weight: 700;
+            color: #37352f;
+            line-height: 1.2;
+            margin: 0 0 20px;
+        }
+        .modal-props {
+            padding: 0 48px 40px;
+        }
+        .modal-prop-row {
+            display: flex;
+            align-items: flex-start;
+            padding: 8px 0;
+            border-top: 1px solid #f0f0f0;
+            min-height: 36px;
+            gap: 8px;
+        }
+        .modal-prop-icon {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9ca3af;
+            margin-top: 2px;
+        }
+        .modal-prop-label {
+            flex-shrink: 0;
+            width: 120px;
+            font-size: 14px;
+            color: #9ca3af;
+            padding-top: 3px;
+        }
+        .modal-prop-value {
+            flex: 1;
+            font-size: 14px;
+            color: #37352f;
+            padding-top: 3px;
+            word-break: break-word;
+        }
+        .modal-prop-value a {
+            color: #37352f;
+            text-decoration: underline;
+            text-decoration-color: #d1d5db;
+            transition: text-decoration-color 0.15s;
+        }
+        .modal-prop-value a:hover {
+            text-decoration-color: #6b7280;
+        }
+        .modal-prop-value .empty {
+            color: #d1d5db;
+        }
+
+        /* Calendar event links - make them clickable for popup */
+        .cal-event {
+            cursor: pointer;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        /* Calendar scroll wrapper on mobile */
+        @media (max-width: 768px) {
+            .modal-header {
+                padding: 32px 24px 0;
+            }
+            .modal-props {
+                padding: 0 24px 32px;
+            }
+            .modal-emoji {
+                font-size: 48px;
+            }
+            .modal-title {
+                font-size: 24px;
+            }
+            .modal-prop-label {
+                width: 100px;
+                font-size: 13px;
+            }
+            .modal-prop-value {
+                font-size: 13px;
+            }
+            .cal-scroll-wrapper {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                margin: 0 -12px;
+                padding: 0 12px;
+            }
+            .cal-scroll-wrapper > .grid {
+                min-width: 640px;
+            }
+        }
+        @media (max-width: 640px) {
+            .modal-prop-row {
+                flex-wrap: wrap;
+            }
+            .modal-prop-label {
+                width: auto;
+                min-width: 90px;
+            }
+            .modal-prop-value {
+                width: 100%;
+                padding-left: 32px;
+            }
+        }
     </style>
 </head>
 <body class="bg-[#fcfcfc] text-[#37352f] font-sans antialiased pb-32 relative min-h-screen">
 
+    <!-- Event Detail Modal -->
+    <div id="event-modal" class="modal-overlay" onclick="if(event.target===this)closeModal()">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()" aria-label="Close">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="1" y1="1" x2="13" y2="13"/><line x1="13" y1="1" x2="1" y2="13"/></svg>
+            </button>
+            <div class="modal-header">
+                <span id="modal-emoji" class="modal-emoji"></span>
+                <h2 id="modal-title" class="modal-title"></h2>
+            </div>
+            <div class="modal-props">
+                <div class="modal-prop-row">
+                    <div class="modal-prop-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/></svg></div>
+                    <div class="modal-prop-label">Add to Google...</div>
+                    <div class="modal-prop-value" id="modal-gcal"></div>
+                </div>
+                <div class="modal-prop-row">
+                    <div class="modal-prop-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+                    <div class="modal-prop-label">Event Date</div>
+                    <div class="modal-prop-value" id="modal-date"></div>
+                </div>
+                <div class="modal-prop-row">
+                    <div class="modal-prop-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></div>
+                    <div class="modal-prop-label">Location</div>
+                    <div class="modal-prop-value" id="modal-location"></div>
+                </div>
+                <div class="modal-prop-row">
+                    <div class="modal-prop-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+                    <div class="modal-prop-label">End</div>
+                    <div class="modal-prop-value" id="modal-end"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Floating Back Button -->
     <div class="fixed top-4 left-4 md:top-6 md:left-6 z-50">
-        <button onclick="history.back()" class="flex items-center text-[13px] md:text-[15px] text-gray-800 bg-white/80 hover:bg-white backdrop-blur-md px-3 py-1.5 rounded-md shadow-sm transition-all group font-medium border border-gray-200">
+        <button onclick="history.back()" class="flex items-center text-[15px] text-gray-800 bg-white/80 hover:bg-white backdrop-blur-md px-3 py-1.5 rounded-md shadow-sm transition-all group font-medium border border-gray-200">
             <svg class="w-4 h-4 mr-1 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
             </svg>
@@ -50,26 +254,26 @@
     </div>
 
     <!-- Main Content Container -->
-    <main class="max-w-[1200px] w-full mx-auto px-4 sm:px-6 md:px-12 mt-16 md:mt-24 flex flex-col gap-6 md:gap-8 animate-fade-in">
+    <main class="max-w-[1200px] w-full mx-auto px-3 sm:px-6 md:px-12 mt-16 sm:mt-24 flex flex-col gap-6 sm:gap-8 animate-fade-in">
 
         <!-- Page Title -->
-        <div class="flex flex-col relative border-b border-gray-200 pb-4 md:pb-6">
-            <div class="mb-2 md:mb-4 flex">
-                <span class="text-[50px] md:text-[78px] leading-none emoji-icon drop-shadow-sm select-none">🗓️</span>
+        <div class="flex flex-col relative border-b border-gray-200 pb-6">
+            <div class="mb-4 flex">
+                <span class="text-[48px] sm:text-[78px] leading-none emoji-icon drop-shadow-sm select-none">🗓️</span>
             </div>
-            <h1 class="text-3xl md:text-[40px] font-bold leading-[1.2] tracking-tight text-[#37352f]">SBM Training Calendar</h1>
-            <p class="text-sm md:text-base text-gray-500 mt-2 font-medium">April 2026 - August 2026 Interactive Schedule</p>
+            <h1 class="text-[28px] sm:text-[40px] font-bold leading-[1.2] tracking-tight text-[#37352f]">SBM Training Calendar</h1>
+            <p class="text-gray-500 mt-2 font-medium text-sm sm:text-base">April 2026 - August 2026 Interactive Schedule</p>
         </div>
 
         <!-- View Toggles -->
-        <div class="flex items-center space-x-2 pb-2">
-            <button id="tab-calendar" class="px-3 py-1.5 text-xs md:text-sm font-medium rounded-md bg-gray-200 text-gray-900 transition-colors flex items-center gap-2">
+        <div class="flex items-center space-x-2 pb-2 flex-wrap">
+            <button id="tab-calendar" class="px-3 py-1.5 text-sm font-medium rounded-md bg-gray-200 text-gray-900 transition-colors flex items-center gap-2">
                 <svg class="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                 </svg>
                 SBM Calendar
             </button>
-            <button id="tab-list" class="px-3 py-1.5 text-xs md:text-sm font-medium rounded-md text-gray-500 hover:bg-gray-100 transition-colors flex items-center gap-2">
+            <button id="tab-list" class="px-3 py-1.5 text-sm font-medium rounded-md text-gray-500 hover:bg-gray-100 transition-colors flex items-center gap-2">
                 <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
                 </svg>
@@ -80,329 +284,319 @@
         <!-- ============================== -->
         <!--        CALENDAR VIEW           -->
         <!-- ============================== -->
-        <div id="calendar-view" class="flex flex-col gap-8 md:gap-12 w-full animate-fade-in">
+        <div id="calendar-view" class="flex flex-col gap-12 w-full animate-fade-in">
             
             <!-- APRIL 2026 CALENDAR -->
             <section class="block w-full">
                 <div class="flex items-center justify-between mb-4 mt-2">
-                    <h2 class="text-xl md:text-2xl font-bold text-gray-800 tracking-tight">April 2026</h2>
-                    <div class="flex items-center space-x-1 hidden sm:flex">
+                    <h2 class="text-2xl font-bold text-gray-800 tracking-tight">April 2026</h2>
+                    <div class="flex items-center space-x-1">
                         <button class="p-1.5 hover:bg-gray-200 rounded text-gray-500"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg></button>
                         <span class="px-2 text-sm font-medium text-gray-700">Today</span>
                         <button class="p-1.5 hover:bg-gray-200 rounded text-gray-500"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></button>
                     </div>
                 </div>
-                <div class="w-full overflow-x-auto pb-4 custom-scrollbar rounded-lg">
-                    <div class="min-w-[800px] grid grid-cols-7 gap-px bg-gray-200 border border-gray-200 rounded-lg overflow-hidden shadow-sm">
-                        <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Sun</div>
-                        <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Mon</div>
-                        <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Tue</div>
-                        <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Wed</div>
-                        <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Thu</div>
-                        <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Fri</div>
-                        <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Sat</div>
-                        
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">29</span></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">30</span></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">31</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">Apr 1</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">2</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">3</span></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">4</span></div>
-                        
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">5</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">6</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">7</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">8</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">9</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">10</span></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">11</span></div>
-                        
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">12</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">13</span><a href="https://us02web.zoom.us/j/83619785720" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">14</span><a href="https://us02web.zoom.us/j/83619785720" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">15</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">16</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">17</span><a href="https://us02web.zoom.us/j/9438690585" target="_blank" class="block w-full text-[10px] leading-tight bg-purple-100 text-purple-800 px-1.5 py-1 rounded truncate hover:bg-purple-200 transition-colors">🧑‍💻 Tech Thursday</a></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">18</span></div>
-                        
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">19</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">20</span><a href="https://us02web.zoom.us/j/83619785720" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">21</span><a href="https://zoom.us/j/98110397121" target="_blank" class="block w-full text-[10px] leading-tight bg-yellow-100 text-yellow-800 px-1.5 py-1 rounded truncate hover:bg-yellow-200 transition-colors">😊 Marketing Mondays</a><a href="https://us02web.zoom.us/j/83619785720" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Invite+a+Friend!" target="_blank" class="block w-full text-[10px] leading-tight bg-orange-100 text-orange-800 px-1.5 py-1 rounded truncate hover:bg-orange-200 transition-colors">🔶 Invite a Friend!</a><a href="https://us02web.zoom.us/j/82192419566" target="_blank" class="block w-full text-[10px] leading-tight bg-blue-100 text-blue-800 px-1.5 py-1 rounded truncate hover:bg-blue-200 transition-colors">🌀 Transformation Tuesdays</a></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">22</span><a href="https://us02web.zoom.us/j/83942595716" target="_blank" class="block w-full text-[10px] leading-tight bg-yellow-200 text-yellow-900 px-1.5 py-1 rounded truncate hover:bg-yellow-300 transition-colors">🌟 SMART Business</a></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">23</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">24</span><a href="https://us02web.zoom.us/j/9438690585" target="_blank" class="block w-full text-[10px] leading-tight bg-purple-100 text-purple-800 px-1.5 py-1 rounded truncate hover:bg-purple-200 transition-colors">🧑‍💻 Tech Thursday</a></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">25</span></div>
-                        
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">26</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">27</span><a href="https://us02web.zoom.us/j/83619785720" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">28</span><a href="https://us02web.zoom.us/j/82192419566" target="_blank" class="block w-full text-[10px] leading-tight bg-blue-100 text-blue-800 px-1.5 py-1 rounded truncate hover:bg-blue-200 transition-colors">🌀 Transformation Tuesdays</a></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">29</span><a href="https://us02web.zoom.us/j/83619785720" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-white bg-red-500 rounded-full w-5 h-5 flex items-center justify-center font-medium ml-1">30</span><a href="https://us02web.zoom.us/j/83619785720" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a><a href="https://us02web.zoom.us/j/81944157644" target="_blank" class="block w-full text-[10px] leading-tight bg-pink-100 text-pink-800 px-1.5 py-1 rounded truncate hover:bg-pink-200 transition-colors">⭐ Spirit Driven Success</a></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">May 1</span></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">2</span></div>
-                    </div>
-                </div>
+                <div class="cal-scroll-wrapper"><div class="grid grid-cols-7 gap-px bg-gray-200 border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Sun</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Mon</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Tue</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Wed</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Thu</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Fri</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Sat</div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">29</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">30</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">31</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">Apr 1</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">2</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">3</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">4</span></div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">5</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">6</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">7</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">8</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">9</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">10</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">11</span></div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">12</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">13</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">14</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">15</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">16</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">17</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-purple-100 text-purple-800 px-1.5 py-1 rounded truncate hover:bg-purple-200 transition-colors">🧑‍💻 Tech Thursday</a></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">18</span></div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">19</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">20</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">21</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-yellow-100 text-yellow-800 px-1.5 py-1 rounded truncate hover:bg-yellow-200 transition-colors">😊 Marketing Mondays</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-orange-100 text-orange-800 px-1.5 py-1 rounded truncate hover:bg-orange-200 transition-colors">🔶 Invite a Friend!</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-blue-100 text-blue-800 px-1.5 py-1 rounded truncate hover:bg-blue-200 transition-colors">🌀 Transformation Tuesdays</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">22</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-yellow-200 text-yellow-900 px-1.5 py-1 rounded truncate hover:bg-yellow-300 transition-colors">🌟 SMART Business</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">23</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">24</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-purple-100 text-purple-800 px-1.5 py-1 rounded truncate hover:bg-purple-200 transition-colors">🧑‍💻 Tech Thursday</a></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">25</span></div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">26</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">27</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">28</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-blue-100 text-blue-800 px-1.5 py-1 rounded truncate hover:bg-blue-200 transition-colors">🌀 Transformation Tuesdays</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">29</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-white bg-red-500 rounded-full w-5 h-5 flex items-center justify-center font-medium ml-1">30</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-pink-100 text-pink-800 px-1.5 py-1 rounded truncate hover:bg-pink-200 transition-colors">⭐ Spirit Driven Success</a></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">May 1</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">2</span></div>
+                </div></div>
             </section>
 
             <!-- MAY 2026 CALENDAR -->
             <section class="block w-full mt-2">
                 <div class="flex items-center justify-between mb-4 mt-2">
-                    <h2 class="text-xl md:text-2xl font-bold text-gray-800 tracking-tight">May 2026</h2>
+                    <h2 class="text-2xl font-bold text-gray-800 tracking-tight">May 2026</h2>
                 </div>
-                <div class="w-full overflow-x-auto pb-4 custom-scrollbar rounded-lg">
-                    <div class="min-w-[800px] grid grid-cols-7 gap-px bg-gray-200 border border-gray-200 rounded-lg overflow-hidden shadow-sm">
-                        <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Sun</div>
-                        <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Mon</div>
-                        <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Tue</div>
-                        <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Wed</div>
-                        <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Thu</div>
-                        <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Fri</div>
-                        <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Sat</div>
-                        
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">26</span></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">27</span></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">28</span></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">29</span></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">30</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">1</span><a href="https://us02web.zoom.us/j/9438690585" target="_blank" class="block w-full text-[10px] leading-tight bg-purple-100 text-purple-800 px-1.5 py-1 rounded truncate hover:bg-purple-200 transition-colors">🧑‍💻 Tech Thursday</a><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Onboarding" target="_blank" class="block w-full text-[10px] leading-tight bg-slate-100 text-slate-800 px-1.5 py-1 rounded truncate hover:bg-slate-200 transition-colors">📈 Onboarding</a><a href="https://us02web.zoom.us/j/81160199662" target="_blank" class="block w-full text-[10px] leading-tight bg-red-100 text-red-800 px-1.5 py-1 rounded truncate hover:bg-red-200 transition-colors">💰 Sales Training</a></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">2</span></div>
-                        
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">3</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">4</span><a href="https://us02web.zoom.us/j/83619785720" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">5</span><a href="https://us02web.zoom.us/j/87199463695" target="_blank" class="block w-full text-[10px] leading-tight bg-indigo-100 text-indigo-800 px-1.5 py-1 rounded truncate hover:bg-indigo-200 transition-colors">🚀 Marketing & Imp...</a><a href="https://us02web.zoom.us/j/83619785720" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Take+Your+Offer" target="_blank" class="block w-full text-[10px] leading-tight bg-orange-100 text-orange-800 px-1.5 py-1 rounded truncate hover:bg-orange-200 transition-colors">🔶 Take Your Offer</a><a href="https://us02web.zoom.us/j/82192419566" target="_blank" class="block w-full text-[10px] leading-tight bg-blue-100 text-blue-800 px-1.5 py-1 rounded truncate hover:bg-blue-200 transition-colors">🌀 Transformation...</a></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">6</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">7</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">8</span><a href="https://us02web.zoom.us/j/9438690585" target="_blank" class="block w-full text-[10px] leading-tight bg-purple-100 text-purple-800 px-1.5 py-1 rounded truncate hover:bg-purple-200 transition-colors">🧑‍💻 Tech Thursday</a><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Onboarding" target="_blank" class="block w-full text-[10px] leading-tight bg-slate-100 text-slate-800 px-1.5 py-1 rounded truncate hover:bg-slate-200 transition-colors">📈 Onboarding</a></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">9</span></div>
-                        
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">10</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">11</span><a href="https://us02web.zoom.us/j/83619785720" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">12</span><a href="https://us02web.zoom.us/j/83619785720" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a><a href="https://us02web.zoom.us/j/82192419566" target="_blank" class="block w-full text-[10px] leading-tight bg-blue-100 text-blue-800 px-1.5 py-1 rounded truncate hover:bg-blue-200 transition-colors">🌀 Transformation...</a></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">13</span><a href="https://us02web.zoom.us/j/83942595716" target="_blank" class="block w-full text-[10px] leading-tight bg-yellow-200 text-yellow-900 px-1.5 py-1 rounded truncate hover:bg-yellow-300 transition-colors">🌟 SMART Business</a></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">14</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">15</span><a href="https://us02web.zoom.us/j/9438690585" target="_blank" class="block w-full text-[10px] leading-tight bg-purple-100 text-purple-800 px-1.5 py-1 rounded truncate hover:bg-purple-200 transition-colors">🧑‍💻 Tech Thursday</a><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Onboarding" target="_blank" class="block w-full text-[10px] leading-tight bg-slate-100 text-slate-800 px-1.5 py-1 rounded truncate hover:bg-slate-200 transition-colors">📈 Onboarding</a><a href="https://us02web.zoom.us/j/81160199662" target="_blank" class="block w-full text-[10px] leading-tight bg-red-100 text-red-800 px-1.5 py-1 rounded truncate hover:bg-red-200 transition-colors">💰 Sales Training</a></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">16</span></div>
-                        
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">17</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">18</span><a href="https://us02web.zoom.us/j/83619785720" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">19</span><a href="https://us02web.zoom.us/j/83619785720" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Invite+a+Friend!" target="_blank" class="block w-full text-[10px] leading-tight bg-orange-100 text-orange-800 px-1.5 py-1 rounded truncate hover:bg-orange-200 transition-colors">🔶 Invite a Friend!</a><a href="https://us02web.zoom.us/j/82192419566" target="_blank" class="block w-full text-[10px] leading-tight bg-blue-100 text-blue-800 px-1.5 py-1 rounded truncate hover:bg-blue-200 transition-colors">🌀 Transformation...</a></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">20</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">21</span><a href="https://us02web.zoom.us/j/87199463695" target="_blank" class="block w-full text-[10px] leading-tight bg-indigo-100 text-indigo-800 px-1.5 py-1 rounded truncate hover:bg-indigo-200 transition-colors">🚀 Marketing & Imp...</a></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">22</span><a href="https://us02web.zoom.us/j/9438690585" target="_blank" class="block w-full text-[10px] leading-tight bg-purple-100 text-purple-800 px-1.5 py-1 rounded truncate hover:bg-purple-200 transition-colors">🧑‍💻 Tech Thursday</a></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">23</span></div>
-                        
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">24</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1 border-t-2 border-red-400"><span class="text-xs text-gray-800 font-medium ml-1">25</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-red-50 text-red-900 border border-red-200 px-1.5 py-1 rounded truncate hover:bg-red-100 transition-colors">🇺🇸 MEMORIAL DAY</a></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">26</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">27</span><a href="https://us02web.zoom.us/j/83942595716" target="_blank" class="block w-full text-[10px] leading-tight bg-yellow-200 text-yellow-900 px-1.5 py-1 rounded truncate hover:bg-yellow-300 transition-colors">🌟 SMART Business</a></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">28</span><a href="https://us02web.zoom.us/j/81944157644" target="_blank" class="block w-full text-[10px] leading-tight bg-pink-100 text-pink-800 px-1.5 py-1 rounded truncate hover:bg-pink-200 transition-colors">⭐ Spirit Driven Su...</a></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">29</span><a href="https://us02web.zoom.us/j/9438690585" target="_blank" class="block w-full text-[10px] leading-tight bg-purple-100 text-purple-800 px-1.5 py-1 rounded truncate hover:bg-purple-200 transition-colors">🧑‍💻 Tech Thursday</a><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Onboarding" target="_blank" class="block w-full text-[10px] leading-tight bg-slate-100 text-slate-800 px-1.5 py-1 rounded truncate hover:bg-slate-200 transition-colors">📈 Onboarding</a><a href="https://us02web.zoom.us/j/81160199662" target="_blank" class="block w-full text-[10px] leading-tight bg-red-100 text-red-800 px-1.5 py-1 rounded truncate hover:bg-red-200 transition-colors">💰 Sales Training</a></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">30</span></div>
-                        
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">31</span></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">Jun 1</span></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">2</span></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">3</span></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">4</span></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">5</span></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">6</span></div>
-                    </div>
-                </div>
+                <div class="cal-scroll-wrapper"><div class="grid grid-cols-7 gap-px bg-gray-200 border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Sun</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Mon</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Tue</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Wed</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Thu</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Fri</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Sat</div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">26</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">27</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">28</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">29</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">30</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">1</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-purple-100 text-purple-800 px-1.5 py-1 rounded truncate hover:bg-purple-200 transition-colors">🧑‍💻 Tech Thursday</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-slate-100 text-slate-800 px-1.5 py-1 rounded truncate hover:bg-slate-200 transition-colors">📈 Onboarding</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-red-100 text-red-800 px-1.5 py-1 rounded truncate hover:bg-red-200 transition-colors">💰 Sales Training</a></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">2</span></div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">3</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">4</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">5</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-indigo-100 text-indigo-800 px-1.5 py-1 rounded truncate hover:bg-indigo-200 transition-colors">🚀 Marketing & Imp...</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-orange-100 text-orange-800 px-1.5 py-1 rounded truncate hover:bg-orange-200 transition-colors">🔶 Take Your Offer</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-blue-100 text-blue-800 px-1.5 py-1 rounded truncate hover:bg-blue-200 transition-colors">🌀 Transformation...</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">6</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">7</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">8</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-purple-100 text-purple-800 px-1.5 py-1 rounded truncate hover:bg-purple-200 transition-colors">🧑‍💻 Tech Thursday</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-slate-100 text-slate-800 px-1.5 py-1 rounded truncate hover:bg-slate-200 transition-colors">📈 Onboarding</a></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">9</span></div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">10</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">11</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">12</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-blue-100 text-blue-800 px-1.5 py-1 rounded truncate hover:bg-blue-200 transition-colors">🌀 Transformation...</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">13</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-yellow-200 text-yellow-900 px-1.5 py-1 rounded truncate hover:bg-yellow-300 transition-colors">🌟 SMART Business</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">14</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">15</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-purple-100 text-purple-800 px-1.5 py-1 rounded truncate hover:bg-purple-200 transition-colors">🧑‍💻 Tech Thursday</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-slate-100 text-slate-800 px-1.5 py-1 rounded truncate hover:bg-slate-200 transition-colors">📈 Onboarding</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-red-100 text-red-800 px-1.5 py-1 rounded truncate hover:bg-red-200 transition-colors">💰 Sales Training</a></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">16</span></div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">17</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">18</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">19</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-orange-100 text-orange-800 px-1.5 py-1 rounded truncate hover:bg-orange-200 transition-colors">🔶 Invite a Friend!</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-blue-100 text-blue-800 px-1.5 py-1 rounded truncate hover:bg-blue-200 transition-colors">🌀 Transformation...</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">20</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">21</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-indigo-100 text-indigo-800 px-1.5 py-1 rounded truncate hover:bg-indigo-200 transition-colors">🚀 Marketing & Imp...</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">22</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-purple-100 text-purple-800 px-1.5 py-1 rounded truncate hover:bg-purple-200 transition-colors">🧑‍💻 Tech Thursday</a></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">23</span></div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">24</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1 border-t-2 border-red-400"><span class="text-xs text-gray-800 font-medium ml-1">25</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-red-50 text-red-900 border border-red-200 px-1.5 py-1 rounded truncate hover:bg-red-100 transition-colors">🇺🇸 MEMORIAL DAY</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">26</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">27</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-yellow-200 text-yellow-900 px-1.5 py-1 rounded truncate hover:bg-yellow-300 transition-colors">🌟 SMART Business</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">28</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-pink-100 text-pink-800 px-1.5 py-1 rounded truncate hover:bg-pink-200 transition-colors">⭐ Spirit Driven Su...</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">29</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-purple-100 text-purple-800 px-1.5 py-1 rounded truncate hover:bg-purple-200 transition-colors">🧑‍💻 Tech Thursday</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-slate-100 text-slate-800 px-1.5 py-1 rounded truncate hover:bg-slate-200 transition-colors">📈 Onboarding</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-red-100 text-red-800 px-1.5 py-1 rounded truncate hover:bg-red-200 transition-colors">💰 Sales Training</a></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">30</span></div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">31</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">Jun 1</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">2</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">3</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">4</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">5</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">6</span></div>
+                </div></div>
             </section>
 
             <!-- JUNE 2026 CALENDAR -->
             <section class="block w-full mt-2">
                 <div class="flex items-center justify-between mb-4 mt-2">
-                    <h2 class="text-xl md:text-2xl font-bold text-gray-800 tracking-tight">June 2026</h2>
+                    <h2 class="text-2xl font-bold text-gray-800 tracking-tight">June 2026</h2>
                 </div>
-                <div class="w-full overflow-x-auto pb-4 custom-scrollbar rounded-lg">
-                    <div class="min-w-[800px] grid grid-cols-7 gap-px bg-gray-200 border border-gray-200 rounded-lg overflow-hidden shadow-sm">
-                        <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Sun</div>
-                        <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Mon</div>
-                        <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Tue</div>
-                        <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Wed</div>
-                        <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Thu</div>
-                        <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Fri</div>
-                        <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Sat</div>
-                        
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">31</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">Jun 1</span><a href="https://us02web.zoom.us/j/83619785720" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">2</span><a href="https://us02web.zoom.us/j/83619785720" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Take+Your+Offer" target="_blank" class="block w-full text-[10px] leading-tight bg-orange-100 text-orange-800 px-1.5 py-1 rounded truncate hover:bg-orange-200 transition-colors">🔶 Take Your Offer</a></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">3</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">4</span><a href="https://us02web.zoom.us/j/87199463695" target="_blank" class="block w-full text-[10px] leading-tight bg-indigo-100 text-indigo-800 px-1.5 py-1 rounded truncate hover:bg-indigo-200 transition-colors">🚀 Marketing & Imp...</a></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">5</span><a href="https://us02web.zoom.us/j/9438690585" target="_blank" class="block w-full text-[10px] leading-tight bg-purple-100 text-purple-800 px-1.5 py-1 rounded truncate hover:bg-purple-200 transition-colors">🧑‍💻 Tech Thursday</a><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Onboarding" target="_blank" class="block w-full text-[10px] leading-tight bg-slate-100 text-slate-800 px-1.5 py-1 rounded truncate hover:bg-slate-200 transition-colors">📈 Onboarding</a></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">6</span></div>
-                        
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">7</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">8</span><a href="https://us02web.zoom.us/j/83619785720" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">9</span><a href="https://us02web.zoom.us/j/83619785720" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">10</span><a href="https://us02web.zoom.us/j/83942595716" target="_blank" class="block w-full text-[10px] leading-tight bg-yellow-200 text-yellow-900 px-1.5 py-1 rounded truncate hover:bg-yellow-300 transition-colors">🌟 SMART Business</a></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">11</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">12</span><a href="https://us02web.zoom.us/j/9438690585" target="_blank" class="block w-full text-[10px] leading-tight bg-purple-100 text-purple-800 px-1.5 py-1 rounded truncate hover:bg-purple-200 transition-colors">🧑‍💻 Tech Thursday</a><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Onboarding" target="_blank" class="block w-full text-[10px] leading-tight bg-slate-100 text-slate-800 px-1.5 py-1 rounded truncate hover:bg-slate-200 transition-colors">📈 Onboarding</a><a href="https://us02web.zoom.us/j/81160199662" target="_blank" class="block w-full text-[10px] leading-tight bg-red-100 text-red-800 px-1.5 py-1 rounded truncate hover:bg-red-200 transition-colors">💰 Sales Training</a></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">13</span></div>
-                        
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">14</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">15</span><a href="https://us02web.zoom.us/j/83619785720" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">16</span><a href="https://us02web.zoom.us/j/83619785720" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Invite+a+Friend!" target="_blank" class="block w-full text-[10px] leading-tight bg-orange-100 text-orange-800 px-1.5 py-1 rounded truncate hover:bg-orange-200 transition-colors">🔶 Invite a Friend!</a></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">17</span><a href="https://us02web.zoom.us/j/82192419566" target="_blank" class="block w-full text-[10px] leading-tight bg-blue-100 text-blue-800 px-1.5 py-1 rounded truncate hover:bg-blue-200 transition-colors">🌀 Transformation...</a></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">18</span><a href="https://us02web.zoom.us/j/87199463695" target="_blank" class="block w-full text-[10px] leading-tight bg-indigo-100 text-indigo-800 px-1.5 py-1 rounded truncate hover:bg-indigo-200 transition-colors">🚀 Marketing & Imp...</a></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">19</span><a href="https://us02web.zoom.us/j/9438690585" target="_blank" class="block w-full text-[10px] leading-tight bg-purple-100 text-purple-800 px-1.5 py-1 rounded truncate hover:bg-purple-200 transition-colors">🧑‍💻 Tech Thursday</a></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">20</span></div>
-                        
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">21</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">22</span><a href="https://us02web.zoom.us/j/83619785720" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">23</span><a href="https://us02web.zoom.us/j/83619785720" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">24</span><a href="https://us02web.zoom.us/j/83942595716" target="_blank" class="block w-full text-[10px] leading-tight bg-yellow-200 text-yellow-900 px-1.5 py-1 rounded truncate hover:bg-yellow-300 transition-colors">🌟 SMART Business</a></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">25</span><a href="https://us02web.zoom.us/j/81944157644" target="_blank" class="block w-full text-[10px] leading-tight bg-pink-100 text-pink-800 px-1.5 py-1 rounded truncate hover:bg-pink-200 transition-colors">⭐ Spirit Driven Su...</a></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">26</span><a href="https://us02web.zoom.us/j/9438690585" target="_blank" class="block w-full text-[10px] leading-tight bg-purple-100 text-purple-800 px-1.5 py-1 rounded truncate hover:bg-purple-200 transition-colors">🧑‍💻 Tech Thursday</a><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Onboarding" target="_blank" class="block w-full text-[10px] leading-tight bg-slate-100 text-slate-800 px-1.5 py-1 rounded truncate hover:bg-slate-200 transition-colors">📈 Onboarding</a><a href="https://us02web.zoom.us/j/81160199662" target="_blank" class="block w-full text-[10px] leading-tight bg-red-100 text-red-800 px-1.5 py-1 rounded truncate hover:bg-red-200 transition-colors">💰 Sales Training</a></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">27</span></div>
-                        
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">28</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">29</span><a href="https://us02web.zoom.us/j/83619785720" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">30</span><a href="https://us02web.zoom.us/j/83619785720" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">Jul 1</span></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">2</span></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">3</span></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">4</span></div>
-                    </div>
-                </div>
+                <div class="cal-scroll-wrapper"><div class="grid grid-cols-7 gap-px bg-gray-200 border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Sun</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Mon</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Tue</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Wed</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Thu</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Fri</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Sat</div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">31</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">Jun 1</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">2</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-orange-100 text-orange-800 px-1.5 py-1 rounded truncate hover:bg-orange-200 transition-colors">🔶 Take Your Offer</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">3</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">4</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-indigo-100 text-indigo-800 px-1.5 py-1 rounded truncate hover:bg-indigo-200 transition-colors">🚀 Marketing & Imp...</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">5</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-purple-100 text-purple-800 px-1.5 py-1 rounded truncate hover:bg-purple-200 transition-colors">🧑‍💻 Tech Thursday</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-slate-100 text-slate-800 px-1.5 py-1 rounded truncate hover:bg-slate-200 transition-colors">📈 Onboarding</a></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">6</span></div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">7</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">8</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">9</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">10</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-yellow-200 text-yellow-900 px-1.5 py-1 rounded truncate hover:bg-yellow-300 transition-colors">🌟 SMART Business</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">11</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">12</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-purple-100 text-purple-800 px-1.5 py-1 rounded truncate hover:bg-purple-200 transition-colors">🧑‍💻 Tech Thursday</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-slate-100 text-slate-800 px-1.5 py-1 rounded truncate hover:bg-slate-200 transition-colors">📈 Onboarding</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-red-100 text-red-800 px-1.5 py-1 rounded truncate hover:bg-red-200 transition-colors">💰 Sales Training</a></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">13</span></div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">14</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">15</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">16</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-orange-100 text-orange-800 px-1.5 py-1 rounded truncate hover:bg-orange-200 transition-colors">🔶 Invite a Friend!</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">17</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-blue-100 text-blue-800 px-1.5 py-1 rounded truncate hover:bg-blue-200 transition-colors">🌀 Transformation...</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">18</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-indigo-100 text-indigo-800 px-1.5 py-1 rounded truncate hover:bg-indigo-200 transition-colors">🚀 Marketing & Imp...</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">19</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-purple-100 text-purple-800 px-1.5 py-1 rounded truncate hover:bg-purple-200 transition-colors">🧑‍💻 Tech Thursday</a></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">20</span></div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">21</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">22</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">23</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">24</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-yellow-200 text-yellow-900 px-1.5 py-1 rounded truncate hover:bg-yellow-300 transition-colors">🌟 SMART Business</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">25</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-pink-100 text-pink-800 px-1.5 py-1 rounded truncate hover:bg-pink-200 transition-colors">⭐ Spirit Driven Su...</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">26</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-purple-100 text-purple-800 px-1.5 py-1 rounded truncate hover:bg-purple-200 transition-colors">🧑‍💻 Tech Thursday</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-slate-100 text-slate-800 px-1.5 py-1 rounded truncate hover:bg-slate-200 transition-colors">📈 Onboarding</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-red-100 text-red-800 px-1.5 py-1 rounded truncate hover:bg-red-200 transition-colors">💰 Sales Training</a></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">27</span></div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">28</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">29</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">30</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-emerald-100 text-emerald-800 px-1.5 py-1 rounded truncate hover:bg-emerald-200 transition-colors">✅ Accountability</a></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">Jul 1</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">2</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">3</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">4</span></div>
+                </div></div>
             </section>
 
             <!-- JULY 2026 CALENDAR -->
             <section class="block w-full mt-2">
                 <div class="flex items-center justify-between mb-4 mt-2">
-                    <h2 class="text-xl md:text-2xl font-bold text-gray-800 tracking-tight">July 2026</h2>
+                    <h2 class="text-2xl font-bold text-gray-800 tracking-tight">July 2026</h2>
                 </div>
-                <div class="w-full overflow-x-auto pb-4 custom-scrollbar rounded-lg">
-                    <div class="min-w-[800px] grid grid-cols-7 gap-px bg-gray-200 border border-gray-200 rounded-lg overflow-hidden shadow-sm">
-                        <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Sun</div>
-                        <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Mon</div>
-                        <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Tue</div>
-                        <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Wed</div>
-                        <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Thu</div>
-                        <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Fri</div>
-                        <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Sat</div>
-                        
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">28</span></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">29</span></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">30</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">Jul 1</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">2</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">3</span><a href="https://us02web.zoom.us/j/9438690585" target="_blank" class="block w-full text-[10px] leading-tight bg-purple-100 text-purple-800 px-1.5 py-1 rounded truncate hover:bg-purple-200 transition-colors">🧑‍💻 Tech Thursday</a><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Onboarding" target="_blank" class="block w-full text-[10px] leading-tight bg-slate-100 text-slate-800 px-1.5 py-1 rounded truncate hover:bg-slate-200 transition-colors">📈 Onboarding</a></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">4</span></div>
-                        
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">5</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">6</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">7</span><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Take+Your+Offer" target="_blank" class="block w-full text-[10px] leading-tight bg-orange-100 text-orange-800 px-1.5 py-1 rounded truncate hover:bg-orange-200 transition-colors">🔶 Take Your Offer</a></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">8</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">9</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">10</span><a href="https://us02web.zoom.us/j/9438690585" target="_blank" class="block w-full text-[10px] leading-tight bg-purple-100 text-purple-800 px-1.5 py-1 rounded truncate hover:bg-purple-200 transition-colors">🧑‍💻 Tech Thursday</a><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Onboarding" target="_blank" class="block w-full text-[10px] leading-tight bg-slate-100 text-slate-800 px-1.5 py-1 rounded truncate hover:bg-slate-200 transition-colors">📈 Onboarding</a></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">11</span></div>
-                        
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">12</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">13</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">14</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">15</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">16</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">17</span><a href="https://us02web.zoom.us/j/9438690585" target="_blank" class="block w-full text-[10px] leading-tight bg-purple-100 text-purple-800 px-1.5 py-1 rounded truncate hover:bg-purple-200 transition-colors">🧑‍💻 Tech Thursday</a></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">18</span></div>
-                        
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">19</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">20</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">21</span><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Invite+a+Friend!" target="_blank" class="block w-full text-[10px] leading-tight bg-orange-100 text-orange-800 px-1.5 py-1 rounded truncate hover:bg-orange-200 transition-colors">🔶 Invite a Friend!</a></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">22</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">23</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">24</span><a href="https://us02web.zoom.us/j/9438690585" target="_blank" class="block w-full text-[10px] leading-tight bg-purple-100 text-purple-800 px-1.5 py-1 rounded truncate hover:bg-purple-200 transition-colors">🧑‍💻 Tech Thursday</a></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">25</span></div>
-                        
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">26</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">27</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">28</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">29</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">30</span><a href="https://us02web.zoom.us/j/81944157644" target="_blank" class="block w-full text-[10px] leading-tight bg-pink-100 text-pink-800 px-1.5 py-1 rounded truncate hover:bg-pink-200 transition-colors">⭐ Spirit Driven Success</a></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">31</span></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">Aug 1</span></div>
-                    </div>
-                </div>
+                <div class="cal-scroll-wrapper"><div class="grid grid-cols-7 gap-px bg-gray-200 border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Sun</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Mon</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Tue</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Wed</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Thu</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Fri</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Sat</div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">28</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">29</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">30</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">Jul 1</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">2</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">3</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-purple-100 text-purple-800 px-1.5 py-1 rounded truncate hover:bg-purple-200 transition-colors">🧑‍💻 Tech Thursday</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-slate-100 text-slate-800 px-1.5 py-1 rounded truncate hover:bg-slate-200 transition-colors">📈 Onboarding</a></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">4</span></div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">5</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">6</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">7</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-orange-100 text-orange-800 px-1.5 py-1 rounded truncate hover:bg-orange-200 transition-colors">🔶 Take Your Offer</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">8</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">9</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">10</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-purple-100 text-purple-800 px-1.5 py-1 rounded truncate hover:bg-purple-200 transition-colors">🧑‍💻 Tech Thursday</a><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-slate-100 text-slate-800 px-1.5 py-1 rounded truncate hover:bg-slate-200 transition-colors">📈 Onboarding</a></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">11</span></div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">12</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">13</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">14</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">15</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">16</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">17</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-purple-100 text-purple-800 px-1.5 py-1 rounded truncate hover:bg-purple-200 transition-colors">🧑‍💻 Tech Thursday</a></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">18</span></div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">19</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">20</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">21</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-orange-100 text-orange-800 px-1.5 py-1 rounded truncate hover:bg-orange-200 transition-colors">🔶 Invite a Friend!</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">22</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">23</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">24</span><a href="#" target="_blank" class="block w-full text-[10px] leading-tight bg-purple-100 text-purple-800 px-1.5 py-1 rounded truncate hover:bg-purple-200 transition-colors">🧑‍💻 Tech Thursday</a></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">25</span></div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">26</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">27</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">28</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">29</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">30</span><a href="https://us02web.zoom.us/j/81944157644" target="_blank" class="block w-full text-[10px] leading-tight bg-pink-100 text-pink-800 px-1.5 py-1 rounded truncate hover:bg-pink-200 transition-colors">⭐ Spirit Driven Success</a></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">31</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">Aug 1</span></div>
+                </div></div>
             </section>
 
             <!-- AUGUST 2026 CALENDAR -->
             <section class="block w-full mt-2 mb-12">
                 <div class="flex items-center justify-between mb-4 mt-2">
-                    <h2 class="text-xl md:text-2xl font-bold text-gray-800 tracking-tight">August 2026</h2>
+                    <h2 class="text-2xl font-bold text-gray-800 tracking-tight">August 2026</h2>
                 </div>
-                <div class="w-full overflow-x-auto pb-4 custom-scrollbar rounded-lg">
-                    <div class="min-w-[800px] grid grid-cols-7 gap-px bg-gray-200 border border-gray-200 rounded-lg overflow-hidden shadow-sm">
-                        <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Sun</div>
-                        <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Mon</div>
-                        <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Tue</div>
-                        <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Wed</div>
-                        <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Thu</div>
-                        <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Fri</div>
-                        <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Sat</div>
-                        
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">26</span></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">27</span></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">28</span></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">29</span></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">30</span></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">31</span></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">Aug 1</span></div>
-                        
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">2</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">3</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">4</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">5</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">6</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">7</span></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">8</span></div>
-                        
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">9</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">10</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">11</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">12</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">13</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">14</span></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">15</span></div>
-                        
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">16</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">17</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">18</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">19</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">20</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">21</span></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">22</span></div>
+                <div class="cal-scroll-wrapper"><div class="grid grid-cols-7 gap-px bg-gray-200 border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Sun</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Mon</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Tue</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Wed</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Thu</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Fri</div>
+                    <div class="bg-gray-50 text-center py-2 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Sat</div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">26</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">27</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">28</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">29</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">30</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">31</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">Aug 1</span></div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">2</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">3</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">4</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">5</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">6</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">7</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">8</span></div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">9</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">10</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">11</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">12</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">13</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">14</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">15</span></div>
+                    
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">16</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">17</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">18</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">19</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">20</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">21</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">22</span></div>
 
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">23</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">24</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">25</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">26</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1">
-                            <span class="text-xs text-gray-800 font-medium ml-1">27</span>
-                            <a href="https://us02web.zoom.us/j/81944157644" target="_blank" class="block w-full text-[10px] leading-tight bg-pink-100 text-pink-800 px-1.5 py-1 rounded truncate hover:bg-pink-200 transition-colors">⭐ Spirit Driven Success</a>
-                        </div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">28</span></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">29</span></div>
-
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">30</span></div>
-                        <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">31</span></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">Sep 1</span></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">2</span></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">3</span></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">4</span></div>
-                        <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">5</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">23</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">24</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">25</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">26</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1">
+                        <span class="text-xs text-gray-800 font-medium ml-1">27</span>
+                        <a href="https://us02web.zoom.us/j/81944157644" target="_blank" class="block w-full text-[10px] leading-tight bg-pink-100 text-pink-800 px-1.5 py-1 rounded truncate hover:bg-pink-200 transition-colors">⭐ Spirit Driven Success</a>
                     </div>
-                </div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">28</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">29</span></div>
+
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">30</span></div>
+                    <div class="bg-white min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-800 font-medium ml-1">31</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">Sep 1</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">2</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">3</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">4</span></div>
+                    <div class="bg-[#fafafa] min-h-[140px] p-1.5 flex flex-col gap-1"><span class="text-xs text-gray-400 font-medium ml-1">5</span></div>
+                </div></div>
             </section>
         </div>
 
         <!-- ============================== -->
-        <!--            LIST VIEW           -->
+        <!--           LIST VIEW            -->
         <!-- ============================== -->
         <div id="list-view" class="hidden w-full animate-fade-in">
-            <div class="overflow-x-auto w-full bg-white border border-gray-200 rounded-lg shadow-sm custom-scrollbar pb-4 md:pb-8">
-                <table class="w-full text-left border-collapse whitespace-nowrap table-auto min-w-[900px]">
+            <div class="overflow-x-auto bg-white border border-gray-200 rounded-lg shadow-sm custom-scrollbar pb-8">
+                <table class="w-full text-left border-collapse whitespace-nowrap table-auto">
                     <thead>
                         <tr class="bg-gray-50 border-b border-gray-200 text-xs text-gray-500 uppercase tracking-wider sticky top-0 z-10 shadow-sm">
                             <th class="px-6 py-4 font-semibold text-gray-600 w-1/3">Name</th>
@@ -420,7 +614,7 @@
                             </td>
                             <td class="px-6 py-3.5 text-gray-600 tabular-nums">April 13, 2026 11:00 PM → April 14</td>
                             <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/83619785720" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/836...</a></td>
-                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Accountability&dates=20260413T230000/20260414T003000&location=https://us02web.zoom.us/j/83619785720" target="_blank" class="inline-flex items-center text-gray-600 hover:text-emerald-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-emerald-50 transition-all border border-gray-200 hover:border-emerald-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                            <td class="px-6 py-3.5"><a href="#" target="_blank" class="inline-flex items-center text-gray-600 hover:text-emerald-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-emerald-50 transition-all border border-gray-200 hover:border-emerald-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
                         </tr>
 
                         <!-- April Row 1 -->
@@ -430,7 +624,7 @@
                             </td>
                             <td class="px-6 py-3.5 text-gray-600 tabular-nums">April 14, 2026 4:00 AM → 5:00 AM</td>
                             <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/83619785720" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/836...</a></td>
-                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Accountability&dates=20260414T040000/20260414T053000&location=https://us02web.zoom.us/j/83619785720" target="_blank" class="inline-flex items-center text-gray-600 hover:text-emerald-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-emerald-50 transition-all border border-gray-200 hover:border-emerald-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                            <td class="px-6 py-3.5"><a href="#" target="_blank" class="inline-flex items-center text-gray-600 hover:text-emerald-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-emerald-50 transition-all border border-gray-200 hover:border-emerald-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
                         </tr>
 
                         <!-- April Row 2 -->
@@ -440,7 +634,7 @@
                             </td>
                             <td class="px-6 py-3.5 text-gray-600 tabular-nums">April 17, 2026 12:00 AM → 1:00 AM</td>
                             <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/9438690585" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/943...</a></td>
-                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Tech%20Thursday&dates=20260417T000000/20260417T013000&location=https://us02web.zoom.us/j/9438690585" target="_blank" class="inline-flex items-center text-gray-600 hover:text-purple-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-purple-50 transition-all border border-gray-200 hover:border-purple-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                            <td class="px-6 py-3.5"><a href="#" target="_blank" class="inline-flex items-center text-gray-600 hover:text-purple-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-purple-50 transition-all border border-gray-200 hover:border-purple-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
                         </tr>
 
                         <!-- April Row 3 -->
@@ -450,7 +644,7 @@
                             </td>
                             <td class="px-6 py-3.5 text-gray-600 tabular-nums">April 21, 2026 3:00 AM → 4:00 AM</td>
                             <td class="px-6 py-3.5"><a href="https://zoom.us/j/98110397121" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">zoom.us/j/98110397121</a></td>
-                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Marketing%20Mondays&dates=20260421T030000/20260421T043000&location=https://zoom.us/j/98110397121" target="_blank" class="inline-flex items-center text-gray-600 hover:text-yellow-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-yellow-50 transition-all border border-gray-200 hover:border-yellow-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                            <td class="px-6 py-3.5"><a href="#" target="_blank" class="inline-flex items-center text-gray-600 hover:text-yellow-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-yellow-50 transition-all border border-gray-200 hover:border-yellow-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
                         </tr>
 
                         <!-- April Row 4 -->
@@ -460,7 +654,7 @@
                             </td>
                             <td class="px-6 py-3.5 text-gray-600 tabular-nums">April 28, 2026 11:00 PM → April 29</td>
                             <td class="px-6 py-3.5"><a href="https://us02web.zoom.us/j/82192419566" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">us02web.zoom.us/j/821...</a></td>
-                            <td class="px-6 py-3.5"><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Transformation%20Tuesdays&dates=20260428T230000/20260429T003000&location=https://us02web.zoom.us/j/82192419566" target="_blank" class="inline-flex items-center text-gray-600 hover:text-blue-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-blue-50 transition-all border border-gray-200 hover:border-blue-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
+                            <td class="px-6 py-3.5"><a href="#" target="_blank" class="inline-flex items-center text-gray-600 hover:text-blue-700 font-medium hover:underline bg-gray-100 px-3 py-1.5 rounded-md hover:bg-blue-50 transition-all border border-gray-200 hover:border-blue-200"><svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add to Google Calendar</a></td>
                         </tr>
 
                         <!-- May Row 0 -->
@@ -1140,43 +1334,218 @@
 
     </main>
 
-    <!-- UI Logic for Tabs -->
+    <!-- UI Logic for Tabs + Modal + Responsive -->
     <script>
+        // ===================== TAB SWITCHING =====================
         const tabCalendar = document.getElementById('tab-calendar');
         const tabList = document.getElementById('tab-list');
         const viewCalendar = document.getElementById('calendar-view');
         const viewList = document.getElementById('list-view');
 
         tabCalendar.addEventListener('click', () => {
-            // Show Calendar View
             viewCalendar.classList.remove('hidden');
             viewList.classList.add('hidden');
-            
-            // Set Active Tab Styles
             tabCalendar.classList.add('bg-gray-200', 'text-gray-900');
             tabCalendar.classList.remove('text-gray-500', 'hover:bg-gray-100');
             tabCalendar.querySelector('svg').classList.remove('text-gray-500');
             tabCalendar.querySelector('svg').classList.add('text-gray-700');
-            
-            // Set Inactive Tab Styles
             tabList.classList.remove('bg-gray-200', 'text-gray-900');
             tabList.classList.add('text-gray-500', 'hover:bg-gray-100');
         });
 
         tabList.addEventListener('click', () => {
-            // Show List View
             viewList.classList.remove('hidden');
             viewCalendar.classList.add('hidden');
-            
-            // Set Active Tab Styles
             tabList.classList.add('bg-gray-200', 'text-gray-900');
             tabList.classList.remove('text-gray-500', 'hover:bg-gray-100');
             tabList.querySelector('svg').classList.remove('text-gray-500');
             tabList.querySelector('svg').classList.add('text-gray-700');
-            
-            // Set Inactive Tab Styles
             tabCalendar.classList.remove('bg-gray-200', 'text-gray-900');
             tabCalendar.classList.add('text-gray-500', 'hover:bg-gray-100');
+        });
+
+        // ===================== MODAL =====================
+        const modal = document.getElementById('event-modal');
+        function openModal(data) {
+            document.getElementById('modal-emoji').textContent = data.emoji || '';
+            document.getElementById('modal-title').textContent = data.title || '';
+            const gcalEl = document.getElementById('modal-gcal');
+            if (data.gcalUrl) {
+                gcalEl.innerHTML = '<a href="' + data.gcalUrl + '" target="_blank">Add to Google Calendar</a>';
+            } else {
+                gcalEl.innerHTML = '<span class="empty">Empty</span>';
+            }
+            document.getElementById('modal-date').textContent = data.date || 'Empty';
+            const locEl = document.getElementById('modal-location');
+            if (data.location && data.locationUrl) {
+                const shortLoc = data.location.length > 30 ? data.location.substring(0, 27) + '...' + data.location.slice(-6) : data.location;
+                locEl.innerHTML = '<a href="' + data.locationUrl + '" target="_blank">' + shortLoc + '</a>';
+            } else if (data.location) {
+                locEl.textContent = data.location;
+            } else {
+                locEl.innerHTML = '<span class="empty">Empty</span>';
+            }
+            document.getElementById('modal-end').innerHTML = '<span class="empty">Empty</span>';
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+        // ===================== EVENT DATA MAP =====================
+        // Map of event types to their known details (zoom links, gcal links)
+        const eventDataMap = {
+            'Accountability': {
+                emoji: '✅',
+                locationUrl: 'https://us02web.zoom.us/j/83619785720',
+                location: 'us02web.zoom.us/j/8...785720'
+            },
+            'Tech Thursday': {
+                emoji: '🧑‍💻',
+                locationUrl: 'https://us02web.zoom.us/j/9438690585',
+                location: 'us02web.zoom.us/j/9438690585'
+            },
+            'Marketing Mondays': {
+                emoji: '😊',
+                locationUrl: 'https://zoom.us/j/98110397121',
+                location: 'zoom.us/j/98110397121'
+            },
+            'Transformation Tuesdays': {
+                emoji: '🌀',
+                locationUrl: 'https://us02web.zoom.us/j/82192419566',
+                location: 'us02web.zoom.us/j/8...419566'
+            },
+            'SMART Business': {
+                emoji: '🌟',
+                locationUrl: 'https://us02web.zoom.us/j/83942595716',
+                location: 'us02web.zoom.us/j/8...595716'
+            },
+            'SMART Business Mastermind': {
+                emoji: '🌟',
+                locationUrl: 'https://us02web.zoom.us/j/83942595716',
+                location: 'us02web.zoom.us/j/8...595716'
+            },
+            'Spirit Driven Success': {
+                emoji: '⭐',
+                locationUrl: 'https://us02web.zoom.us/j/81944157644',
+                location: 'us02web.zoom.us/j/8...157644'
+            },
+            'Onboarding': {
+                emoji: '📈',
+                locationUrl: null,
+                location: null
+            },
+            'Sales Training': {
+                emoji: '💰',
+                locationUrl: 'https://us02web.zoom.us/j/81160199662',
+                location: 'us02web.zoom.us/j/8...199662'
+            },
+            'Marketing & Implementation': {
+                emoji: '🚀',
+                locationUrl: 'https://us02web.zoom.us/j/87199463695',
+                location: 'us02web.zoom.us/j/8...463695'
+            },
+            'Take Your Offer': {
+                emoji: '🔶',
+                locationUrl: null,
+                location: null
+            },
+            'Invite a Friend!': {
+                emoji: '🔶',
+                locationUrl: null,
+                location: null
+            },
+            'MEMORIAL DAY': {
+                emoji: '🇺🇸',
+                locationUrl: null,
+                location: null
+            }
+        };
+
+        function findEventData(text) {
+            text = text.trim();
+            // Try exact match first
+            for (const key of Object.keys(eventDataMap)) {
+                if (text.includes(key)) return { ...eventDataMap[key], matchedKey: key };
+            }
+            return null;
+        }
+
+        // ===================== CALENDAR VIEW: Make events clickable =====================
+        document.querySelectorAll('#calendar-view a').forEach(link => {
+            const rawText = link.textContent.trim();
+            // Extract emoji and title
+            const emojiMatch = rawText.match(/^([\u{1F000}-\u{1FFFF}]|[\u{2600}-\u{27BF}]|[\u{FE00}-\u{FEFF}]|[\u{1F900}-\u{1F9FF}]|[\u{2700}-\u{27BF}]|[✅🧑‍💻😊🌀🌟⭐📈💰🚀🔶🇺🇸])/u);
+            const emoji = emojiMatch ? emojiMatch[0] : '';
+            let title = rawText.replace(emoji, '').trim();
+            // Clean up truncated titles  
+            title = title.replace(/\.{3}$/, '').replace(/\.\.\.$/, '');
+            
+            const evData = findEventData(title);
+            if (!evData && !title) return;
+
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                // Find the date from the parent calendar cell
+                const cell = this.closest('.flex.flex-col');
+                const dateSpan = cell ? cell.querySelector('span') : null;
+                const dateText = dateSpan ? dateSpan.textContent.trim() : '';
+                // Find the month from the parent section header
+                const section = this.closest('section');
+                const monthH2 = section ? section.querySelector('h2') : null;
+                const monthText = monthH2 ? monthH2.textContent.trim() : '';
+
+                openModal({
+                    emoji: evData ? evData.emoji : emoji,
+                    title: title || rawText,
+                    date: monthText + ' ' + dateText + ', 2026',
+                    location: evData ? evData.location : null,
+                    locationUrl: evData ? evData.locationUrl : null,
+                    gcalUrl: null
+                });
+            });
+            link.classList.add('cal-event');
+            link.removeAttribute('target');
+        });
+
+        // ===================== LIST VIEW: Make rows clickable =====================
+        document.querySelectorAll('#list-view tbody tr').forEach(row => {
+            const cells = row.querySelectorAll('td');
+            if (cells.length < 4) return;
+
+            const nameCell = cells[0];
+            const dateCell = cells[1];
+            const locCell = cells[2];
+            const gcalCell = cells[3];
+
+            const emojiSpan = nameCell.querySelector('.select-none');
+            const emoji = emojiSpan ? emojiSpan.textContent.trim() : '';
+            const titleSpan = nameCell.querySelectorAll('span');
+            const title = titleSpan.length > 1 ? titleSpan[1].textContent.trim() : nameCell.textContent.trim();
+            const date = dateCell.textContent.trim();
+            const locLink = locCell.querySelector('a');
+            const location = locLink ? locLink.textContent.trim() : (locCell.textContent.trim() === 'No Location Listed' ? null : locCell.textContent.trim());
+            const locationUrl = locLink ? locLink.href : null;
+            const gcalLink = gcalCell.querySelector('a');
+            const gcalUrl = gcalLink ? gcalLink.href : null;
+
+            row.style.cursor = 'pointer';
+            row.addEventListener('click', function(e) {
+                // Don't intercept if clicking a link directly
+                if (e.target.tagName === 'A' || e.target.closest('a')) return;
+                openModal({
+                    emoji: emoji,
+                    title: title,
+                    date: date,
+                    location: location,
+                    locationUrl: locationUrl,
+                    gcalUrl: gcalUrl
+                });
+            });
         });
     </script>
 </body>
