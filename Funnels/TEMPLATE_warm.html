@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEMPLATE: Warm Guess Pass Landing Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .emoji-icon {
+            font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
+        }
+    </style>
+</head>
+<body class="bg-white text-[#37352f] font-sans antialiased pb-32 relative">
+
+    <div class="absolute top-4 left-4 md:top-6 md:left-6 z-50">
+        <button onclick="history.back()" class="flex items-center text-[15px] text-gray-800 bg-white/70 hover:bg-white backdrop-blur-md px-3 py-1.5 rounded-md shadow-sm transition-all group font-medium border border-white/20">
+            <svg class="w-4 h-4 mr-1 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            Back
+        </button>
+    </div>
+
+    <main class="max-w-[900px] w-full mx-auto px-12 md:px-24 mt-24 flex flex-col gap-6">
+
+        <div class="flex flex-col items-start gap-8">
+
+            <div class="flex flex-col relative">
+                <div class="mb-4 flex">
+                    <span class="text-[78px] leading-none emoji-icon drop-shadow-sm select-none">📄</span>
+                </div>
+                <h1 class="text-[40px] font-bold leading-[1.2] tracking-tight text-[#37352f]">TEMPLATE: Warm Guess Pass Landing Page</h1>
+            </div>
+
+        </div>
+
+        <div class="w-full max-w-[770px] text-[16px] leading-[1.5] text-[#37352f] mt-4">
+            
+            <p class="mb-10 italic">
+                (You can find the template also in our back office <a href="https://dreamfactory.mykajabi.com/products/resources/categories/2150251664/posts/2157507428" target="_blank" rel="noopener noreferrer" class="underline decoration-gray-400/70 underline-offset-2 hover:opacity-80 transition-opacity font-semibold">here.</a> You can see Adam’s example <a href="https://demo.smartbusinessmastermind.com/warm-traffic-guest-invite/" target="_blank" rel="noopener noreferrer" class="underline decoration-gray-400/70 underline-offset-2 hover:opacity-80 transition-opacity font-semibold">here.</a>)
+            </p>
+
+            <h3 class="font-semibold text-2xl mb-6 text-center">
+                Claim Your Free Guest Pass To<br>Attend  Our Next _______
+            </h3>
+
+            <p class="mb-6">
+                In order to access your Guest Pass, you must first Schedule your <span class="bg-[#fdf3c6] px-1 rounded">“Name of Interview”</span> to see if you're a good fit for the group. This is NOT a sales call. It’s an <span class="bg-[#fdf3c6] px-1 rounded">X</span>-minute interview to see if we’re a good fit for each other.
+            </p>
+
+            <div class="w-full max-w-[962px] mb-10">
+                <img 
+                    src="/media/TEMPLATE_warm.webp" 
+                    alt="Landing Page Example" 
+                    class="w-full h-auto object-contain rounded shadow-sm border border-gray-200 cursor-pointer hover:opacity-90 transition-opacity"
+                    onclick="openModal(this.src)"
+                >
+            </div>
+
+            <p class="mb-6 italic">
+                More information on the video script:
+            </p>
+
+            <div class="flex flex-col space-y-0.5 w-full max-w-[770px] mb-10">
+                <a href="/smartbusinessmastermind/Landing-Page-Video-Outline-Script-1deb1b3484eb8060894ecfca14f71774?pvs=25" class="group flex items-center px-1.5 py-1 hover:bg-gray-100 rounded-[4px] transition-colors duration-200 w-fit">
+                    <div class="w-6 h-6 flex items-center justify-center mr-1 flex-shrink-0 relative">
+                        <span class="text-[15px] emoji-icon">📹</span>
+                        <span class="absolute bottom-[-2px] right-[-2px] bg-white rounded-full"><svg class="w-3 h-3 text-gray-500" fill="currentColor" viewBox="0 0 16 16"><path d="M5.603 3.663a.625.625 0 1 0 0 1.25h4.6l-6.37 6.371a.615.615 0 0 0 .013.87.616.616 0 0 0 .87.014l6.371-6.372v4.601a.625.625 0 1 0 1.25 0v-6.11a.625.625 0 0 0-.625-.624z"></path></svg></span>
+                    </div>
+                    <span class="text-[15px] font-medium leading-tight underline decoration-gray-400/70 underline-offset-2 group-hover:border-gray-400">Landing Page Video Outline &amp; Script</span>
+                </a>
+            </div>
+
+            <h3 class="font-semibold text-2xl mb-6">
+                The Next Step is to Schedule a <span class="bg-[#fdf3c6] px-1 rounded font-semibold">“Name of Interview”</span>
+            </h3>
+
+            <p class="mb-6">
+                Before letting you attend the [training/event], I want to do two things.
+            </p>
+
+            <p class="mb-6">
+                First, I want to get to know you better and make sure the content’s going to be relevant to you.
+            </p>
+
+            <p class="mb-6">
+                While I do offer this invitation to many, I don’t allow everyone to join.
+            </p>
+
+            <p class="mb-6">
+                I like to keep my <span class="bg-[#fdf3c6] px-1 rounded">________</span> groups as high-level as possible and I only allow <span class="bg-[#fdf3c6] px-1 rounded">________</span> with the right <span class="bg-[#fdf3c6] px-1 rounded">____, ______</span>, and <span class="bg-[#fdf3c6] px-1 rounded">_____</span> to attend.
+            </p>
+
+            <p class="mb-6">
+                That’s why I’d like to get to know you better and make sure you’re a fit.
+            </p>
+
+            <p class="mb-6">
+                Second, I want to learn about your <span class="bg-[#fdf3c6] px-1 rounded">____</span> and <span class="bg-[#fdf3c6] px-1 rounded">________</span> so I can have you sit in on the session that’s going to be most valuable to you.
+            </p>
+
+            <p class="mb-6">
+                Once I’ve determined that you’d be a good fit, I also want to make sure that this experience is going to be the most valuable for you.
+            </p>
+
+            <p class="mb-10">
+                That’s why I want to learn about your current situation so I can have you join us in the session that would be best suited for you.
+            </p>
+
+            <h3 class="font-semibold text-2xl mb-6 text-center">
+                This is NOT a Sales Call
+            </h3>
+
+            <p class="mb-6">
+                Let me be clear on this:
+            </p>
+
+            <p class="mb-6">
+                This call you’re about to schedule is NOT a sales call.
+            </p>
+
+            <p class="mb-6">
+                This call is purely an interview to get to know you as a person and get to know your goals and interests to see if they align with the content we teach and the community we have created.
+            </p>
+
+            <p class="mb-6">
+                Before making any kind of offer to you, I’d like to allow you to experience the <span class="bg-[#fdf3c6] px-1 rounded">___________</span> for yourself.
+            </p>
+
+            <p class="mb-6">
+                And even after that, I’ll only make you an offer if you tell me you want to join.
+            </p>
+
+        </div>
+    </main>
+
+    <div id="imageModal" class="fixed inset-0 z-50 hidden bg-black/80 flex items-center justify-center p-4 md:p-10 transition-opacity duration-300 opacity-0" onclick="closeModal()">
+        <div class="relative w-full h-full flex items-center justify-center">
+            <button class="absolute top-4 right-4 md:top-8 md:right-8 text-white hover:text-gray-300 focus:outline-none z-50" onclick="closeModal()">
+                <svg class="w-8 h-8 drop-shadow-md" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <img id="modalImage" src="" alt="Expanded View" class="max-w-full max-h-full object-contain shadow-2xl rounded cursor-default" onclick="event.stopPropagation()">
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+
+        function openModal(src) {
+            modalImg.src = src;
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+            }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.add('opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modalImg.src = '';
+                document.body.style.overflow = 'auto';
+            }, 300);
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>

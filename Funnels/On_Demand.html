@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>On Demand With Interview</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .emoji-icon {
+            font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
+        }
+    </style>
+</head>
+<body class="bg-white text-[#37352f] font-sans antialiased pb-32 relative">
+
+    <div class="absolute top-4 left-4 md:top-6 md:left-6 z-50">
+        <button onclick="history.back()" class="flex items-center text-[15px] text-gray-800 bg-white/70 hover:bg-white backdrop-blur-md px-3 py-1.5 rounded-md shadow-sm transition-all group font-medium border border-white/20">
+            <svg class="w-4 h-4 mr-1 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            Back
+        </button>
+    </div>
+
+    <main class="max-w-[900px] w-full mx-auto px-12 md:px-24 mt-24 flex flex-col gap-6">
+
+        <div class="flex flex-col items-start gap-8">
+
+            <div class="flex flex-col relative">
+                <div class="mb-4 flex">
+                    <span class="text-[78px] leading-none emoji-icon drop-shadow-sm select-none">📺</span>
+                </div>
+                <h1 class="text-[40px] font-bold leading-[1.2] tracking-tight text-[#37352f]">On Demand With Interview</h1>
+            </div>
+
+        </div>
+
+        <div class="w-full max-w-[770px] text-[16px] leading-[1.5] text-[#37352f] mt-4">
+            
+            <p class="mb-6 italic">
+                Make sure to <a href="https://dreamfactory.mykajabi.com/products/smart-business-mastermind/categories/2149626344/posts/2171110186" target="_blank" rel="noopener noreferrer" class="font-semibold underline decoration-gray-400/70 underline-offset-2 hover:opacity-80 transition-opacity">watch the training</a> about creating your On Demand version! You can also find an example of SBM’s On Demand page <a href="https://smartbusinessmastermind.com/100k-virtual-event-playbook/" target="_blank" rel="noopener noreferrer" class="underline decoration-gray-400/70 underline-offset-2 hover:opacity-80 transition-opacity">here</a>.
+            </p>
+
+            <p class="mb-6">
+                In the situation where your guest is not available to attend one of your upcoming live events, then you’ll want to direct them into your “on demand” funnel as a way for your guest to experience your event as best as possible through recorded videos that they can watch “on demand” anytime they want as if it was a Netflix series.
+            </p>
+
+            <p class="mb-10">
+                So on the interview, instead of getting them to commit to attending the live event on time with camera on, you’re getting them to commit to watching the videos and scheduling the feedback call for a date and time immediately after.
+            </p>
+
+            <h2 class="font-semibold text-3xl mb-6">Recorded Event Videos</h2>
+
+            <p class="mb-6">
+                The first thing you’ll need to create is the videos for your event. You’ll want to break up your videos into chunks where there is one main golden nugget or idea/topic you’re discussing in that video and it’s not too long where it’s hard to digest, so something like 20-40 minutes each.
+            </p>
+
+            <p class="mb-10">
+                So if you recorded one long 3-hour video for day 1 of your event and another 3-hour long video for day 2 of your event, you’ll want to chop them up into multiple videos. At the start, just take the event where you felt like you did your best and use that. Over time, you may take one video from one event because you taught that topic particularly well that day and another video from another event.
+            </p>
+
+            <h2 class="font-semibold text-3xl mb-6">On Demand Video Container</h2>
+
+            <p class="mb-6">
+                The next step is to load all those videos up into a place where your guest can consume them. If you have a password protected platform like Kajabi, you can put it there as a new product/course. If not, you can use a simple webpage, Craft doc, Notion doc, or something easy to get started.
+            </p>
+
+            <p class="mb-6">
+                Ideally, for each video, you’ll want some short and simple interactive action items like the example below:
+            </p>
+
+            <div class="w-full max-w-[962px] mb-6">
+                <img 
+                    src="/media/Screenshot_2023-09-14_at_4.43.11_PM.webp" 
+                    alt="Action Item Example" 
+                    class="w-full h-auto object-contain rounded shadow-sm border border-gray-200 cursor-pointer hover:opacity-90 transition-opacity"
+                    onclick="openModal(this.src)"
+                >
+            </div>
+
+            <p class="mb-10">
+                The action items are designed to create engagement via text messaging with someone on your team (in this example it’s the “Community Manager”). More on this later.
+            </p>
+
+            <h2 class="font-semibold text-3xl mb-6">Interview Changes</h2>
+
+            <p class="mb-6">
+                Now that your on demand videos are ready to be consumed, the next step is training your interviewer to modify their script to accommodate your new funnel.
+            </p>
+
+            <p class="mb-6">
+                During the interview, if the guest says they’re not available at the date and time of your event, your interviewer transitions to the following:
+            </p>
+
+            <div class="bg-[#f3f3f3] p-3 rounded-md mb-6 text-[15px]">
+                <p class="italic text-[#37352f]">
+                    Okay, no prob! So we still have something available for you, but <span class="font-semibold">I just want to confirm the content is relevant to where you are and you would like to learn this content.</span> Correct?
+                </p>
+            </div>
+
+            <p class="mb-6 text-[#9b9a97]">—- Guest responds —-</p>
+
+            <div class="bg-[#f3f3f3] p-3 rounded-md mb-6 text-[15px]">
+                <p class="italic text-[#37352f]">
+                    Okay, so what I could do for you is we have our on-demand training, which is the same content as the live event. It’s our end-to-end playbook on how to [YOUR EVENT TOPIC] and it’s 100% recorded video that you can watch anywhere at anytime. If I could share that with you, <span class="font-semibold">would you be committed to watching it all of the way through?</span>
+                </p>
+            </div>
+
+            <p class="mb-6 text-[#9b9a97]">—- Guest responds —-</p>
+
+            <p class="mb-6 font-semibold underline decoration-gray-400/70 underline-offset-2">
+                If they don't commit, here is how you should respond:
+            </p>
+
+            <div class="bg-[#f3f3f3] p-3 rounded-md mb-6 text-[15px]">
+                <p class="italic text-[#37352f]">
+                    Hey, well, I don't want to share the training with you if you're not going to go through it. But if you are committed to going through it, I would be happy to share it with you.
+                </p>
+            </div>
+
+            <p class="mb-6 font-semibold underline decoration-gray-400/70 underline-offset-2">
+                If they do commit, here is how you should respond:
+            </p>
+
+            <div class="bg-[#f3f3f3] p-3 rounded-md mb-6 text-[15px]">
+                <p class="italic text-[#37352f]">
+                    Okay. So, the videos are X hours long, which you can break up over a day or two or watch in one day if you’re really committed. <span class="font-semibold">When would you be able to watch all the videos and complete the playbook training?</span>
+                </p>
+            </div>
+
+            <p class="mb-6 text-[#9b9a97]">—- Guest responds —-</p>
+
+            <div class="bg-[#f3f3f3] p-3 rounded-md mb-6 text-[15px]">
+                <p class="italic text-[#37352f]">
+                    Okay, great. What day are you thinking? By Wednesday? Probably like next Wednesday.
+                </p>
+            </div>
+
+            <p class="mb-6 text-[#9b9a97]">—- Guest responds —-</p>
+
+            <div class="bg-[#f3f3f3] p-3 rounded-md mb-10 text-[15px]">
+                <p class="italic text-[#37352f]">
+                    Okay, so for me to give you access to the training, I just need to be able to book a feedback call on the day after so we can get your feedback on how that experience was for you.
+                </p>
+            </div>
+
+            <p class="mb-10">
+                And you proceed to book the feedback call as you normally would.
+            </p>
+
+            <h2 class="font-semibold text-3xl mb-6">Guest Access Email</h2>
+
+            <p class="mb-6">
+                After the feedback call has been booked, the next step is get your guest access to the on demand videos by sending them an email:
+            </p>
+
+            <div class="space-y-4 mb-10">
+                <p><span class="bg-[#ffeed9] px-1 rounded">Subject: Access to our [EVENT TOPIC] video training</span></p>
+                <p><span class="bg-[#ffeed9] px-1 rounded">Hello!</span></p>
+                <p><span class="bg-[#ffeed9] px-1 rounded">This is your personal Community Manager here and I’d like to congratulate you for receiving access to our [EVENT TOPIC] playbook on demand video training!</span></p>
+                <p><span class="bg-[#ffeed9] px-1 rounded">[LINK TO VIDEOS]</span></p>
+                <p><span class="bg-[#ffeed9] px-1 rounded">Your guest pass access will expire on the day of your feedback call, so please be sure to set the appropriate time aside to engage in the training.</span></p>
+                <p><span class="bg-[#ffeed9] px-1 rounded">NAME :)</span></p>
+            </div>
+
+            <h2 class="font-semibold text-3xl mb-6">Community Manager Text Messaging</h2>
+
+            <p class="mb-6">
+                The last part of the process is to have your community manager (or whoever will be hand holding the guest through your videos) to text a welcome message similar to the email, but also asking them to respond with some confirmation that they were able to successfully access the videos.
+            </p>
+
+            <p class="mb-6">
+                This person, whether it’s you, your interviewer, your enroller, or someone else on your team, is responsible for:
+            </p>
+
+            <ul class="space-y-2 mb-6 pl-1 list-disc list-inside marker:text-gray-400">
+                <li class="pl-2">Acknowledging the guest’s text messages to the action items for each video, cheering them on, and providing positive encouragement throughout the process.</li>
+                <li class="pl-2">Nudging them along to complete the videos in a timely manner.</li>
+                <li class="pl-2">Reminding them to attend the feedback call.</li>
+            </ul>
+
+            <p class="mb-6">
+                If you are paying someone to do this, you can’t really pay hourly because it’s a sporadic job with text messaging randomly throughout the day, so some options are giving them a fixed amount for the job or for each attended feedback call and/or enrollment.
+            </p>
+
+            <div class="bg-[#f1f1f1] border border-transparent rounded-lg p-4 flex items-start mb-10">
+                <div class="mr-3 flex-shrink-0 mt-0.5">
+                    <span class="emoji-icon text-xl">💡</span>
+                </div>
+                <div class="flex-1 text-[15px] leading-[1.5] text-[#37352f]">
+                    In our example here, we’re asking them to refer to an email we sent them because we’re using a unique link (see details at the bottom of the page) that can only be delivered via email and can’t be sent via text. If your videos are hosted on a regular webpage, feel free to insert the link into the text message too in addition to the email.
+                </div>
+            </div>
+
+            <p class="mb-10">
+                In terms of the tech, you can use something like Google Voice or some texting message web app (like <a href="https://clicksend.com/" target="_blank" rel="noopener noreferrer" class="underline decoration-gray-400/70 underline-offset-2 hover:opacity-80 transition-opacity">ClickSend</a>) that allows you to log in as well to monitor the conversations if you’re delegating this task.
+            </p>
+
+            <h3 class="font-semibold text-2xl mb-6">Text Script Examples</h3>
+
+            <p class="mb-6">
+                Beyond simply answering any questions that come up from the training videos, you or your Community Manager can use these text scripts to keep the conversation and momentum going:
+            </p>
+
+            <p class="font-semibold mb-6">First message to be sent in group text with new on-demand lead:</p>
+
+            <div class="space-y-4 mb-6">
+                <p class="italic text-[#37352f]">Hello, [THEIR NAME]!</p>
+                <p class="italic text-[#37352f]">This is your personal Community Manager here and I'd like to congratulate you for receiving access to our [TOPIC] playbook on-demand video training!</p>
+                <p class="italic text-[#37352f]">You should have just received an email with the access link to the videos.</p>
+                <p class="italic text-[#37352f]">Please respond with "READY" to confirm you were able to get in ok!</p>
+                <p class="italic text-[#37352f]">[YOUR NAME] :)</p>
+            </div>
+
+            <div class="w-full border-t border-gray-200 my-8"></div>
+
+            <p class="mb-6"><span class="font-semibold">Lead responds:</span> <span class="italic">READY</span></p>
+
+            <div class="w-full border-t border-gray-200 my-8"></div>
+
+            <div class="space-y-4 mb-6">
+                <p class="italic text-[#37352f]">Awesome, [Name] <span class="emoji-icon">🙌</span></p>
+                <p class="italic text-[#37352f]">So excited to support you as you go through the training to build out your own virtual workshop. As you go through each video, drop your call-to-action replies in this text group, and I'll give you feedback as you work through it!</p>
+                <p class="italic text-[#37352f]">For my reference, what day do you plan on starting the videos? :)</p>
+            </div>
+
+            <div class="w-full border-t border-gray-200 my-8"></div>
+
+            <div class="space-y-4 mb-6">
+                <p class="italic text-[#37352f]">Hey [Name]! So great to see you diving in and loving it too! This training is truly powerful and I think it'll blow your mind <span class="emoji-icon">🤯</span></p>
+                <p class="italic text-[#37352f]">I'm thrilled to support you as you work out your own virtual event. Drop your call-to-action replies here and I'll provide feedback on your work :)</p>
+            </div>
+
+            <div class="w-full border-t border-gray-200 my-8"></div>
+
+            <div class="space-y-4 mb-10">
+                <p class="italic text-[#37352f]">YES! I'm pumped we finally got this worked out! You're going to love it!</p>
+                <p class="italic text-[#37352f]">I'm excited to support you as you build out your own virtual workshop using our strategies. Please reply to the call to action prompts under each video, and I will give you feedback on your work :) Reach out with any questions as well!</p>
+            </div>
+
+            <p class="font-semibold mb-6">Few options to follow up with the lead if they have gone quiet for a certain period of time:</p>
+
+            <div class="space-y-4 mb-6">
+                <p class="italic text-[#37352f]">Hello hello [Name]!</p>
+                <p class="italic text-[#37352f]">Checking in on how you're doing and if the training playbook link is working on your end! Excited for you to start going through it and what you'll take away!</p>
+            </div>
+
+            <div class="w-full border-t border-gray-200 my-8"></div>
+
+            <div class="space-y-4 mb-6">
+                <p class="italic text-[#37352f]">Hello [Name]!</p>
+                <p class="italic text-[#37352f]">Checking in on how you're doing and if the training playbook link is working on your end! Excited for you to start going through the models and what you'll take away! Do you have a date of when you plan on starting?</p>
+            </div>
+
+            <div class="w-full border-t border-gray-200 my-8"></div>
+
+            <p class="mb-6 italic text-[#37352f]">Good morning [Name]! How are you doing making it thru the content?</p>
+
+            <div class="w-full border-t border-gray-200 my-8"></div>
+
+            <div class="space-y-4 mb-10">
+                <p class="italic text-[#37352f]">Hi [Name]! I trust you are well! <span class="emoji-icon">😊</span></p>
+                <p class="italic text-[#37352f]">Here's the text thread that has your link to get started with the On Demand 100k Workshop training videos! Have you been able to dive in with the first video?</p>
+            </div>
+
+            <p class="font-semibold mb-6">Few examples of encouraging responses as they work through the material:</p>
+
+            <div class="space-y-4 mb-6">
+                <p class="italic text-[#37352f]">Hello <span class="emoji-icon">👋</span> Lovely to see you working through the content! <span class="emoji-icon">🎉</span></p>
+                <p class="italic text-[#37352f]">Have you run events before or would this be your first endeavor? Your financial goal is absolutely attainable, especially with marketing for a quarter period.</p>
+                <p class="italic text-[#37352f]">And what a cool business you run, love that you are focused on legacy minded Christian authors, who need to get their message out to the world in need!</p>
+            </div>
+
+            <div class="w-full border-t border-gray-200 my-8"></div>
+
+            <div class="space-y-4 mb-6">
+                <p class="italic text-[#37352f]">Hi [Name]!</p>
+                <p class="italic text-[#37352f]">Thank you for the deep work here, and for stepping into this meaningful role. What a powerful vision you have and will be able to impart to your guests attending your workshop!</p>
+                <p class="italic text-[#37352f]">Eager to hear your thoughts on the next couple of videos:)</p>
+            </div>
+
+            <div class="w-full border-t border-gray-200 my-8"></div>
+
+            <p class="mb-10 italic text-[#37352f]">Good afternoon [Name]! It's fun that the video prompts after each video helps us stay in communication as you go through, and help us support you, too! <span class="emoji-icon">❤️</span></p>
+
+            <p class="font-semibold mb-6">Once they complete all videos or their feedback call is coming up:</p>
+
+            <p class="mb-10 italic text-[#37352f]">
+                Just hopping in here quick to remind you of your feedback call with [Name] at [Time] :) way to follow through here and honor your commitments! You're Amazing!<span class="emoji-icon">🙌</span><span class="emoji-icon">🔥</span>
+            </p>
+
+            <h2 class="font-semibold text-3xl mb-6 flex items-center">
+                <span class="emoji-icon mr-2">⏳</span> Access Expiration
+            </h2>
+
+            <p class="mb-6">
+                We’ll be explaining at some point how you can set an expiration date for access to the page that will be different for each person. This brings a sense of urgency for the guest to finish going through the videos because they’ll lose access on a particular date (day of the feedback call).
+            </p>
+
+            <p class="mb-10">
+                We’ll likely be doing this in HighLevel and it’ll take some time to thoroughly explain. If you’re an advanced HL user already, then here’s the outline: you can create an automation to add them into a course and remove access based on feedback call date (custom field in contact record). In that automation, the feedback call date is the event date as well and you can do countdown messages leading up to the expiration similar to how there are countdown messages leading up to a virtual event. If you have HL, this doesn’t make sense and you want to learn more now, attend a live tech call and we can explain further!
+            </p>
+
+        </div>
+    </main>
+
+    <div id="imageModal" class="fixed inset-0 z-50 hidden bg-black/80 flex items-center justify-center p-4 md:p-10 transition-opacity duration-300 opacity-0" onclick="closeModal()">
+        <div class="relative w-full h-full flex items-center justify-center">
+            <button class="absolute top-4 right-4 md:top-8 md:right-8 text-white hover:text-gray-300 focus:outline-none z-50" onclick="closeModal()">
+                <svg class="w-8 h-8 drop-shadow-md" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <img id="modalImage" src="" alt="Expanded View" class="max-w-full max-h-full object-contain shadow-2xl rounded cursor-default" onclick="event.stopPropagation()">
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+
+        function openModal(src) {
+            modalImg.src = src;
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+            }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.add('opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modalImg.src = '';
+                document.body.style.overflow = 'auto';
+            }, 300);
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
