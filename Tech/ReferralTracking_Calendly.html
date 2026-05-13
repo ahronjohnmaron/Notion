@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendly</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .emoji-icon {
+            font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
+        }
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d1d5db;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #9ca3af;
+        }
+        .notion-link {
+            text-decoration: underline;
+            text-decoration-thickness: 0.05em;
+            text-decoration-color: rgba(55, 53, 47, 0.4);
+            text-underline-offset: 2px;
+            opacity: 0.7;
+            transition: opacity 0.2s ease, text-decoration-color 0.2s ease;
+        }
+        .notion-link:hover {
+            opacity: 1;
+            text-decoration-color: rgba(55, 53, 47, 0.8);
+        }
+        .notion-link-strong {
+            text-decoration: underline;
+            text-decoration-thickness: 0.05em;
+            text-decoration-color: rgba(55, 53, 47, 0.4);
+            text-underline-offset: 2px;
+            transition: opacity 0.2s ease, text-decoration-color 0.2s ease;
+        }
+        .notion-link-strong:hover {
+            text-decoration-color: rgba(55, 53, 47, 0.8);
+        }
+    </style>
+</head>
+<body class="bg-white text-[#37352f] font-sans antialiased pb-32 relative selection:bg-[#cce2ff] selection:text-[#37352f]">
+
+    <div class="absolute top-4 left-4 md:top-6 md:left-6 z-50">
+        <button onclick="history.back()" class="flex items-center text-[15px] text-gray-800 bg-white/70 hover:bg-white backdrop-blur-md px-3 py-1.5 rounded-md shadow-sm transition-all group font-medium border border-white/20">
+            <svg class="w-4 h-4 mr-1 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            Back
+        </button>
+    </div>
+
+    <main class="max-w-[900px] w-full mx-auto px-6 md:px-12 lg:px-24 mt-24 flex flex-col gap-6">
+
+        <div class="flex flex-col items-start gap-6">
+            <div class="flex flex-col relative">
+                <div class="mb-4 flex">
+                    <span class="text-[78px] leading-none emoji-icon drop-shadow-sm select-none">📅</span>
+                </div>
+                <h1 class="text-[40px] font-bold leading-[1.2] tracking-tight text-[#37352f]">Calendly</h1>
+            </div>
+        </div>
+
+        <div class="w-full max-w-[770px] text-[16px] leading-[1.5] text-[#37352f] mt-2 flex flex-col gap-[12px]">
+
+            <p>Let’s say you have a guest pass page, but want to create tracking links for different sources for traffic so when someone books an interview, you know where the traffic came from. For example, you may have different VAs or affiliates (or even want to know if the traffic came from your IG link in bio versus your email to your list) and you want to track those interviews. Here is the Calendly embed code you’ll want to use.</p>
+
+            <div class="bg-[#f7f6f3] rounded-[10px] p-6 overflow-x-auto text-[14px] font-mono text-[#37352f] leading-relaxed my-2">
+<pre><code>&lt;div id="calendly-inline-widget" style="min-width:320px;height:630px;"&gt;&lt;/div&gt;
+
+&lt;script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+
+// ?source1=utm_source&amp;source2=utm_medium&amp;source3=utm_campaign&amp;source4=utm_content&amp;source5=utm_term
+
+  var url = new URL(window.location.href);
+  var uname =     (url.searchParams.get('uname')) ?   url.searchParams.get('uname') : "";
+  var uemail =    (url.searchParams.get('uemail')) ?  url.searchParams.get('uemail') : "";
+  var uphone =    (url.searchParams.get('uphone')) ?  url.searchParams.get('uphone') : "";
+  var source1 =   (url.searchParams.get('source1')) ? url.searchParams.get('source1') : "";
+  var source2 =   (url.searchParams.get('source2')) ? url.searchParams.get('source2') : "";
+  var source3 =   (url.searchParams.get('source3')) ? url.searchParams.get('source3') : "";
+  var source4 =   (url.searchParams.get('source4')) ? url.searchParams.get('source4') : "";
+  var source5 =   (url.searchParams.get('source5')) ? url.searchParams.get('source5') : "";
+
+  Calendly.initInlineWidget({  
+  url: 'REPLACETHISWITHYOURCALENDLYBOOKINGLINK?hide_event_type_details=1&amp;hide_gdpr_banner=1',
+  parentElement: document.getElementById('calendly-inline-widget'),
+  prefill: {
+        name: uname,
+        email: uemail,
+            customAnswers: {
+                a1: uphone,
+            }
+        }, utm: {
+            utmSource: source1,
+            utmMedium: source2,
+            utmCampaign: source3,
+            utmContent: source4,
+            utmTerm: source5
+        }
+    });
+
+&lt;/script&gt;</code></pre>
+            </div>
+
+            <p>However, note the <a href="https://d.pr/i/KL3igM" target="_blank" rel="noopener noreferrer" class="notion-link-strong font-semibold">REPLACETHISWITHYOURCALENDLYBOOKINGLINK</a> <span class="font-semibold"> </span>in the code. Replace that with your <a href="https://d.pr/i/d2fMel" target="_blank" rel="noopener noreferrer" class="notion-link">Calendly booking page link</a>.</p>
+
+            <h2 class="font-semibold text-[1.875em] leading-[1.3] mt-[24px] flex items-center">
+                <span class="text-[1em] leading-none emoji-icon mr-[0.1em] align-[-0.1em]">💪🏻</span> Link Anatomy
+            </h2>
+
+            <p>Now that you have your webpage set up for tracking, here’s how you build your tracking links. Using our homepage as an example, here is how the core URL looks like:</p>
+
+            <div class="bg-[#f7f6f3] rounded-[10px] px-6 py-4 overflow-x-auto text-[14px] font-mono text-[#37352f] leading-relaxed my-2">
+                <span class="font-semibold">https://smartbusinessmastermind.com/</span>
+            </div>
+
+            <p>In this example, there is zero tracking, other than us knowing that any optins came from the homepage. Where we can start tracking is amending it “source” variables. Now, let’s amend it with one source variable “sbmhome” so that the URL looks like this:</p>
+
+            <div class="bg-[#f7f6f3] rounded-[10px] px-6 py-4 overflow-x-auto text-[14px] font-mono text-[#37352f] leading-relaxed my-2">
+                <span>https://smartbusinessmastermind.com/</span><span class="font-semibold text-[#e03e3e]">?source1=sbmhome</span>
+            </div>
+
+            <p>By amending it with ?source1= and sbmhome, we know for a fact it came in from the SBM homepage (sbmhome is our shortcode for the homepage). For you, you can make it whatever you’d like, but make sure there are no spaces or special characters except for a hyphen or underscore. So you can do something IG-bio or IG_bio but not IG bio. Let’s keep going:</p>
+
+            <div class="bg-[#f7f6f3] rounded-[10px] px-6 py-4 overflow-x-auto text-[14px] font-mono text-[#37352f] leading-relaxed my-2">
+                <span>https://smartbusinessmastermind.com/</span><span class="text-[#e03e3e]">?source1=sbmhome</span><span class="font-semibold text-[#0f7b6c]">&amp;source2=partners</span>
+            </div>
+
+            <p>In this next example, we amended it with &amp;source2= and partners, which then tells us that any prospect who came in via the SBM homepage from one of our partners. But which one?</p>
+
+            <div class="bg-[#f7f6f3] rounded-[10px] px-6 py-4 overflow-x-auto text-[14px] font-mono text-[#37352f] leading-relaxed my-2">
+                <span>https://smartbusinessmastermind.com/</span><span class="text-[#e03e3e]">?source1=sbmhome</span><span class="text-[#0f7b6c]">&amp;source2=partners</span><span class="font-semibold text-[#d9730d]">&amp;source3=bruce_wayne</span>
+            </div>
+
+            <p>In this example, we amended it with &amp;source3= and bruce_wayne, which then tells us that any prospect who opts in came in via the SBM homepage from our partner, Batman aka Bruce Wayne. You can keep going following that syntax two more times with source4 and source5.</p>
+
+            <p>Then when you’re in Calendly in the appointment detail, you’ll see the tracking in the UTM Parameters section:</p>
+
+            <div class="w-full max-w-[962px] self-center py-2">
+                <img alt="Calendly UTM Tracking" src="/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fbe57c195-f835-440c-8993-65c337bee8bb%2F1fdd1022-e92e-40f9-978d-47c7a3006bae%2Fcalendly_utm_tracking.png?table=block&amp;id=5e9fe440-8049-4cf7-aed8-92f7c74e5148&amp;spaceId=be57c195-f835-440c-8993-65c337bee8bb&amp;width=1410&amp;userId=75f50e24-41dd-4374-90b2-f29ea366ad14&amp;cache=v2" class="w-full h-auto rounded-[2px] object-cover border border-gray-100 shadow-sm" />
+            </div>
+
+            <p>And if you want to get more techie with it, you can <a href="https://www.loom.com/share/b36dd909e6964cf19c9c8d0dcb2a76bf?sid=512db6b2-b60a-47cb-8c97-dbfaace784d6" target="_blank" rel="noopener noreferrer" class="notion-link">create an automation that logs that Calendly interview (and tracking) into a spreadsheet like Google Sheet</a> or Smartsheet:</p>
+
+            <div class="w-full max-w-[962px] self-center py-2">
+                <img alt="Batman Automation Log" src="/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F49c934fc-76b2-47ad-bd13-709ed62baabc%2Fbatman.png?table=block&amp;id=85ad84a4-1bf3-4094-a645-2ada3c78edc8&amp;spaceId=be57c195-f835-440c-8993-65c337bee8bb&amp;width=1410&amp;userId=75f50e24-41dd-4374-90b2-f29ea366ad14&amp;cache=v2" class="w-full h-auto rounded-[2px] object-cover border border-gray-100 shadow-sm" />
+            </div>
+
+        </div>
+    </main>
+</body>
+</html>

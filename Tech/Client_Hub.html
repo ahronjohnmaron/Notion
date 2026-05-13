@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .emoji-icon {
+            font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
+        }
+    </style>
+</head>
+<body class="bg-white text-[#37352f] font-sans antialiased pb-32 relative">
+
+    <div class="absolute top-4 left-4 md:top-6 md:left-6 z-50">
+        <button onclick="history.back()" class="flex items-center text-[15px] text-gray-800 bg-white/70 hover:bg-white backdrop-blur-md px-3 py-1.5 rounded-md shadow-sm transition-all group font-medium border border-white/20">
+            <svg class="w-4 h-4 mr-1 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            Back
+        </button>
+    </div>
+
+    <main class="max-w-[900px] w-full mx-auto px-12 md:px-24 mt-24 flex flex-col gap-6">
+
+        <div class="flex flex-col items-start gap-8">
+
+            <div class="flex flex-col relative">
+                <div class="mb-4 flex">
+                    <span class="text-[78px] leading-none emoji-icon drop-shadow-sm select-none">🏠</span>
+                </div>
+                <h1 class="text-[40px] font-bold leading-[1.2] tracking-tight text-[#37352f]">Client Hub</h1>
+            </div>
+
+        </div>
+
+        <div class="w-full max-w-[770px] text-[16px] leading-[1.5] text-[#37352f] mt-4">
+            
+            <h2 class="font-semibold text-3xl mb-6">Notion</h2>
+
+            <p class="mb-6">
+                <a href="https://affiliate.notion.so/8epttjqfd9w2" target="_blank" rel="noopener noreferrer" class="underline decoration-gray-400/70 underline-offset-2 hover:opacity-80 transition-opacity">Notion</a> is great software you can use not only as a way to document processes in your business (making your own wiki), but it can also be used inexpensively as a client hub. Here are some videos that cover how to:
+            </p>
+
+            <ul class="space-y-2 mb-10 pl-1">
+                <li class="flex items-start">
+                    <span class="mr-2 mt-0.5">•</span>
+                    <span class="flex-1">Set up your client hub in Notion teamspace.</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="mr-2 mt-0.5">•</span>
+                    <span class="flex-1">Adding pages and subpages.</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="mr-2 mt-0.5">•</span>
+                    <span class="flex-1">Adding your clients as a guest to the page (and not the teamspace) so they can view and comment on your content. As of this writing, the free plan allows for up to 10 guests/clients, the $10/mo plan can accommodate 100, and the $18/mo plan can do 250.</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="mr-2 mt-0.5">•</span>
+                    <span class="flex-1">How to add content into your client hub - text, videos, images, emojis, and more.</span>
+                </li>
+            </ul>
+
+            <div class="w-full max-w-[962px] mb-6 relative rounded shadow-sm overflow-hidden bg-[#f3f3f3] aspect-[4/3]">
+                <iframe 
+                    src="https://www.loom.com/embed/9de353e874f04b329cc90e7df1fd8f2b" 
+                    frameborder="0" 
+                    sandbox="allow-scripts allow-popups allow-top-navigation-by-user-activation allow-forms allow-same-origin allow-storage-access-by-user-activation allow-popups-to-escape-sandbox" 
+                    allowfullscreen 
+                    class="absolute inset-0 w-full h-full border-0">
+                </iframe>
+            </div>
+
+            <div class="w-full max-w-[962px] mb-10 relative rounded shadow-sm overflow-hidden bg-[#f3f3f3] aspect-[4/3]">
+                <iframe 
+                    src="https://www.loom.com/embed/e813f4aab4014062acc552f37a38a854" 
+                    frameborder="0" 
+                    sandbox="allow-scripts allow-popups allow-top-navigation-by-user-activation allow-forms allow-same-origin allow-storage-access-by-user-activation allow-popups-to-escape-sandbox" 
+                    allowfullscreen 
+                    class="absolute inset-0 w-full h-full border-0">
+                </iframe>
+            </div>
+
+        </div>
+    </main>
+
+    <div id="imageModal" class="fixed inset-0 z-50 hidden bg-black/80 flex items-center justify-center p-4 md:p-10 transition-opacity duration-300 opacity-0" onclick="closeModal()">
+        <div class="relative w-full h-full flex items-center justify-center">
+            <button class="absolute top-4 right-4 md:top-8 md:right-8 text-white hover:text-gray-300 focus:outline-none z-50" onclick="closeModal()">
+                <svg class="w-8 h-8 drop-shadow-md" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <img id="modalImage" src="" alt="Expanded View" class="max-w-full max-h-full object-contain shadow-2xl rounded cursor-default" onclick="event.stopPropagation()">
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+
+        // Function attached to images: onclick="openModal(this.src)"
+        function openModal(src) {
+            modalImg.src = src;
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+            }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.add('opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modalImg.src = '';
+                document.body.style.overflow = 'auto';
+            }, 300);
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>

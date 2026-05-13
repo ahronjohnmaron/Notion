@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar Booking</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .emoji-icon {
+            font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
+        }
+    </style>
+</head>
+<body class="bg-white text-[#37352f] font-sans antialiased pb-32 relative">
+
+    <div class="absolute top-4 left-4 md:top-6 md:left-6 z-50">
+        <button onclick="history.back()" class="flex items-center text-[15px] text-gray-800 bg-white/70 hover:bg-white backdrop-blur-md px-3 py-1.5 rounded-md shadow-sm transition-all group font-medium border border-white/20">
+            <svg class="w-4 h-4 mr-1 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            Back
+        </button>
+    </div>
+
+    <main class="max-w-[900px] w-full mx-auto px-12 md:px-24 mt-24 flex flex-col gap-6">
+
+        <div class="flex flex-col items-start gap-8">
+
+            <div class="flex flex-col relative">
+                <div class="mb-4 flex">
+                    <span class="text-[78px] leading-none emoji-icon drop-shadow-sm select-none">🗓️</span>
+                </div>
+                <h1 class="text-[40px] font-bold leading-[1.2] tracking-tight text-[#37352f]">Calendar Booking</h1>
+            </div>
+
+        </div>
+
+        <div class="w-full max-w-[770px] text-[16px] leading-[1.5] text-[#37352f] mt-4">
+            
+            <p class="mb-6">
+                So what will you need a calendar booking software for? You'll need it for the following reasons:
+            </p>
+
+            <div class="space-y-4 mb-6">
+                
+                <div class="flex items-start">
+                    <span class="mr-3 mt-0.5 min-w-[20px] text-center font-medium">1.</span>
+                    <p class="flex-1">The primary reason you'll be using it is for prospects to book pre-event interview calls as part of the registration process for your live event.</p>
+                </div>
+
+                <div class="flex items-start">
+                    <span class="mr-3 mt-0.5 min-w-[20px] text-center font-medium">2.</span>
+                    <div class="flex-1">
+                        <p class="mb-2">But by making the live event (and enrollment call) an event in your calendar service, we can leverage their automated text and email reminders.</p>
+                        
+                        <div class="space-y-2 pl-4 mt-2">
+                            <div class="flex items-start">
+                                <span class="mr-2 mt-0.5 min-w-[20px]">a.</span>
+                                <span class="flex-1">That means you don't need a CRM/EMS (email marketing service) if you don't have one. Your calendar service can send out the email reminders.</span>
+                            </div>
+                            <div class="flex items-start">
+                                <span class="mr-2 mt-0.5 min-w-[20px]">b.</span>
+                                <span class="flex-1">If you do have a CRM/EMS, you don't have to worry about your interviewer going into your CRM/EMS to tag the attendee as successfully approved or create an automation that does so.</span>
+                            </div>
+                            <div class="flex items-start">
+                                <span class="mr-2 mt-0.5 min-w-[20px]">c.</span>
+                                <span class="flex-1">You don't need to get a separate texting software to send text reminders, which are critical (and more effective than email) for reminding the attendees.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex items-start">
+                    <span class="mr-3 mt-0.5 min-w-[20px] text-center font-medium">3.</span>
+                    <p class="flex-1">There is no data entry error or forgetting by the attendee to input the event (and enrollment call) into their calendar. The calendar service can automatically create an event in their calendar for them.</p>
+                </div>
+
+            </div>
+
+            <h2 class="font-semibold text-3xl mb-6 mt-10">Calendly</h2>
+
+            <p class="mb-6">
+                We use <a href="https://calendly.com/" target="_blank" rel="noopener noreferrer" class="underline decoration-gray-400/70 underline-offset-2 hover:opacity-80 transition-opacity">Calendly</a> because it’s easy to use, so highly recommended! Use the guide below for our step by step guidance and templates!
+            </p>
+
+            <div class="flex flex-col space-y-0.5 w-full max-w-[770px] mb-10">
+                <a href="/smartbusinessmastermind/Calendly-11c3af70fba54760b36fecd497a26d1f?pvs=25" class="group flex items-center px-1.5 py-1 hover:bg-gray-100 rounded-[4px] transition-colors duration-200 w-fit">
+                    <div class="w-6 h-6 flex items-center justify-center mr-1 flex-shrink-0 relative">
+                        <span class="text-[15px] emoji-icon">📆</span>
+                    </div>
+                    <span class="text-[15px] font-medium leading-tight underline decoration-gray-400/70 underline-offset-2 group-hover:border-gray-400">Calendly</span>
+                </a>
+            </div>
+
+        </div>
+    </main>
+</body>
+</html>

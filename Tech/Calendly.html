@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendly - Calendar Booking</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .emoji-icon {
+            font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
+        }
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d1d5db;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #9ca3af;
+        }
+        .notion-link {
+            text-decoration: underline;
+            text-decoration-thickness: 0.05em;
+            text-decoration-color: rgba(55, 53, 47, 0.4);
+            text-underline-offset: 2px;
+            opacity: 0.7;
+            transition: opacity 0.2s ease, text-decoration-color 0.2s ease;
+        }
+        .notion-link:hover {
+            opacity: 1;
+            text-decoration-color: rgba(55, 53, 47, 0.8);
+        }
+        .notion-link-strong {
+            text-decoration: underline;
+            text-decoration-thickness: 0.05em;
+            text-decoration-color: rgba(55, 53, 47, 0.4);
+            text-underline-offset: 2px;
+            transition: opacity 0.2s ease, text-decoration-color 0.2s ease;
+        }
+        .notion-link-strong:hover {
+            text-decoration-color: rgba(55, 53, 47, 0.8);
+        }
+    </style>
+</head>
+<body class="bg-white text-[#37352f] font-sans antialiased pb-32 relative selection:bg-[#cce2ff] selection:text-[#37352f]">
+
+    <div class="absolute top-4 left-4 md:top-6 md:left-6 z-50">
+        <button onclick="history.back()" class="flex items-center text-[15px] text-gray-800 bg-white/70 hover:bg-white backdrop-blur-md px-3 py-1.5 rounded-md shadow-sm transition-all group font-medium border border-white/20">
+            <svg class="w-4 h-4 mr-1 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            Back
+        </button>
+    </div>
+
+    <main class="max-w-[900px] w-full mx-auto px-6 md:px-12 lg:px-24 mt-24 flex flex-col gap-6">
+
+        <div class="flex flex-col items-start gap-6">
+            <div class="flex flex-col relative">
+                <div class="mb-4 flex">
+                    <span class="text-[78px] leading-none emoji-icon drop-shadow-sm select-none">📆</span>
+                </div>
+                <h1 class="text-[40px] font-bold leading-[1.2] tracking-tight text-[#37352f]">Calendly</h1>
+            </div>
+        </div>
+
+        <div class="w-full max-w-[770px] text-[16px] leading-[1.5] text-[#37352f] mt-2 flex flex-col gap-[12px]">
+
+            <div class="bg-[#f7f6f3] border border-transparent rounded-[10px] p-3 flex gap-3 items-start my-1">
+                <div class="w-6 h-6 flex items-center justify-center flex-shrink-0 mt-[1.5px]">
+                    <span class="text-[16.8px] leading-none emoji-icon">💡</span>
+                </div>
+                <div class="text-[16px] leading-[1.5] w-full min-w-0">
+                    <span class="bg-[rgba(250,235,215,0.6)]">If you are using </span><a href="/GoHighLevel-034d940ae5fa4129b1417de3350810d1?pvs=24" class="font-medium bg-[rgba(250,235,215,0.6)] border-b border-[rgba(55,53,47,0.4)] hover:border-[rgba(55,53,47,0.8)] transition-colors duration-200 pb-[1px]"><span class="inline-flex items-center gap-1"><span class="text-[16px]">🚀</span><span class="leading-none">GoHighLevel</span><svg class="w-3 h-3 text-[#37352f] opacity-80" fill="currentColor" viewBox="0 0 16 16"><path d="M5.603 3.663a.625.625 0 1 0 0 1.25h4.6l-6.37 6.371a.615.615 0 0 0 .013.87.616.616 0 0 0 .87.014l6.371-6.372v4.601a.625.625 0 1 0 1.25 0v-6.11a.625.625 0 0 0-.625-.624z"></path></svg></span></a><span class="bg-[rgba(250,235,215,0.6)]">, you won’t need Calendly and can do all the call bookings and text message and email reminders for your interview calls, virtual events, and feedback/enrollment calls. So we highly recommend going with that option </span><span class="font-semibold underline decoration-[rgba(55,53,47,0.4)] underline-offset-[3px] bg-[rgba(250,235,215,0.6)]">even if you have another CRM</span><span class="bg-[rgba(250,235,215,0.6)]"> because of how HighLevel can handle evergreen event reminder automations, meaning you set it up once and never really need to look at it again. However, if you still prefer not doing that, our next best recommendation is using Calendly to handle your event reminders using these instructions below.</span>
+                </div>
+            </div>
+
+            <p>Before you embark on the below, please note that we know it may seem like a lot of work. But rest assured, this is the least amount of work it will take you because we've invested so much time trial and erroring this so many times that this is the most efficient path that we've discovered, which you get to benefit from. On top of that, this is basically a one-time setup for your first event and you'll really just need to do a small fraction of the work for each event thereafter. So take a deep breath and tackle a little at a time and you'll be done before you know it. And of course, we have tech support for live help if you have any questions.</p>
+
+            <h2 class="font-semibold text-[1.875em] leading-[1.3] mt-[24px]">Overview</h2>
+            
+            <p>Before you jump into the details, here’s an overview of how Zoom, Calendly, and the interviews all work together. </p>
+
+            <div class="w-full max-w-[962px] self-center py-2 transition-all duration-200">
+                <div class="relative overflow-hidden rounded-[10px] bg-[#f1f1f0]">
+                    <div class="relative flex justify-center w-full min-h-[100px] pb-[75%]">
+                        <iframe src="https://www.loom.com/embed/0c53f94edf8440acb26a24e25b9f5ada" frameborder="0" allowfullscreen class="absolute top-0 left-0 w-full h-full rounded-[1px] bg-white"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <p>Ok so now let’s get started!</p>
+
+            <h2 class="font-semibold text-[1.875em] leading-[1.3] mt-[24px]">Creating a New Account</h2>
+            
+            <p>If you are doing the interview calls and enrollment calls yourself, just one account is required under your email. Otherwise, you will want a <span class="font-semibold">separate account for each person made with an email under your own domain.</span></p>
+
+            <div class="flex flex-col gap-1">
+                <div class="flex items-start pl-[2px]">
+                    <div class="w-[24px] flex items-center justify-center flex-shrink-0 min-h-[1.5em] h-[28px]">
+                        <span class="text-[1.5em] leading-[1] font-arial">•</span>
+                    </div>
+                    <div class="flex-1 min-w-[1px] pl-[6px] pt-[2px]">
+                        You do NOT want to make the account under YOUR email and give them access - If you do this, all the email notifications about bookings will go to you and onto your calendar and not theirs.
+                    </div>
+                </div>
+                <div class="flex items-start pl-[2px]">
+                    <div class="w-[24px] flex items-center justify-center flex-shrink-0 min-h-[1.5em] h-[28px]">
+                        <span class="text-[1.5em] leading-[1] font-arial">•</span>
+                    </div>
+                    <div class="flex-1 min-w-[1px] pl-[6px] pt-[2px]">
+                        You do NOT want to make the account under a free Gmail account and give them access - If you do this, they can always change the password and attach text verification to their phone and you will never be able to access the email/account again.
+                    </div>
+                </div>
+                <div class="flex items-start pl-[2px]">
+                    <div class="w-[24px] flex items-center justify-center flex-shrink-0 min-h-[1.5em] h-[28px]">
+                        <span class="text-[1.5em] leading-[1] font-arial">•</span>
+                    </div>
+                    <div class="flex-1 min-w-[1px] pl-[6px] pt-[2px]">
+                        You do NOT want to use the interviewer or enrollment specialist's personal email account or their Calendly account if they have one - If you do this, all the time you spend setting up the events and workflows in their account will go with them when they eventually leave the position and you will have to set them up all over again for the next person. Also, you will need their password to log in and make changes to the account, which can be awkward if it's their account.
+                    </div>
+                </div>
+            </div>
+
+            <p>What you DO want is to create an account for each interviewer and enrollment specialist (if they are the same person, then one account is fine) with a new email address under your business domain like <a href="mailto:event@yourbusiness.com" class="notion-link">event@yourbusiness.com</a>. The reason you want to make it under your domain is that you have the administrative permissions to reset the password to the email account anytime you need to (for hiring and firing) and not get locked out of the calendar account.</p>
+
+            <p>You’ll also do NOT want to use SSO login with your Google or Microsoft account because you may need an assistant or tech support or someone to log into your account or theirs and that would require giving your password to your email, which isn’t very secure thing to do, and often times these email accounts have additional security measures like text verification and further complicates access. Instead, you’ll want to use just an email and password login method. If you do have it under SSO login, you can <a href="https://help.calendly.com/hc/en-us/articles/360038853374-Change-your-login-email-or-login-method#h_01FVJ5TEP5KY5854MXVST6XGC9" target="_blank" rel="noopener noreferrer" class="notion-link">unlink your Google/Microsoft account</a>.</p>
+
+            <p>Once you've got your Calendly account created, you'll eventually need a Standard account ~$12/mo because you'll want to use their automated text message reminders feature.</p>
+
+            <h2 class="font-semibold text-[1.875em] leading-[1.3] mt-[24px]">Account Settings</h2>
+            
+            <p><a href="https://calendly.com/account/settings/profile" target="_blank" rel="noopener noreferrer" class="notion-link">Profile</a> - Configure as much as you can on this page with the exception of the Welcome Message because that's not relevant to what we're doing with live events.</p>
+            <p><a href="https://calendly.com/account/settings/branding" target="_blank" rel="noopener noreferrer" class="notion-link">Branding</a> - Turn off Calendly Branding and add your logo if available.</p>
+            <p><a href="https://calendly.com/account/settings/workflows" target="_blank" rel="noopener noreferrer" class="notion-link">Phone Number</a> - Add your mobile phone number so that you can receive a text reminder for upcoming calls.</p>
+
+            <h2 class="font-semibold text-[1.875em] leading-[1.3] mt-[24px]">Integrations</h2>
+
+            <p><a href="https://calendly.com/app/calendar_connections" target="_blank" rel="noopener noreferrer" class="notion-link">Calendar Integration</a> - You definitely want to connect your calendar to Calendly (typically Google or Microsoft) because this is how it's able to create a calendar event in your calendar and add your prospect's email as an invitee so that it shows up in their calendar. Integrating your calendar is also important for Calendly to see when you're busy and unavailable for a call so that you can't be booked during that time if you have a doctor's appointment for example.</p>
+            
+            <p><a href="https://calendly.com/integrations?category=email_messaging" target="_blank" rel="noopener noreferrer" class="notion-link">Email Integration</a> - You can connect your email so that emails come from your email/domain instead of Calendly, but it's recommended NOT to due to deliverability. Emails sent from Calendly tend to have a less likely chance of going into the spam folder than emails sent from your email through Calendly. Either way, if they reply to your email, it will go to the email you log into your Calendly account with.</p>
+            
+            <p>ActiveCampaign - If you are using this for your email, you can integrate it so that everyone who is booked for an interview, event, and/or feedback call can be tagged appropriately for email list segmentation purposes and campaigns.</p>
+            
+            <p><a href="https://calendly.com/integrations/zoom" target="_blank" rel="noopener noreferrer" class="notion-link">Zoom Integration</a> - The benefit of integrating Zoom into Calendly is that recordings are neatly labeled for each interview or enrollment call; otherwise the recordings are labeled by timestamp. However, keep in mind that sometimes there are bugs in the integration and their static Zoom Personal Meeting ID link will be used instead. Nonetheless, do the Zoom integration.</p>
+            
+            <p>If you are using a connection between Calendly your CRM and want to connect them you can using either zapier or Make. Click on the links for walkthroughs on how to set up the connections. If there is one missing that you need - please reach out to Amy on telegram and she will create this for you.</p>
+
+            <div class="h-4"></div>
+
+            <div class="flex flex-col gap-1 w-full max-w-[770px]">
+                <a href="/smartbusinessmastermind/Connecting-Calendly-High-Level-Using-Zapier-6d2ee7d528dd4d6f8d5716b3e9ff7822?pvs=25" class="flex items-center px-[2px] py-[2px] hover:bg-gray-100 rounded-[4px] transition-colors w-fit group">
+                    <div class="w-[24px] h-[24px] flex items-center justify-center mr-1">
+                        <svg viewBox="4.12 2.37 11.75 15.25" class="w-[19.8px] h-[19.8px] fill-[rgba(55,53,47,0.8)]"><path d="M13.3 14.25a.55.55 0 0 1-.55.55h-5.5a.55.55 0 1 1 0-1.1h5.5a.55.55 0 0 1 .55.55m-.55-1.95a.55.55 0 1 0 0-1.1h-5.5a.55.55 0 0 0 0 1.1z"></path><path d="M6.25 2.375A2.125 2.125 0 0 0 4.125 4.5v11c0 1.174.951 2.125 2.125 2.125h7.5a2.125 2.125 0 0 0 2.125-2.125V8.121c0-.563-.224-1.104-.622-1.502L11.63 2.997a2.13 2.13 0 0 0-1.502-.622zM5.375 4.5c0-.483.392-.875.875-.875h3.7V6.25A2.05 2.05 0 0 0 12 8.3h2.625v7.2a.875.875 0 0 1-.875.875h-7.5a.875.875 0 0 1-.875-.875zm8.691 2.7H12a.95.95 0 0 1-.95-.95V4.184z"></path></svg>
+                    </div>
+                    <span class="font-medium border-b border-[rgba(55,53,47,0.16)] group-hover:border-[rgba(55,53,47,0.4)] whitespace-nowrap overflow-hidden text-ellipsis leading-[1.3]">Connecting Calendly & High Level Using Zapier</span>
+                </a>
+                <a href="/smartbusinessmastermind/Connecting-Calendly-Kajabi-Using-Zapier-cbb8d476cc844c2398f4e2dcb9c33db4?pvs=25" class="flex items-center px-[2px] py-[2px] hover:bg-gray-100 rounded-[4px] transition-colors w-fit group">
+                    <div class="w-[24px] h-[24px] flex items-center justify-center mr-1">
+                        <svg viewBox="4.12 2.37 11.75 15.25" class="w-[19.8px] h-[19.8px] fill-[rgba(55,53,47,0.8)]"><path d="M13.3 14.25a.55.55 0 0 1-.55.55h-5.5a.55.55 0 1 1 0-1.1h5.5a.55.55 0 0 1 .55.55m-.55-1.95a.55.55 0 1 0 0-1.1h-5.5a.55.55 0 0 0 0 1.1z"></path><path d="M6.25 2.375A2.125 2.125 0 0 0 4.125 4.5v11c0 1.174.951 2.125 2.125 2.125h7.5a2.125 2.125 0 0 0 2.125-2.125V8.121c0-.563-.224-1.104-.622-1.502L11.63 2.997a2.13 2.13 0 0 0-1.502-.622zM5.375 4.5c0-.483.392-.875.875-.875h3.7V6.25A2.05 2.05 0 0 0 12 8.3h2.625v7.2a.875.875 0 0 1-.875.875h-7.5a.875.875 0 0 1-.875-.875zm8.691 2.7H12a.95.95 0 0 1-.95-.95V4.184z"></path></svg>
+                    </div>
+                    <span class="font-medium border-b border-[rgba(55,53,47,0.16)] group-hover:border-[rgba(55,53,47,0.4)] whitespace-nowrap overflow-hidden text-ellipsis leading-[1.3]">Connecting Calendly & Kajabi Using Zapier</span>
+                </a>
+                <a href="/smartbusinessmastermind/Connecting-Calendly-ActiveCampaign-Using-Zapier-b1ae3cd4fe8b4ee082ddbd5bd6295b64?pvs=25" class="flex items-center px-[2px] py-[2px] hover:bg-gray-100 rounded-[4px] transition-colors w-fit group">
+                    <div class="w-[24px] h-[24px] flex items-center justify-center mr-1">
+                        <svg viewBox="4.12 2.37 11.75 15.25" class="w-[19.8px] h-[19.8px] fill-[rgba(55,53,47,0.8)]"><path d="M13.3 14.25a.55.55 0 0 1-.55.55h-5.5a.55.55 0 1 1 0-1.1h5.5a.55.55 0 0 1 .55.55m-.55-1.95a.55.55 0 1 0 0-1.1h-5.5a.55.55 0 0 0 0 1.1z"></path><path d="M6.25 2.375A2.125 2.125 0 0 0 4.125 4.5v11c0 1.174.951 2.125 2.125 2.125h7.5a2.125 2.125 0 0 0 2.125-2.125V8.121c0-.563-.224-1.104-.622-1.502L11.63 2.997a2.13 2.13 0 0 0-1.502-.622zM5.375 4.5c0-.483.392-.875.875-.875h3.7V6.25A2.05 2.05 0 0 0 12 8.3h2.625v7.2a.875.875 0 0 1-.875.875h-7.5a.875.875 0 0 1-.875-.875zm8.691 2.7H12a.95.95 0 0 1-.95-.95V4.184z"></path></svg>
+                    </div>
+                    <span class="font-medium border-b border-[rgba(55,53,47,0.16)] group-hover:border-[rgba(55,53,47,0.4)] whitespace-nowrap overflow-hidden text-ellipsis leading-[1.3]">Connecting Calendly & ActiveCampaign Using Zapier</span>
+                </a>
+                <a href="/smartbusinessmastermind/Connecting-Calendly-Convertkit-Using-Zapier-6963cd200d4b4bb0a048e456462290a1?pvs=25" class="flex items-center px-[2px] py-[2px] hover:bg-gray-100 rounded-[4px] transition-colors w-fit group">
+                    <div class="w-[24px] h-[24px] flex items-center justify-center mr-1">
+                        <svg viewBox="4.12 2.37 11.75 15.25" class="w-[19.8px] h-[19.8px] fill-[rgba(55,53,47,0.8)]"><path d="M13.3 14.25a.55.55 0 0 1-.55.55h-5.5a.55.55 0 1 1 0-1.1h5.5a.55.55 0 0 1 .55.55m-.55-1.95a.55.55 0 1 0 0-1.1h-5.5a.55.55 0 0 0 0 1.1z"></path><path d="M6.25 2.375A2.125 2.125 0 0 0 4.125 4.5v11c0 1.174.951 2.125 2.125 2.125h7.5a2.125 2.125 0 0 0 2.125-2.125V8.121c0-.563-.224-1.104-.622-1.502L11.63 2.997a2.13 2.13 0 0 0-1.502-.622zM5.375 4.5c0-.483.392-.875.875-.875h3.7V6.25A2.05 2.05 0 0 0 12 8.3h2.625v7.2a.875.875 0 0 1-.875.875h-7.5a.875.875 0 0 1-.875-.875zm8.691 2.7H12a.95.95 0 0 1-.95-.95V4.184z"></path></svg>
+                    </div>
+                    <span class="font-medium border-b border-[rgba(55,53,47,0.16)] group-hover:border-[rgba(55,53,47,0.4)] whitespace-nowrap overflow-hidden text-ellipsis leading-[1.3]">Connecting Calendly & Convertkit Using Zapier</span>
+                </a>
+                <a href="/smartbusinessmastermind/Connecting-Calendly-Convertkit-Using-Make-c42b6e45058442cd83e33cccbd04c222?pvs=25" class="flex items-center px-[2px] py-[2px] hover:bg-gray-100 rounded-[4px] transition-colors w-fit group">
+                    <div class="w-[24px] h-[24px] flex items-center justify-center mr-1">
+                        <svg viewBox="4.12 2.37 11.75 15.25" class="w-[19.8px] h-[19.8px] fill-[rgba(55,53,47,0.8)]"><path d="M13.3 14.25a.55.55 0 0 1-.55.55h-5.5a.55.55 0 1 1 0-1.1h5.5a.55.55 0 0 1 .55.55m-.55-1.95a.55.55 0 1 0 0-1.1h-5.5a.55.55 0 0 0 0 1.1z"></path><path d="M6.25 2.375A2.125 2.125 0 0 0 4.125 4.5v11c0 1.174.951 2.125 2.125 2.125h7.5a2.125 2.125 0 0 0 2.125-2.125V8.121c0-.563-.224-1.104-.622-1.502L11.63 2.997a2.13 2.13 0 0 0-1.502-.622zM5.375 4.5c0-.483.392-.875.875-.875h3.7V6.25A2.05 2.05 0 0 0 12 8.3h2.625v7.2a.875.875 0 0 1-.875.875h-7.5a.875.875 0 0 1-.875-.875zm8.691 2.7H12a.95.95 0 0 1-.95-.95V4.184z"></path></svg>
+                    </div>
+                    <span class="font-medium border-b border-[rgba(55,53,47,0.16)] group-hover:border-[rgba(55,53,47,0.4)] whitespace-nowrap overflow-hidden text-ellipsis leading-[1.3]">Connecting Calendly & Convertkit Using Make</span>
+                </a>
+                <a href="/smartbusinessmastermind/Connecting-Calendly-Honeybook-7a18ad41605d4ff5b8473016633cf912?pvs=25" class="flex items-center px-[2px] py-[2px] hover:bg-gray-100 rounded-[4px] transition-colors w-fit group">
+                    <div class="w-[24px] h-[24px] flex items-center justify-center mr-1">
+                        <svg viewBox="4.12 2.37 11.75 15.25" class="w-[19.8px] h-[19.8px] fill-[rgba(55,53,47,0.8)]"><path d="M13.3 14.25a.55.55 0 0 1-.55.55h-5.5a.55.55 0 1 1 0-1.1h5.5a.55.55 0 0 1 .55.55m-.55-1.95a.55.55 0 1 0 0-1.1h-5.5a.55.55 0 0 0 0 1.1z"></path><path d="M6.25 2.375A2.125 2.125 0 0 0 4.125 4.5v11c0 1.174.951 2.125 2.125 2.125h7.5a2.125 2.125 0 0 0 2.125-2.125V8.121c0-.563-.224-1.104-.622-1.502L11.63 2.997a2.13 2.13 0 0 0-1.502-.622zM5.375 4.5c0-.483.392-.875.875-.875h3.7V6.25A2.05 2.05 0 0 0 12 8.3h2.625v7.2a.875.875 0 0 1-.875.875h-7.5a.875.875 0 0 1-.875-.875zm8.691 2.7H12a.95.95 0 0 1-.95-.95V4.184z"></path></svg>
+                    </div>
+                    <span class="font-medium border-b border-[rgba(55,53,47,0.16)] group-hover:border-[rgba(55,53,47,0.4)] whitespace-nowrap overflow-hidden text-ellipsis leading-[1.3]">Connecting Calendly & Honeybook</span>
+                </a>
+            </div>
+
+            <h2 class="font-semibold text-[1.875em] leading-[1.3] mt-[24px]">Setting Up Pre-event Interview Call</h2>
+            
+            <p>If you have more than one interviewer and doing a round robin, then take the following steps before creating the event:</p>
+
+            <div class="flex flex-col gap-1">
+                <div class="flex items-start pl-[2px]">
+                    <div class="text-center whitespace-nowrap flex items-center justify-center flex-shrink-0 min-h-[1.5em] h-[28px] w-[24px]">
+                        1.
+                    </div>
+                    <div class="flex-1 min-w-[1px] pl-[6px] pt-[2px]">
+                        Under the admin/main account in the <a href="https://calendly.com/app/organization/users" target="_blank" rel="noopener noreferrer" class="notion-link">Admin Management</a> section, invite all the users who will be interviewers to the account. You do NOT need to create a group during this process. Just invite and add all the users to the account.
+                    </div>
+                </div>
+                <div class="flex items-start pl-[2px]">
+                    <div class="text-center whitespace-nowrap flex items-center justify-center flex-shrink-0 min-h-[1.5em] h-[28px] w-[24px]">
+                        2.
+                    </div>
+                    <div class="flex-1 min-w-[1px] pl-[6px] pt-[2px]">
+                        Next, <a href="https://calendly.com/teams/new?return_to=%2Fevent_types%2Fuser%2Fme" target="_blank" rel="noopener noreferrer" class="notion-link">create a team</a>, call it Interviewers, and add all the interviewers as Team Members. If you are adding or removing members to your interview team, go to your <a href="https://d.pr/i/MrWfl1" target="_blank" rel="noopener noreferrer" class="notion-link">interview team page from the homepage</a> and then click on the <a href="https://d.pr/i/fzsqkh" target="_blank" rel="noopener noreferrer" class="notion-link">gear icon to edit the team</a>.
+                    </div>
+                </div>
+                <div class="flex items-start pl-[2px]">
+                    <div class="text-center whitespace-nowrap flex items-center justify-center flex-shrink-0 min-h-[1.5em] h-[28px] w-[24px]">
+                        3.
+                    </div>
+                    <div class="flex-1 min-w-[1px] pl-[6px] pt-[2px]">
+                        After the team has been created, it will prompt you to create your first event and choose <a href="https://d.pr/i/xnspDh" target="_blank" rel="noopener noreferrer" class="notion-link">Round Robin</a>. You can then proceed with the instructions below.
+                    </div>
+                </div>
+            </div>
+
+            <p>If you have just one person doing all the interviews, you <a href="https://calendly.com/integrations/zoom/edit" target="_blank" rel="noopener noreferrer" class="notion-link-strong font-semibold">Create New Event Type</a> - Choose One-on-One.</p>
+
+            <p><span class="font-semibold">Event Name</span> - Call it something like <span class="font-semibold">[EVENT NAME] Confirmation</span> because it will be a quick "confirmation call." Some entrepreneurs call it [EVENT NAME] Alignment Call. What you don't want to do is call it and Interview Call because it can be intimidating to attendees.</p>
+            
+            <p><span class="font-semibold">Location</span> - Choose Zoom as the location and it'll create a unique Zoom link for the event. That's great for security, but the real benefit is that the cloud autorecordings in Zoom will be neatly labeled by the event name and person versus a generic timestamp if you had use the static Zoom Personal Meeting ID link. (If you are doing a <a href="https://d.pr/i/d24ZKc" target="_blank" rel="noopener noreferrer" class="notion-link">round robin and setting the location and distribution</a>, you'll also want to likely set it to Optimize for Availability rather than for Equal Distribution. Their <a href="https://help.calendly.com/hc/en-us/articles/223146327-Distribute-events-round-robin-to-team-members#distribute-events-round-robin-to-team-members-0-0" target="_blank" rel="noopener noreferrer" class="notion-link">documentation explains the difference here</a>.)</p>
+            
+            <p><span class="italic">Click Next to proceed to the next screen</span></p>
+            
+            <p><span class="font-semibold">Date range - Invitees can schedule...</span> - You have a couple of options here:</p>
+            
+            <div class="flex flex-col gap-1">
+                <div class="flex items-start pl-[2px]">
+                    <div class="text-center whitespace-nowrap flex items-center justify-center flex-shrink-0 min-h-[1.5em] h-[28px] w-[24px]">
+                        1.
+                    </div>
+                    <div class="flex-1 min-w-[1px] pl-[6px] pt-[2px]">
+                        One method is to choose <span class="italic">Within a date range</span> option and select dates (as early as you'd like to do interviews) all the way up to a day or two before the event (whenever you want to stop doing interviews).
+                    </div>
+                </div>
+                <div class="flex items-start pl-[2px]">
+                    <div class="text-center whitespace-nowrap flex items-center justify-center flex-shrink-0 min-h-[1.5em] h-[28px] w-[24px]">
+                        2.
+                    </div>
+                    <div class="flex-1 min-w-[1px] pl-[6px] pt-[2px]">
+                        Other option is to choose 3-4 calendar days into the future so that guests are limited to booking an interview that 3-4 days instead of many days later when they might forget or lose interest and are less likely to show up. If you choose this option, be sure to later <a href="https://d.pr/i/VU43FU" target="_blank" rel="noopener noreferrer" class="notion-link">set custom hours and add date overrides</a> so that the window of interviews stay within a certain range, such as today through the day of the event.
+                    </div>
+                </div>
+            </div>
+
+            <p><span class="font-semibold">Duration</span> - 15 minutes is recommended for the time slot with the intention of keeping the call down to 10-12 minutes so that you have a few minutes before your next back-to-back call. Keep in mind you can extend it slightly longer to 20 minutes if you'd like, but the problem is the longer the duration, the less interview calls you can do per day.</p>
+            
+            <p><span class="font-semibold">How do you want to offer your availability for this event type?</span> - The option is up to you, but the most common is the "Use an existing schedule" option.</p>
+            
+            <p><span class="font-semibold">Additional rules for your availability &gt; Start time increments</span> - If you've set 15 minutes as the duration, you will want increments of 15 minutes. If you set 20 minutes for your interview duration, make the increments 20 minutes. Doing this maximizes the number of calls per hour.<br>Scheduling conditions &gt; Invitees can't schedule within... - By default it's 4 hours, but you may want to shorten it depending on what you're comfortable with. That means if it's 12 PM right now, the earliest someone can book with you is 4 PM. If you reduce it to 2 hours, then it's 2 PM. The purpose of this is to give yourself enough warning before a call comes up.</p>
+            
+            <p><span class="italic">Click Next to proceed to the next screen</span></p>
+            
+            <p><span class="font-semibold">Additional Options - Invitee Questions</span> - By default, there is an option to Add Guest, so you'll want to <a href="https://d.pr/i/skSLuE" target="_blank" rel="noopener noreferrer" class="notion-link">click on the pencil</a> and check off "Autofill Invitee Name, Email, and Text Reminder Phone Number (when applicable) from prior bookings" and uncheck "Allow invitees to add additional guests" so that it <a href="https://d.pr/i/poga9X" target="_blank" rel="noopener noreferrer" class="notion-link">looks like this</a>. You'll then want to <a href="https://d.pr/i/dlhz1g" target="_blank" rel="noopener noreferrer" class="notion-link">click on the pencil</a> to modify the "Please share anything that will help prepare for our meeting" and change it to <a href="https://d.pr/i/w9CEHp" target="_blank" rel="noopener noreferrer" class="notion-link">Mobile and required Phone Number field</a>.</p>
+            
+            <p><span class="italic">When your prospect loads the Calendly booking, you will see two mobile fields - the one you just made here called "Mobile" and one provided by Calendly called "Send text messages to". The reason we add this custom required field Mobile is because we can't force users to input their mobile into Calendly's "Send text messages to" field for text reminders. So what would happen is that most prospects would skip out on inputting their mobile and we wouldn't be able to call or text them for reminders or follow up if it's a no show. Thus, we need to add a required Mobile field that forces them to give us their mobile so we have it for manual follow up and hopefully that will encourage them to input their mobile into the "Send text messages to" field as well so that they receive the automated Calendly text reminders that you'll be creating later in the workflows.</span></p>
+            
+            <p><span class="font-semibold">Notifications and Cancellation Policy &gt; Email confirmations </span>- You will want to revise the Subject and Body so that it <a href="https://d.pr/i/eVsxda" target="_blank" rel="noopener noreferrer" class="notion-link">looks something like this</a>.</p>
+            
+            <p><a href="https://d.pr/i/s5qMEa" target="_blank" rel="noopener noreferrer" class="notion-link-strong font-semibold">Show Cancellation Policy</a><span class="font-semibold"> &gt; Uncheck "Include cancel and reschedule links in notifications"</span> - Doing so makes it inconvenient for prospects to cancel so that they're more likely to stick to the appointment. Then click the save and close button.</p>
+            
+            <p>Then click on the <a href="https://d.pr/i/xOC5GL" target="_blank" rel="noopener noreferrer" class="notion-link">share button and add to website</a> to get the code you need to embed your calendar into the booking page.</p>
+            
+            <p>You're all set with setting up the interview call as an event, so be sure to see below later for Pre-event Interview Call Reminders - AUTOMATED - If you're booking interviews through Calendly, be sure to input these email and text reminders as workflows. Even though these are automated reminders, it's always a good idea to have your interviewer manually text and confirm all their appointments in the morning for their entire day.</p>
+
+            <h2 class="font-semibold text-[1.875em] leading-[1.3] mt-[24px]">Setting Up Live Event</h2>
+            
+            <p>First off, we need to determine which Calendly account you will be setting up the live event under:</p>
+
+            <div class="flex flex-col gap-1">
+                <div class="flex items-start pl-[2px]">
+                    <div class="w-[24px] flex items-center justify-center flex-shrink-0 min-h-[1.5em] h-[28px]">
+                        <span class="text-[1.5em] leading-[1] font-arial">•</span>
+                    </div>
+                    <div class="flex-1 min-w-[1px] pl-[6px] pt-[2px]">
+                        If you anticipate having 99 or less attendees for the event, make this under your own/main Calendly account.
+                    </div>
+                </div>
+                <div class="flex items-start pl-[2px]">
+                    <div class="w-[24px] flex items-center justify-center flex-shrink-0 min-h-[1.5em] h-[28px]">
+                        <span class="text-[1.5em] leading-[1] font-arial">•</span>
+                    </div>
+                    <div class="flex-1 min-w-[1px] pl-[6px] pt-[2px]">
+                        If you anticipate having 100 or more attendees for the event, you will need to create the live event in each of your enroller's Calendly accounts or have a second Calendly event/account.
+                    </div>
+                </div>
+                <div class="flex items-start pl-[2px]">
+                    <div class="w-[24px] flex items-center justify-center flex-shrink-0 min-h-[1.5em] h-[28px]">
+                        <span class="text-[1.5em] leading-[1] font-arial">•</span>
+                    </div>
+                    <div class="flex-1 min-w-[1px] pl-[6px] pt-[2px]">
+                        Whichever Calendly account you're using for the live event, be sure to go to the <a href="https://calendly.com/app/calendar_connections" target="_blank" rel="noopener noreferrer" class="notion-link">Calendar Connections</a>, click on the <a href="https://d.pr/i/Q8gduJ" target="_blank" rel="noopener noreferrer" class="notion-link">edit button in the Add to calendar</a> section, and <a href="https://d.pr/i/GJsfUH" target="_blank" rel="noopener noreferrer" class="notion-link">uncheck the Deleting or declining an event in your calendar will also cancel it in Calendly</a> and click update.
+                    </div>
+                </div>
+                <div class="flex items-start pl-[2px]">
+                    <div class="w-[24px] flex items-center justify-center flex-shrink-0 min-h-[1.5em] h-[28px]">
+                        <span class="text-[1.5em] leading-[1] font-arial">•</span>
+                    </div>
+                    <div class="flex-1 min-w-[1px] pl-[6px] pt-[2px]">
+                        Some people have asked if the guest's information is hidden when using Calendly for your live event. When we tested it, we used our SBM Google Calendar connected into Calendly and a personal Gmail/Google user as the test guest. When we did that, the email invite had no other guest's information in it nor did the <a href="https://d.pr/i/w9PTok" target="_blank" rel="noopener noreferrer" class="notion-link">guest's calendar event</a>. If you go into your calendar that's connected to Calendly though, you will see <a href="https://d.pr/i/5Pvwxu" target="_blank" rel="noopener noreferrer" class="notion-link">how many guests are booked and their names</a>. Results may differ if using Microsoft calendar, so best to test yourself using a different/personal email and book that into the Calendly event to see what your guest would see.
+                    </div>
+                </div>
+            </div>
+
+            <p>Now we can proceed with the video walkthrough:</p>
+
+            <div class="w-full max-w-[962px] self-center py-2 transition-all duration-200">
+                <div class="relative overflow-hidden rounded-[10px] bg-[#f1f1f0]">
+                    <div class="relative flex justify-center w-full min-h-[100px] pb-[75%]">
+                        <iframe src="https://www.loom.com/embed/1c55b6beec4a43a6947b650b89ca6e27" frameborder="0" allowfullscreen class="absolute top-0 left-0 w-full h-full rounded-[1px] bg-white"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="font-semibold text-[1.875em] leading-[1.3] mt-[24px]">Creating Day 1</h2>
+            
+            <p><a href="https://calendly.com/integrations/zoom/edit" target="_blank" rel="noopener noreferrer" class="notion-link-strong font-semibold">Create New Event Type</a> - Choose Group.</p>
+            <p><span class="font-semibold">Event name</span> - Call it <span class="font-semibold italic">[EVENT NAME] Day 1</span> because you will later be duplicating it to make Day 2. You'll need a group event for each day.</p>
+            <p><span class="font-semibold">Location</span> - Change this to custom and input the Zoom link to your live event. By doing it this way, you dictate to Calendly which Zoom link to use (versus choosing Zoom as the location and Calendly would make a link for you). Reminder that you'll probably want to use the Zoom Personal Meeting ID (versus <a href="https://d.pr/i/Ob6K0G" target="_blank" rel="noopener noreferrer" class="notion-link">generated automatically</a>) as the live event link so that you'll never have to change it when doing future events.</p>
+            <p><span class="font-semibold">Description/Instructions</span> - If you'd like, you can add a subheadline or anything about your event.</p>
+            <p><span class="font-semibold">Max invitees in a spot </span>- Set this to 99 because that is the limit for text notifications for a group event.</p>
+            <p><span class="font-semibold">Display remaining spots</span> - Check off this box because it's a nice way at glance to see how many people have registered. For example, if 99 is the max and there are 79 invites left, then that means there are 20 registrations.</p>
+            <p><span class="italic">Click Next to proceed to the next screen</span></p>
+            <p><span class="font-semibold">Date range - Invitees can schedule...</span> - Choose Within a date range option and double click the date that will be the first date of the event so that the "range" will the <a href="https://d.pr/i/wVEUwt" target="_blank" rel="noopener noreferrer" class="notion-link">same date through the same date</a> (February 6, 2023 in that example) and then click the apply button. (When you duplicate this event later to make Day 2, then you would modify this to be the next date, such as February 7, 2023.)</p>
+            <p><span class="font-semibold">Duration</span> - Change this to a custom time so you can set it for the duration of your event (<a href="https://d.pr/i/cK47KJ" target="_blank" rel="noopener noreferrer" class="notion-link">typically for 3 hours</a>).</p>
+            <p><span class="font-semibold">How do you want to offer your availability for this event type?</span> - Choose "Set custom hours," make sure the Time Zone is set for your time zone, and check off all the days of your event and the times. So if it's Monday through Tuesday from 2-5 PM Pacific, <a href="https://d.pr/i/7FPHol" target="_blank" rel="noopener noreferrer" class="notion-link">it will look like this</a>. (The reason you're setting it for all the days is because when you're duplicating the event for Day 2, you won't have to modify this section and it'll just be the date range.)</p>
+            <p><span class="font-semibold">Additional rules for your availability &gt; Scheduling conditions</span> - <a href="https://d.pr/i/t9Nfhk" target="_blank" rel="noopener noreferrer" class="notion-link">Change this to 0 hours</a> so that your interviewer can book an attendee all the way up to the event last minute if necessary.</p>
+            <p><span class="italic">Click Next to proceed to the next screen</span></p>
+            <p><span class="font-semibold">Additional Options - Invitee Questions</span> - You'll want to have Name and Email, which means you may need to delete anything additional Calendly has inputted by default (like Please share anything that will help prepare for our meeting). You do NOT need to add a field for mobile for text reminders because they will automatically do that when you add a workflow that has a text in it. Then click save and close.</p>
+            <p><span class="font-semibold">Notifications and Cancellation Policy &gt; Email confirmations</span> - You will want to revise the Subject and Body so that it <a href="https://d.pr/i/TW43ms" target="_blank" rel="noopener noreferrer" class="notion-link">looks something like this</a>. What you're doing is removing some of the unnecessary variables that Calendly adds by default.</p>
+            <p><a href="https://d.pr/i/s5qMEa" target="_blank" rel="noopener noreferrer" class="notion-link-strong font-semibold">Show Cancellation Policy</a><span class="font-semibold"> &gt; Uncheck "Include cancel and reschedule links in notifications"</span> - Doing so makes it inconvenient for prospects to cancel so that they're more likely to stick to the appointment. Then click the save and close button.</p>
+            <p><span class="font-semibold">Confirmation Page &gt; Display button to schedule another event?</span> - <a href="https://d.pr/i/Jmj67c" target="_blank" rel="noopener noreferrer" class="notion-link">Toggle this to yes</a> to make it convenient for the interviewer to book the next call after they're done with their current one.</p>
+            <p><a href="https://d.pr/i/uP75EK" target="_blank" rel="noopener noreferrer" class="notion-link-strong font-semibold">View live page</a> - This is the link to your live event Day 1 that your interviewer will need to book the interviewee for the live event during the interview.</p>
+
+            <h2 class="font-semibold text-[1.875em] leading-[1.3] mt-[24px]">Creating Day 2</h2>
+            
+            <p>Now we're going to make Day 2 of your event by <a href="https://d.pr/i/RlRcEC" target="_blank" rel="noopener noreferrer" class="notion-link">cloning the Day 1</a>.</p>
+            <p><span class="font-semibold">Event name</span> - Rename it by changing the 1 to 2 so that it's Day 2.</p>
+            <p><span class="font-semibold">Event link </span>- Rename the slug by deleting the "1-clone" part and replacing that with 2.</p>
+            <p><span class="italic">Click Next to proceed to the next screen</span></p>
+            <p><span class="font-semibold">Date range - Invitees can schedule...</span> - Modify the Within a date range option by double clicking the date that will be the second date of the event so that the "range" will the same date through the same date like the first time you did it. Using the example from last time being Feburary 6, 2023 as Day 1 of the event, this time it will be February 7, 2023 because we're modifying it for Day 2. Then click the save and close button and you're done!</p>
+            <p><span class="font-semibold">View live page</span> - This is the link your live event Day 2 that your interviewer will need to book the interviewee for the live event during the interview.</p>
+            <p><span class="font-semibold">Turning on the event</span> - Now that you’re done setting up this Day 2 event, you have to turn it on because by default a cloned event is off.</p>
+
+            <h2 class="font-semibold text-[1.875em] leading-[1.3] mt-[24px]">Testing Availability for Both Days</h2>
+            
+            <p>Now test the availability by loading both booking page links for the event and you should see then available for you to book people into each day.</p>
+            <p>A common reason why it displays no availability is that you may have an event booked into the Google/Microsoft calendar you have connected to Calendly. (You may have manually inputted the event into your own calendar to remind yourself of your live event.) Be sure to delete and clear your calendar so that Calendly sees it as free and available so that you can book people in for your event. Once you do the first person (you can test it with a personal Gmail email later after you’ve inputted the workflows so you can see the email you get), the event should be created on your Google/Microsoft calendar.</p>
+            <p>You're all set with setting up the live event, so be sure later to see below for: </p>
+
+            <div class="flex flex-col gap-1">
+                <div class="flex items-start pl-[2px]">
+                    <div class="w-[24px] flex items-center justify-center flex-shrink-0 min-h-[1.5em] h-[28px]">
+                        <span class="text-[1.5em] leading-[1] font-arial">•</span>
+                    </div>
+                    <div class="flex-1 min-w-[1px] pl-[6px] pt-[2px]">
+                        Pre-event Interview Call Completed and Approved to Attend Event - After confirming over Zoom that the attendee is a good fit for your event and they are approved for registration, the interviewer sends them this welcome email with the Zoom link and rest of the event details. This can be automated as a workflow email sent to the invitee immediately when a new event is booked (for event type, choose just Day 1 of your live event). 
+                    </div>
+                </div>
+                <div class="flex items-start pl-[2px]">
+                    <div class="w-[24px] flex items-center justify-center flex-shrink-0 min-h-[1.5em] h-[28px]">
+                        <span class="text-[1.5em] leading-[1] font-arial">•</span>
+                    </div>
+                    <div class="flex-1 min-w-[1px] pl-[6px] pt-[2px]">
+                        Live Event Reminders - These countdown marketing emails and reminders are for letting the approved attendees know that the event is coming up.
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="font-semibold text-[1.875em] leading-[1.3] mt-[24px]">Setting Up Enrollment Call Event</h2>
+
+            <div class="w-full max-w-[962px] self-center py-2 transition-all duration-200">
+                <div class="relative overflow-hidden rounded-[10px] bg-[#f1f1f0]">
+                    <div class="relative flex justify-center w-full min-h-[100px] pb-[75%]">
+                        <iframe src="https://www.loom.com/embed/7d2a2922b5194c88a77686dd8bd62402" frameborder="0" allowfullscreen class="absolute top-0 left-0 w-full h-full rounded-[1px] bg-white"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <p><a href="https://calendly.com/integrations/zoom/edit" target="_blank" rel="noopener noreferrer" class="notion-link-strong font-semibold">Create New Event Type</a> - Choose One-on-One</p>
+            <p><span class="font-semibold">Event Name </span>- Call it [EVENT NAME] Feedback Call because that is what it is to the attendee (one of the conditions for attending the event for free was so that we could get their "feedback" after the event). Do NOT call it an Enrollment Call (or Sales Call) because that is for internal reference only. Some people frame them as a Celebration Call, so adjust accordingly.</p>
+            <p><span class="font-semibold">Location</span> - Choose Zoom as the location and it'll create a unique Zoom link for the event. That's great for security, but the real benefit is that the cloud autorecordings in Zoom will be neatly labeled by the event name and person versus a generic timestamp if you had use the static Zoom Personal Meeting ID link.</p>
+            <p><span class="font-semibold">Description/Instructions</span> - Enter something like: I'm super excited to get your feedback and hear what you thought about the event, what you learned, and answer any questions you might have!</p>
+            <p><span class="italic">Click Next to proceed to the next screen</span></p>
+            <p><span class="font-semibold">Date range - Invitees can schedule... </span>- Choose Indefinitely into the future option because then you can use this indefinitely. However, it's best practice for the enrollment call to be booked as soon as possible after the event.</p>
+            <p><span class="font-semibold">Duration </span>- 30 minutes. Keep in mind you can extend it slightly longer to 45 in case people are late or you think you'll need more time, but the problem is the longer the duration, the less enrollment calls you can do per day.</p>
+            <p><span class="font-semibold">How do you want to offer your availability for this event type? </span>- This will depend on the enroller, but typically it's easiest using the existing schedule and blocking out any times the enroller is busy on their calendar directly (like a lunch break for example).<br>Want to add time before or after your events? This is where you can add buffer before and after the event. It's recommended to keep this to 0 and adjust the event duration instead.</p>
+            <p><span class="font-semibold">Additional rules for your availability &gt;  Start time increments</span> - Change this to 5 min for reduce any unnecessary downtime in between appointments. However, if your feedback calls are 30 minutes long (with zero buffer), set this to be every 30 minutes. If it's 45 minutes long, you can set this to every 15 minutes.</p>
+            <p><span class="italic">Click Next to proceed to the next screen</span></p>
+            <p><span class="font-semibold">Additional Options - Invitee Questions</span> - You'll want to have Name and Email, which means you may need to delete anything additional Calendly has inputted by default (like Please share anything that will help prepare for our meeting). You do NOT need to add a field for mobile for text reminders because they will automatically do that when you add a workflow that has a text in it.</p>
+            <p><span class="font-semibold">Notifications and Cancellation Policy &gt; Calendar Invitations</span> - Make sure you are set as <a href="https://d.pr/i/STplV8" target="_blank" rel="noopener noreferrer" class="notion-link">Calendar Invitations</a> and not Email Confirmations so that the prospect will receive a calendar invite. Make the title of the calendar event [NAME OF YOUR EVENT] Feedback Call.</p>
+            <p><span class="font-semibold">Notifications and Cancellation Policy &gt; </span><a href="https://d.pr/i/s5qMEa" target="_blank" rel="noopener noreferrer" class="notion-link-strong font-semibold">Show Cancellation Policy</a><span class="font-semibold"> &gt; Uncheck "Include cancel and reschedule links in notifications"</span> - Doing so makes it inconvenient for prospects to cancel so that they're more likely to stick to the appointment.</p>
+            <p><span class="font-semibold">Confirmation Page &gt; Display button to schedule another event?</span> - <a href="https://d.pr/i/Jmj67c" target="_blank" rel="noopener noreferrer" class="notion-link">Toggle this to yes</a> to make it convenient for the interviewer to book the next call after they're done with their current one.</p>
+            <p><a href="https://d.pr/i/uP75EK" target="_blank" rel="noopener noreferrer" class="notion-link-strong font-semibold">View live page</a> - This is the link your interviewer will need to book the interviewee for the enrollment call during the interview.</p>
+            <p>You're all set with setting up an enrollment call as an event, so be sure later to see below for Post-event Enrollment Call Reminders - AUTOMATED - These email and text messages are to remind the event attendee of their upcoming enrollment call.</p>
+
+            <h2 class="font-semibold text-[1.875em] leading-[1.3] mt-[24px]">Workflows</h2>
+            
+            <p>Next, we'll create the <a href="https://calendly.com/app/workflows/user/me" target="_blank" rel="noopener noreferrer" class="notion-link">workflows</a>, which are automated email and text messages for your live event and enrollment calls, and apply them to the events we just created. Here are all the Calendly templates to input:</p>
+            
+            <p><a href="https://docs.google.com/document/d/1YK2btJGizD5akAF45TesX2V1T3s5juNYpPQvPQRk1QU/edit" target="_blank" rel="noopener noreferrer" class="notion-link">Pre-event Interview Call Reminders - AUTOMATED</a> - If you're booking interviews through Calendly, be sure to input these email and text reminders as workflows. Even though these are automated reminders, it's always a good idea to have your interviewer manually text and confirm all their appointments in the morning for their entire day.</p>
+            
+            <p><a href="https://docs.google.com/document/d/16Rd_tF_I6IS1cq2Q3M7dQhX17ZjTmQ5x4TfAn_6DYag/edit" target="_blank" rel="noopener noreferrer" class="notion-link">Pre-event Interview Call Completed and Approved to Attend Event</a> - After confirming over Zoom that the attendee is a good fit for your event and they are approved for registration, the interviewer sends them this welcome email with the Zoom link and rest of the event details. This can be automated as a <a href="https://d.pr/i/sWTF7s" target="_blank" rel="noopener noreferrer" class="notion-link">workflow email sent to invitee immediately when new event is booked</a> (for event type, choose just Day 1 of your live event).</p>
+            
+            <p>Live Event Reminders - These <a href="https://docs.google.com/document/d/1b2KLF2hS9FhaL2pICQr6ApHfzhP1LKUuTm3Rge5CHPs/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="notion-link">countdown marketing emails and reminders</a> are for letting the approved attendees know that the event is coming up.</p>
+
+            <div class="bg-[#f7f6f3] border border-transparent rounded-[10px] p-3 flex gap-3 items-start my-1">
+                <div class="w-6 h-6 flex items-center justify-center flex-shrink-0 mt-[1.5px]">
+                    <span class="text-[16.8px] leading-none emoji-icon">💡</span>
+                </div>
+                <div class="text-[16px] leading-[1.5] w-full min-w-0">
+                    Note that when you’re adding these reminders, you’re using the Calendly Location variable and not the actual Zoom link for the event because Calendly will automatically pull the location (the Zoom link you have in the event) so that you don’t have to change the Zoom link in the emails when you do the next event.
+                </div>
+            </div>
+
+            <p><a href="https://docs.google.com/document/d/1RgRN_GZ00HMFyOBh_kKJ3_a3SlH_OGPw6B37dyRMPW8/edit" target="_blank" rel="noopener noreferrer" class="notion-link">Post-event Enrollment Call Reminders - AUTOMATED</a> - These email and text messages are to remind the event attendee of their upcoming enrollment call.</p>
+            
+            <p>By using Calendly Workflows, you can create the above emails and text messages to be sent X number of days/hours before the call or event. Here is a video explanation on how to set up Calendly Workflows so that when you're all done, it should look something like this.</p>
+
+            <div class="bg-[#f7f6f3] border border-transparent rounded-[10px] p-3 flex gap-3 items-start my-1">
+                <div class="w-6 h-6 flex items-center justify-center flex-shrink-0 mt-[1.5px]">
+                    <span class="text-[16.8px] leading-none emoji-icon">💡</span>
+                </div>
+                <div class="text-[16px] leading-[1.5] w-full min-w-0">
+                    As a note for your email reminders, you'll likely want to make sure these are all unchecked so that it's harder for them to cancel.
+                </div>
+            </div>
+
+            <p><span class="font-semibold">We also have a GPT prompt you can use for creating event reminders:</span></p>
+
+            <a href="/smartbusinessmastermind/Event-Reminder-Emails-Texts-GPT-Prompt-27fb1b3484eb8036aa55e61f0f20935c?pvs=25" class="flex items-center px-[2px] py-[2px] hover:bg-gray-100 rounded-[4px] transition-colors w-fit group mb-4">
+                <div class="w-[24px] h-[24px] flex items-center justify-center mr-1">
+                    <span class="text-[15.4px] leading-none emoji-icon">🔔</span>
+                </div>
+                <span class="font-medium border-b border-[rgba(55,53,47,0.16)] group-hover:border-[rgba(55,53,47,0.4)] whitespace-nowrap overflow-hidden text-ellipsis leading-[1.3]">Event Reminder Emails & Texts GPT Prompt</span>
+            </a>
+
+            <h3 class="font-semibold text-[1.5em] leading-[1.3] mt-[20px]">Resetting for a New Virtual Event</h3>
+            
+            <p>When your event is over and it’s time to reset for the next one, there are a few things to do in Calendly (as well as other tasks), which you can access that <a href="https://app.process.st/workflows/New-Virtual-Event-Reset-q09_wpjq-HiOMRrG4zBJgQ/view/tasks/lXPEJB33jFT0Y33gvQlMsA" target="_blank" rel="noopener noreferrer" class="notion-link">virtual event reset checklist</a> here and click on the blue Run Workflow button to use that for your next event and/or as the basis of your own customized checklist.</p>
+
+        </div>
+    </main>
+</body>
+</html>

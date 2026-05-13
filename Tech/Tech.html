@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .emoji-icon {
+            font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
+        }
+        /* Basic Table Styles */
+        .tech-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 14px;
+        }
+        .tech-table th, .tech-table td {
+            border: 1px solid #e5e7eb; /* Tailwind gray-200 */
+            padding: 12px 16px;
+            vertical-align: top;
+        }
+    </style>
+</head>
+<body class="bg-white text-[#37352f] font-sans antialiased pb-32 relative">
+
+    <div class="absolute top-4 left-4 md:top-6 md:left-6 z-50">
+        <button onclick="history.back()" class="flex items-center text-[15px] text-gray-800 bg-white/70 hover:bg-white backdrop-blur-md px-3 py-1.5 rounded-md shadow-sm transition-all group font-medium border border-white/20">
+            <svg class="w-4 h-4 mr-1 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            Back
+        </button>
+    </div>
+
+    <main class="max-w-[900px] w-full mx-auto px-12 md:px-24 mt-24 flex flex-col gap-6">
+
+        <div class="flex flex-col items-start gap-8">
+
+            <div class="flex flex-col relative">
+                <div class="mb-4 flex">
+                    <span class="text-[78px] leading-none emoji-icon drop-shadow-sm select-none">🤖</span>
+                </div>
+                <h1 class="text-[40px] font-bold leading-[1.2] tracking-tight text-[#37352f]">Tech</h1>
+            </div>
+
+        </div>
+
+        <div class="w-full max-w-[770px] text-[16px] leading-[1.5] text-[#37352f] mt-4">
+            
+            <p class="mb-6">
+                "Tech stack" is a fancy term in the tech industry for the "stack" (collection) of technology/software you are using. So in your case, your tech stack is all the different software services you'll be using to put your virtual event together and run your mastermind.
+            </p>
+
+            <p class="mb-6">
+                Our tech stack could differ from your tech stack, especially if you've been using a certain software for a while and it can do what we need it to do - in that case, it's generally better to stick to it versus changing, especially if you have many years into it. The only reason to change would be if some feature of that software is missing or holding you back from scaling your business.
+            </p>
+
+            <p class="mb-6">
+                Thus, the purpose of this document is to list all the things you need your tech stack to do (features) so that you can evaluate whether the software you are using now or considering to use is good enough. If not, we have some recommendations.
+            </p>
+
+            <p class="mb-10">
+                <span class="font-semibold italic">Before diving into the tech, you should be making a conscious decision on whether you will be doing it yourself or hiring someone. </span>We say this because it can be overwhelming if tech is not something you’re comfortable with. The ability to approach inevitable tech issues as a challenge (running towards and embracing it) versus something you want to avoid (running away from and letting it stop you from proceeding).
+            </p>
+
+            <h2 class="font-semibold text-3xl mb-6 flex items-center">
+                <span class="emoji-icon mr-2">🤓</span> Summary
+            </h2>
+
+            <div class="w-full overflow-x-auto mb-6 border border-gray-200 rounded-md">
+                <table class="tech-table min-w-[700px]">
+                    <thead class="bg-gray-50/50">
+                        <tr>
+                            <th class="font-semibold w-[25%]">Service</th>
+                            <th class="font-semibold w-[37.5%]">Recommended</th>
+                            <th class="font-semibold w-[37.5%]">Alternatives</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="font-semibold">Landing Page Builder</td>
+                            <td><a href="https://www.gohighlevel.com/?fp_ref=smart-business-mastermind84" target="_blank" rel="noopener noreferrer" class="underline decoration-gray-400/70 underline-offset-2 hover:opacity-80 transition-opacity">HighLevel</a> ($97/mo)</td>
+                            <td><a href="https://app.kajabi.com/r/8m9Lt4D4/t/zq2wzng8" target="_blank" rel="noopener noreferrer" class="underline decoration-gray-400/70 underline-offset-2 hover:opacity-80 transition-opacity">Kajabi</a> ($150/mo and is also your Client Hub)</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Email Marketing</td>
+                            <td><a href="https://www.gohighlevel.com/?fp_ref=smart-business-mastermind84" target="_blank" rel="noopener noreferrer" class="underline decoration-gray-400/70 underline-offset-2 hover:opacity-80 transition-opacity">HighLevel</a></td>
+                            <td><a href="https://www.activecampaign.com/?_r=ME3LBR82" target="_blank" rel="noopener noreferrer" class="underline decoration-gray-400/70 underline-offset-2 hover:opacity-80 transition-opacity">ActiveCampaign</a> ($40+/mo)</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Calendar Scheduling</td>
+                            <td><a href="https://calendly.com/" target="_blank" rel="noopener noreferrer" class="underline decoration-gray-400/70 underline-offset-2 hover:opacity-80 transition-opacity">Calendly</a> ($12/mo)</td>
+                            <td>N/A</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Spreadsheet</td>
+                            <td>Google Sheets (free) if beginner and Smartsheet ($9-100/mo) if advanced.</td>
+                            <td>N/A</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Video Conferencing</td>
+                            <td>Zoom ($15/mo)</td>
+                            <td>N/A</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Drawing Pitch</td>
+                            <td>iPad ($300) and Freeform app (free)</td>
+                            <td>Google Slides (free) instead of drawing</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Credit Card Processor</td>
+                            <td>Stripe, Braintree, and PayPal (all free to setup and only charges when you have a client transaction)</td>
+                            <td>Stripe, Braintree, and PayPal (all free to setup and only charges when you have a client transaction)</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Client Contracts</td>
+                            <td><a href="https://www.gohighlevel.com/?fp_ref=smart-business-mastermind84" target="_blank" rel="noopener noreferrer" class="underline decoration-gray-400/70 underline-offset-2 hover:opacity-80 transition-opacity">HighLevel</a></td>
+                            <td><a href="http://esignatures.io/" target="_blank" rel="noopener noreferrer" class="underline decoration-gray-400/70 underline-offset-2 hover:opacity-80 transition-opacity">eSignatures.io</a> (pay as you go $1/contract)</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Client Hub</td>
+                            <td><a href="https://www.gohighlevel.com/?fp_ref=smart-business-mastermind84" target="_blank" rel="noopener noreferrer" class="underline decoration-gray-400/70 underline-offset-2 hover:opacity-80 transition-opacity">HighLevel</a> and/or <a href="https://www.notion.so/" target="_blank" rel="noopener noreferrer" class="underline decoration-gray-400/70 underline-offset-2 hover:opacity-80 transition-opacity">Notion</a> (free for up to 10 guests/clients or $10/mo for up to 100 guests/clients)</td>
+                            <td><a href="https://app.kajabi.com/r/8m9Lt4D4/t/zq2wzng8" target="_blank" rel="noopener noreferrer" class="underline decoration-gray-400/70 underline-offset-2 hover:opacity-80 transition-opacity">Kajabi</a> ($150/mo)</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Client Event Calendar</td>
+                            <td>Google Calendar or Airtable (both free)</td>
+                            <td>AddEvent ($36/mo)</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Client Community and Communication</td>
+                            <td>Facebook and Telegram (both free)</td>
+                            <td>Facebook and Telegram (both free)</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Texting</td>
+                            <td><a href="https://www.gohighlevel.com/?fp_ref=smart-business-mastermind84" target="_blank" rel="noopener noreferrer" class="underline decoration-gray-400/70 underline-offset-2 hover:opacity-80 transition-opacity">HighLevel</a> (around $0.01 per text)</td>
+                            <td><a href="https://clicksend.com/?u=414796" target="_blank" rel="noopener noreferrer" class="underline decoration-gray-400/70 underline-offset-2 hover:opacity-80 transition-opacity">ClickSend</a> (pay as you go $0.01 per message)</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Integration</td>
+                            <td><a href="https://www.pabbly.com/connect/" target="_blank" rel="noopener noreferrer" class="underline decoration-gray-400/70 underline-offset-2 hover:opacity-80 transition-opacity">Pabbly Connect</a> ($20/mo and user friendly) or Make ($11/mo but for advanced users). Both of these are much cheaper as usage increases compared to Zapier.</td>
+                            <td><a href="https://zapier.com/" target="_blank" rel="noopener noreferrer" class="underline decoration-gray-400/70 underline-offset-2 hover:opacity-80 transition-opacity">Zapier</a> ($30/mo)</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Knowledge Base</td>
+                            <td><a href="https://www.notion.so/" target="_blank" rel="noopener noreferrer" class="underline decoration-gray-400/70 underline-offset-2 hover:opacity-80 transition-opacity">Notion</a> (free plan will suffice for internal knowledge base)</td>
+                            <td><a href="https://www.notion.so/" target="_blank" rel="noopener noreferrer" class="underline decoration-gray-400/70 underline-offset-2 hover:opacity-80 transition-opacity">Notion</a> (free plan will suffice for internal knowledge base)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="mb-10">
+                Before we get into the details, here is a summary table view of the tech stack you’ll need. We have suggestions if you’re on a budget and just need the bare minimum and recommended if you have a little more to invest into your infrastructure.
+            </p>
+
+            <h3 class="font-semibold text-2xl mb-6 flex items-center">
+                <span class="emoji-icon mr-2">🌐</span> Landing Page Builder
+            </h3>
+
+            <p class="mb-6">
+                You'll want a relatively easy-to-use software that creates and build your landing pages, which primarily will be your event registration webpage and your guest pass webpage. What criteria do you need your landing page builder to fulfill? Review the <a href="/smartbusinessmastermind/Webpage-Scorecard-e3ae3589b0dc4e41852386a73c19c0b9?pvs=24" class="inline-flex items-center text-gray-800 hover:bg-gray-100 px-1 rounded transition-colors font-medium border-b border-gray-300 hover:border-gray-400"><span class="emoji-icon mr-1.5">💯</span> Webpage Scorecard</a> and make sure your software of choice can do that.
+            </p>
+
+            <p class="mb-6">
+                Generally basic website builders like Squarespace and Wix (as this sentence is being written 10/16/23) will NOT be able to do everything on the scorecard. If you have either of those services already, you can give it a shot to see if they have newer features that allow it. But if you aren’t currently using either of those, it’s not recommended to switch to them if you’re considering reducing cost.
+            </p>
+
+            <p class="mb-6">
+                For us, we like websites built on WordPress using the <a href="https://elementor.com/" target="_blank" rel="noopener noreferrer" class="underline decoration-gray-400/70 underline-offset-2 hover:opacity-80 transition-opacity">Elementor Theme</a> because it's relatively inexpensive and gives us maximum flexibility.
+            </p>
+
+            <p class="mb-10">
+                However, if you don’t have an existing landing page builder, we recommend using the one in <a href="https://www.gohighlevel.com/?fp_ref=smart-business-mastermind84" target="_blank" rel="noopener noreferrer" class="underline decoration-gray-400/70 underline-offset-2 hover:opacity-80 transition-opacity">HighLevel</a>.
+            </p>
+
+            <h3 class="font-semibold text-2xl mb-6 flex items-center">
+                <span class="emoji-icon mr-2">📨</span> Email Marketing Service (EMS) or Customer Relationship Manager (CRM)
+            </h3>
+
+            <p class="mb-6">
+                When people "opt-in" and give you their name and contact info, you'll want to add their information to an EMS or CRM that has the ability to keep a database/list of your prospects and send them email. If you don't have one already, we recommend using the one in <a href="https://www.gohighlevel.com/?fp_ref=smart-business-mastermind84" target="_blank" rel="noopener noreferrer" class="underline decoration-gray-400/70 underline-offset-2 hover:opacity-80 transition-opacity">HighLevel</a>. If you already have one, you should probably stick with it as most EMS/CRMs these days have sufficient email sending capabilities and it’s a huge pain to move your email list. However, these are some features to keep in mind:
+            </p>
+
+            <ul class="space-y-2 mb-6 pl-1">
+                <li class="flex items-start">
+                    <span class="mr-2 mt-0.5">•</span>
+                    <span class="flex-1">Custom fields or tagging - You'll want the ability to add a custom field or tag someone. For virtual events, this is useful so that you can mark someone in the system as registered specifically for a certain virtual event of yours and into detail if they registered for the event but did not book a call.</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="mr-2 mt-0.5">•</span>
+                    <span class="flex-1">Automated email sequence - In the example above, if they registered for the event but did not book a call, you'll want to send them automated emails.</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="mr-2 mt-0.5">•</span>
+                    <span class="flex-1">Ability to integrate with integration software - More on that later in the Integration section.</span>
+                </li>
+            </ul>
+
+            <p class="mb-10">
+                If you’re just starting out, you don’t necessarily need an EMS or CRM. You can track everyone on a free Google Sheet spreadsheet and just send email to everyone via bcc. For example, Gmail allows you to bcc up to 500 people within a 24 hour period.
+            </p>
+
+            <h3 class="font-semibold text-2xl mb-6 flex items-center">
+                <span class="emoji-icon mr-2">🗓️</span> Calendar Scheduling
+            </h3>
+
+            <p class="mb-6">
+                For virtual events, we have guests schedule a call with the interviewer (as part of event registration) and the enroller (for sales/enrollment). To book those calls, you'll need scheduling software. We love Calendly for its simplicity and features:
+            </p>
+
+            <ul class="space-y-2 mb-6 pl-1">
+                <li class="flex items-start">
+                    <span class="mr-2 mt-0.5">•</span>
+                    <span class="flex-1">Embeds well into the landing page</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="mr-2 mt-0.5">•</span>
+                    <span class="flex-1">Easy experience for someone to book a call</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="mr-2 mt-0.5">•</span>
+                    <span class="flex-1">Both email and text message reminders - very important feature or else people will be late or forget.</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="mr-2 mt-0.5">•</span>
+                    <span class="flex-1">If you are an advanced user, another feature that is helpful is UTM tracking so that you can track the traffic source for your bookings. This isn’t necessary at the beginning, but will be important as you scale.</span>
+                </li>
+            </ul>
+
+            <h3 class="font-semibold text-2xl mb-6 flex items-center">
+                <span class="emoji-icon mr-2">📓</span> Tracking Customer Journey
+            </h3>
+
+            <p class="mb-10">
+                You will want software or some way that can track your customer's journey from entering your event funnel (when they register for your event on your landing page) all the way through to the enrollment call (when they hopefully become your customer). Using spreadsheet software like Google Sheets is great for that (see our <a href="https://docs.google.com/spreadsheets/d/1Htvt9RZhaikW1V1qBoogUmH4B8TSptYCsUx4-V9BRZ0/edit#gid=1034177061" target="_blank" rel="noopener noreferrer" class="underline decoration-gray-400/70 underline-offset-2 hover:opacity-80 transition-opacity">Event Tracker</a> for example) or you can use <a href="https://www.smartsheet.com/customers-home" target="_blank" rel="noopener noreferrer" class="underline decoration-gray-400/70 underline-offset-2 hover:opacity-80 transition-opacity">Smartsheet</a> if you're an advanced spreadsheet lover.
+            </p>
+
+            <h3 class="font-semibold text-2xl mb-6 flex items-center">
+                <span class="emoji-icon mr-2">🎥</span> Video Conferencing
+            </h3>
+
+            <p class="mb-10">
+                This is the software you use to run the event. Zoom is by far the best choice because it's easy for the guest to use and it's reliable and won't break. We don't recommend any other software than Zoom, so we won't list the features you'll need for video conferencing because this is practically a non-negotiable if you want a smoothly run virtual event.
+            </p>
+
+            <h3 class="font-semibold text-2xl mb-6 flex items-center">
+                <span class="emoji-icon mr-2">🎨</span> Drawing the Pitch
+            </h3>
+
+            <p class="mb-10">
+                You'll want an iPad and stylus (doesn't need to be an expensive Apple Pencil) to draw your pitch. Adam uses Notability app, but that was way before Apple recently released its native free drawing app Freeform that's built into the iPad. Then from there, you'll be able to broadcast it via screenshare onto Zoom without any additional software (it's a Zoom feature to do that).
+            </p>
+
+            <h3 class="font-semibold text-2xl mb-6 flex items-center">
+                <span class="emoji-icon mr-2">💳</span> Credit Card Processor
+            </h3>
+
+            <p class="mb-6">
+                You'll be enrolling clients over Zoom during your enrollment/feedback calls and often times they'll be paying with credit card. This means you'll be taking their credit card info verbally over Zoom and punching it into your credit card processor for payment. You’ll also want the ability for recurring billing as often times you’ll be taking an initial deposit and then monthly payments. Most payment processors don’t charge anything to get an account setup nor monthly fees and only take fees on the credit cards processed, so you’ll want to get these accounts set up as soon as possible.
+            </p>
+
+            <ul class="space-y-4 mb-10 pl-1">
+                <li class="flex items-start">
+                    <span class="mr-2 mt-0.5">1.</span>
+                    <span class="flex-1"><a href="https://stripe.com/" target="_blank" rel="noopener noreferrer" class="underline decoration-gray-400/70 underline-offset-2 hover:opacity-80 transition-opacity">Stripe</a> - If you don’t have a payment processor yet, this is a good first one to get if you’re just starting out. It’s fast and easy to get set up and running to take credit cards.</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="mr-2 mt-0.5">2.</span>
+                    <span class="flex-1"><a href="https://www.braintreepayments.com/" target="_blank" rel="noopener noreferrer" class="underline decoration-gray-400/70 underline-offset-2 hover:opacity-80 transition-opacity">Braintree</a> - Sooner than later, you’ll want to start getting an account set up at Braintree (or at least some other secondary processor). You always want more than one processor as backup in case any issues come up because you never want to be in a position where you’re not able to process new client payments. What’s great about Braintree is that you can create user accounts for your enrollers that allow them to charge a customer’s card without giving them access to your entire account, which you can’t do natively in Stripe.</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="mr-2 mt-0.5">3.</span>
+                    <span class="flex-1"><a href="https://paypal.com/" target="_blank" rel="noopener noreferrer" class="underline decoration-gray-400/70 underline-offset-2 hover:opacity-80 transition-opacity">PayPal</a> - Some people do want to pay using PayPal (or PayPal Credit), so it’ll be a good idea to have an account here too.</span>
+                </li>
+            </ul>
+
+            <h3 class="font-semibold text-2xl mb-6 flex items-center">
+                <span class="emoji-icon mr-2">📝</span> Client Contracts
+            </h3>
+
+            <p class="mb-10">
+                You will need software that you can upload your client contract template and easily generate at scale a personalized contract for each client (one for Bob with his info, another one for Sally with her info, etc.) for them to electronically sign. It can be a link you send them or preferably the software will generate an email and send it to them by itself. See the <a href="https://www.craft.do/s/JwL6ggAdXLwDjq" target="_blank" rel="noopener noreferrer" class="underline decoration-gray-400/70 underline-offset-2 hover:opacity-80 transition-opacity">Preparing the Client Agreements</a> section for details on <a href="http://esignatures.io/" target="_blank" rel="noopener noreferrer" class="underline decoration-gray-400/70 underline-offset-2 hover:opacity-80 transition-opacity">eSignatures.io</a>, the pay as you go software we recommend. However, if you are getting or already have <a href="https://www.gohighlevel.com/?fp_ref=smart-business-mastermind84" target="_blank" rel="noopener noreferrer" class="underline decoration-gray-400/70 underline-offset-2 hover:opacity-80 transition-opacity">HighLevel</a>, then they have a good enough client contract electronic signature feature.
+            </p>
+
+            <h3 class="font-semibold text-2xl mb-6 flex items-center">
+                <span class="emoji-icon mr-2">📺</span> Hosting Your Product Deliverables
+            </h3>
+
+            <p class="mb-10">
+                Typically as part of your offer/package, your client will get access to training videos and other resources. We often call that the "hub" or "back office" for the client. This needs to be behind a password protected website where they can easily watch your content organized nicely into sections. If you’re getting or have <a href="https://www.gohighlevel.com/?fp_ref=smart-business-mastermind84" target="_blank" rel="noopener noreferrer" class="underline decoration-gray-400/70 underline-offset-2 hover:opacity-80 transition-opacity">HighLevel</a>, then use their Product feature. <a href="https://kajabi.com/?utm_campaign=home_trial&amp;utm_content=750&amp;utm_medium=affiliate&amp;utm_source=Adam+Flores" target="_blank" rel="noopener noreferrer" class="underline decoration-gray-400/70 underline-offset-2 hover:opacity-80 transition-opacity">Kajabi</a> would be the alternative if you like their look and feel. You can also get away with using Notion (see <a href="/smartbusinessmastermind/Client-Hub-6706599b377747c5a719db45e16fb1c7?pvs=24" class="inline-flex items-center text-gray-800 hover:bg-gray-100 px-1 rounded transition-colors font-medium border-b border-gray-300 hover:border-gray-400"><span class="emoji-icon mr-1.5">🏠</span> Client Hub</a>), which you’ll want to use for your knowledge base as well.
+            </p>
+
+            <h3 class="font-semibold text-2xl mb-6 flex items-center">
+                <span class="emoji-icon mr-2">🗓️</span> Event Calendar
+            </h3>
+
+            <p class="mb-10">
+                You will need a way to list your events on a calendar so that clients can see when the next training is coming up either as a standalone or overlay onto their calendar. An additional feature that’s nice is the ability to click a button and add any event they’d like to attend onto their calendar. You can do this with Google Calendar (it’s difficult and the calendar is ugly, but it’s free) or AirTable (also free and is a good but not great calendar). The best looking calendar though is <a href="https://www.addevent.com/" target="_blank" rel="noopener noreferrer" class="underline decoration-gray-400/70 underline-offset-2 hover:opacity-80 transition-opacity">AddEvent</a>, but it’s not free.
+            </p>
+
+            <h3 class="font-semibold text-2xl mb-6 flex items-center">
+                <span class="emoji-icon mr-2">📱</span> Community
+            </h3>
+
+            <p class="mb-10">
+                We use a private Facebook Group as a way for clients to submit their homework and get a little more personalized thread for any support or question. But to truly build community, you will want software that your clients can easily instant message and chat with you and/or the other members. This is where true "community" is built and felt online. We highly recommend <a href="/smartbusinessmastermind/95996981c781417a8c3f300a22c987d3?pvs=25" target="_blank" rel="noopener noreferrer" class="underline decoration-gray-400/70 underline-offset-2 hover:opacity-80 transition-opacity">Telegram</a> for this. Alternatives would be WhatsApp or Discord.
+            </p>
+
+            <h3 class="font-semibold text-2xl mb-6 flex items-center">
+                <span class="emoji-icon mr-2">💬</span> Texting
+            </h3>
+
+            <p class="mb-6">
+                A big reason we like <a href="https://www.gohighlevel.com/?fp_ref=smart-business-mastermind84" target="_blank" rel="noopener noreferrer" class="underline decoration-gray-400/70 underline-offset-2 hover:opacity-80 transition-opacity">HighLevel</a> is that they can integrate texting into your CRM, which is especially important for SMS reminders for your virtual event.
+            </p>
+
+            <p class="mb-6">
+                If you’re not using HighLevel and are looking for a standalone texting service, we like <a href="https://www.clicksend.com/us/" target="_blank" rel="noopener noreferrer" class="underline decoration-gray-400/70 underline-offset-2 hover:opacity-80 transition-opacity">ClickSend</a> because it's a low price per text, they have a pay as you go so no monthly plan is needed, and it's a webapp that anyone can use (you, your assistant, etc.) and not tied to your specific phone for example. If you are just starting out, you can use your own phone to text or <a href="https://textfree.us/" target="_blank" rel="noopener noreferrer" class="underline decoration-gray-400/70 underline-offset-2 hover:opacity-80 transition-opacity">download some free texting app</a>.
+            </p>
+
+            <p class="mb-10">
+                If you are texting Texas residents or especially if you are a Texas based business, you will need to comply with their state regulations (see <a href="/smartbusinessmastermind/SMS-Compliance-2aab1b3484eb801ba685c73b98a61ba6?pvs=24" class="inline-flex items-center text-gray-800 hover:bg-gray-100 px-1 rounded transition-colors font-medium border-b border-gray-300 hover:border-gray-400"><span class="emoji-icon mr-1.5">🚷</span> SMS Compliance</a>).
+            </p>
+
+            <h3 class="font-semibold text-2xl mb-6 flex items-center">
+                <span class="emoji-icon mr-2">⚙️</span> Integration
+            </h3>
+
+            <p class="mb-6">
+                And finally to piece your software stack together, you'll need integration software. Maybe not so much at the beginning, but as you grow you’ll eventually want integration software to automate and streamline your processes. This is what passes data from one software to another. Imagine each piece of software as a person from a different country speaking a different native language.
+            </p>
+
+            <p class="mb-6">
+                If your landing page builder is an American who only speaks English and your EMS is a French who only speaks French, how is the American landing page builder going to tell your French EMS that here is the name, email, and phone number of your guest to enter into your system if they don't speak the same language? That's what integration software does. It allows you to integrate your tech stack together so that data like the example above can be passed through from one software to another.
+            </p>
+
+            <p class="mb-10">
+                Zapier is the most robust, widely accepted, and easiest to use, but it's expensive. An alternative would be <a href="https://www.pabbly.com/connect/" target="_blank" rel="noopener noreferrer" class="underline decoration-gray-400/70 underline-offset-2 hover:opacity-80 transition-opacity">Pabbly Connect</a>. Very similar to Zapier in ease of use and MUCH cheaper, but it can be finicky and might not be integrated with all your tech stack. The final option is Make, but this is super techie and not recommended unless you are an advanced user, but inexpensive like Pabbly.
+            </p>
+
+            <h3 class="font-semibold text-2xl mb-6 flex items-center">
+                <span class="emoji-icon mr-2">⚠️</span> All-in-one Software Warning <span class="emoji-icon ml-2">⚠️</span>
+            </h3>
+
+            <p class="mb-10">
+                If you are using one software that does all of the above in this document (HighLevel may be an example of one), then you might not need integration software. However, keep in mind (warning) that most all-in-one software work when you’re a beginner, but you’ll likely outgrow it as your business grows because it’s rare any all-in-one will do what you need it to do (nor do each component well) when you’re at more advanced stages in your business. A Swiss Army knife is good enough for everything at the beginning, but eventually you’ll need a surgical scalpel for certain things and outgrow an all-in-one.
+            </p>
+
+            <h3 class="font-semibold text-2xl mb-6 flex items-center">
+                <span class="emoji-icon mr-2">🧠</span> Knowledge Base
+            </h3>
+
+            <p class="mb-10">
+                You will want a place to document your internal systems and processes like a company handbook or manual. Doing so will help get everything about your business onto “paper” so that it can be preserved permanently for yourself, your team, and new hires. <a href="https://www.notion.so/" target="_blank" rel="noopener noreferrer" class="underline decoration-gray-400/70 underline-offset-2 hover:opacity-80 transition-opacity">Notion</a> is a great easy to use app (like a more organized version of Google Docs) for this purpose.
+            </p>
+
+            <h2 class="font-semibold text-3xl mb-6">Not Necessary, But Nice to Have Tools</h2>
+
+            <p class="mb-6">
+                <a href="https://app.boards.com/" target="_blank" rel="noopener noreferrer" class="underline decoration-gray-400/70 underline-offset-2 hover:opacity-80 transition-opacity">Boards</a>
+            </p>
+
+            <p class="mb-10">
+                <a href="https://www.loom.com/" target="_blank" rel="noopener noreferrer" class="underline decoration-gray-400/70 underline-offset-2 hover:opacity-80 transition-opacity">Loom</a> or <a href="https://www.awesomescreenshot.com/" target="_blank" rel="noopener noreferrer" class="underline decoration-gray-400/70 underline-offset-2 hover:opacity-80 transition-opacity">Awesome Screenshot</a>
+            </p>
+
+            <div class="flex flex-col space-y-1 w-full max-w-[770px] mt-10">
+                
+                <a href="/smartbusinessmastermind/GoHighLevel-034d940ae5fa4129b1417de3350810d1?pvs=25" class="group flex items-center px-1.5 py-1 hover:bg-gray-100 rounded-[4px] transition-colors duration-200 w-fit">
+                    <div class="w-6 h-6 flex items-center justify-center mr-1 flex-shrink-0 relative">
+                        <span class="text-[15px] emoji-icon">🚀</span>
+                    </div>
+                    <span class="text-[15px] font-medium leading-tight underline decoration-gray-400/70 underline-offset-2">GoHighLevel</span>
+                </a>
+
+                <a href="/smartbusinessmastermind/Domain-dec54036e5f945f6864b9a220acfc93f?pvs=25" class="group flex items-center px-1.5 py-1 hover:bg-gray-100 rounded-[4px] transition-colors duration-200 w-fit">
+                    <div class="w-6 h-6 flex items-center justify-center mr-1 flex-shrink-0 relative">
+                        <span class="text-[15px] emoji-icon">🎨</span>
+                    </div>
+                    <span class="text-[15px] font-medium leading-tight underline decoration-gray-400/70 underline-offset-2">Domain</span>
+                </a>
+
+                <a href="/smartbusinessmastermind/SMS-Compliance-2aab1b3484eb801ba685c73b98a61ba6?pvs=25" class="group flex items-center px-1.5 py-1 hover:bg-gray-100 rounded-[4px] transition-colors duration-200 w-fit">
+                    <div class="w-6 h-6 flex items-center justify-center mr-1 flex-shrink-0 relative">
+                        <span class="text-[15px] emoji-icon">🚷</span>
+                    </div>
+                    <span class="text-[15px] font-medium leading-tight underline decoration-gray-400/70 underline-offset-2">SMS Compliance</span>
+                </a>
+
+                <a href="/smartbusinessmastermind/Webpage-Scorecard-e3ae3589b0dc4e41852386a73c19c0b9?pvs=25" class="group flex items-center px-1.5 py-1 hover:bg-gray-100 rounded-[4px] transition-colors duration-200 w-fit">
+                    <div class="w-6 h-6 flex items-center justify-center mr-1 flex-shrink-0 relative">
+                        <span class="text-[15px] emoji-icon">💯</span>
+                    </div>
+                    <span class="text-[15px] font-medium leading-tight underline decoration-gray-400/70 underline-offset-2">Webpage Scorecard</span>
+                </a>
+
+                <a href="/smartbusinessmastermind/Calendar-Booking-4448639cb4644e39aeaaf7772e42ccc4?pvs=25" class="group flex items-center px-1.5 py-1 hover:bg-gray-100 rounded-[4px] transition-colors duration-200 w-fit">
+                    <div class="w-6 h-6 flex items-center justify-center mr-1 flex-shrink-0 relative">
+                        <span class="text-[15px] emoji-icon">🗓️</span>
+                    </div>
+                    <span class="text-[15px] font-medium leading-tight underline decoration-gray-400/70 underline-offset-2">Calendar Booking</span>
+                </a>
+
+                <a href="/smartbusinessmastermind/Video-Conferencing-759fbce9c679424c96bbd1ac05b6e631?pvs=25" class="group flex items-center px-1.5 py-1 hover:bg-gray-100 rounded-[4px] transition-colors duration-200 w-fit">
+                    <div class="w-6 h-6 flex items-center justify-center mr-1 flex-shrink-0 relative">
+                        <span class="text-[15px] emoji-icon">💻</span>
+                    </div>
+                    <span class="text-[15px] font-medium leading-tight underline decoration-gray-400/70 underline-offset-2">Video Conferencing</span>
+                </a>
+
+                <a href="/smartbusinessmastermind/Client-Hub-6706599b377747c5a719db45e16fb1c7?pvs=25" class="group flex items-center px-1.5 py-1 hover:bg-gray-100 rounded-[4px] transition-colors duration-200 w-fit">
+                    <div class="w-6 h-6 flex items-center justify-center mr-1 flex-shrink-0 relative">
+                        <span class="text-[15px] emoji-icon">🏠</span>
+                    </div>
+                    <span class="text-[15px] font-medium leading-tight underline decoration-gray-400/70 underline-offset-2">Client Hub</span>
+                </a>
+
+                <a href="/smartbusinessmastermind/Referral-Tracking-abf9af9d449243ce90951db145818970?pvs=25" class="group flex items-center px-1.5 py-1 hover:bg-gray-100 rounded-[4px] transition-colors duration-200 w-fit">
+                    <div class="w-6 h-6 flex items-center justify-center mr-1 flex-shrink-0 relative">
+                        <span class="text-[15px] emoji-icon">👣</span>
+                    </div>
+                    <span class="text-[15px] font-medium leading-tight underline decoration-gray-400/70 underline-offset-2">Referral Tracking</span>
+                </a>
+
+            </div>
+
+        </div>
+    </main>
+</body>
+</html>

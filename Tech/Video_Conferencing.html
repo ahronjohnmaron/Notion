@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Conferencing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .emoji-icon {
+            font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
+        }
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d1d5db;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #9ca3af;
+        }
+        .notion-link {
+            text-decoration: underline;
+            text-decoration-thickness: 0.05em;
+            text-decoration-color: rgba(55, 53, 47, 0.4);
+            text-underline-offset: 2px;
+            opacity: 0.7;
+            transition: opacity 0.2s ease, text-decoration-color 0.2s ease;
+        }
+        .notion-link:hover {
+            opacity: 1;
+            text-decoration-color: rgba(55, 53, 47, 0.8);
+        }
+        .notion-link-strong {
+            text-decoration: underline;
+            text-decoration-thickness: 0.05em;
+            text-decoration-color: rgba(55, 53, 47, 0.4);
+            text-underline-offset: 2px;
+            transition: opacity 0.2s ease, text-decoration-color 0.2s ease;
+        }
+        .notion-link-strong:hover {
+            text-decoration-color: rgba(55, 53, 47, 0.8);
+        }
+    </style>
+</head>
+<body class="bg-white text-[#37352f] font-sans antialiased pb-32 relative selection:bg-[#cce2ff] selection:text-[#37352f]">
+
+    <div class="absolute top-4 left-4 md:top-6 md:left-6 z-50">
+        <button onclick="history.back()" class="flex items-center text-[15px] text-gray-800 bg-white/70 hover:bg-white backdrop-blur-md px-3 py-1.5 rounded-md shadow-sm transition-all group font-medium border border-white/20">
+            <svg class="w-4 h-4 mr-1 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            Back
+        </button>
+    </div>
+
+    <main class="max-w-[900px] w-full mx-auto px-6 md:px-12 lg:px-24 mt-24 flex flex-col gap-6">
+
+        <div class="flex flex-col items-start gap-6">
+            <div class="flex flex-col relative">
+                <div class="mb-4 flex">
+                    <span class="text-[78px] leading-none emoji-icon drop-shadow-sm select-none">💻</span>
+                </div>
+                <h1 class="text-[40px] font-bold leading-[1.2] tracking-tight text-[#37352f]">Video Conferencing</h1>
+            </div>
+        </div>
+
+        <div class="w-full max-w-[770px] text-[16px] leading-[1.5] text-[#37352f] mt-2 flex flex-col gap-[12px]">
+
+            <p>Zoom is the video conferencing software we'll be using to run the interviews, live events, and enrollments. There’s other out there, but we love Zoom because it’s robust and a lot of people (like your guests) are already familiar with how to use it.</p>
+
+            <h2 class="font-semibold text-[1.875em] leading-[1.3] mt-[24px]">Zoom Setup</h2>
+            
+            <p>The first step is getting your Zoom account(s) created and set up properly.</p>
+
+            <div class="h-1"></div>
+
+            <div class="flex flex-col gap-1 w-full max-w-[770px]">
+                <a href="/smartbusinessmastermind/Zoom-Set-Up-065ded144b2843d096a20ea3170fa5cb?pvs=25" class="flex items-center px-[2px] py-[2px] hover:bg-gray-100 rounded-[4px] transition-colors w-fit group">
+                    <div class="w-[24px] h-[24px] flex items-center justify-center mr-1">
+                        <span class="text-[15.4px] leading-none emoji-icon">📽️</span>
+                    </div>
+                    <span class="font-medium border-b border-[rgba(55,53,47,0.16)] group-hover:border-[rgba(55,53,47,0.4)] whitespace-nowrap overflow-hidden text-ellipsis leading-[1.3]">Zoom Set Up</span>
+                </a>
+            </div>
+
+            <h2 class="font-semibold text-[1.875em] leading-[1.3] mt-[24px]">Live Event Preparation and Rehearsal</h2>
+            
+            <p>It is important to do a Zoom live event rehearsal so that you are familiar with the tech nuances prior to the actual event. Here are some things to set up or practice through:</p>
+
+            <div class="flex flex-col gap-1">
+                <div class="flex items-start pl-[2px]">
+                    <div class="text-center whitespace-nowrap flex items-center justify-center flex-shrink-0 min-h-[1.5em] h-[28px] w-[24px]">
+                        1.
+                    </div>
+                    <div class="flex-1 min-w-[1px] pl-[6px] pt-[2px]">
+                        <span class="font-semibold">Logging into the right Zoom account </span>- Be sure to log into your Zoom application using the right Zoom account that the live event meeting was created under.
+                    </div>
+                </div>
+                <div class="flex items-start pl-[2px]">
+                    <div class="text-center whitespace-nowrap flex items-center justify-center flex-shrink-0 min-h-[1.5em] h-[28px] w-[24px]">
+                        2.
+                    </div>
+                    <div class="flex-1 min-w-[1px] pl-[6px] pt-[2px]">
+                        <span class="font-semibold">Before event starts waiting screen</span> - Not critical, but a nice-to-have thing prepared is something for the attendees to see or watch/listen to while they are waiting for the event to begin. The easiest thing you can do is to share you screen on a graphic or slide with your logo that says Event Starting Soon. You can also add music playing in the background. A more advanced strategy is playing a video loop of testimonials or any promotional material to further increase credibility and get the attendees hyped up for the event to start.
+                    </div>
+                </div>
+                <div class="flex items-start pl-[2px]">
+                    <div class="text-center whitespace-nowrap flex items-center justify-center flex-shrink-0 min-h-[1.5em] h-[28px] w-[24px]">
+                        3.
+                    </div>
+                    <div class="flex-1 min-w-[1px] pl-[6px] pt-[2px]">
+                        <span class="font-semibold">Playing audio from your computer</span> - If you are going to be playing a video or music from your computer, by default the attendees won't be able to hear the sound unless you follow these <a href="https://support.zoom.us/hc/en-us/articles/201362643-Sharing-computer-sound-in-a-screen-share" target="_blank" rel="noopener noreferrer" class="notion-link">Zoom instructions on sharing sound</a>. Altenatively, you can play music from your phone and put it up to your computer. Music will be useful during the breaks or during exercises, so have your (royalty free) music and playlists identified and ready on your computer, Spotify, or YouTube Premium (so no commercial interruptions versus the free YouTube). Also if you search “Tony Robbins music” or “conference” in Spotify, you’ll find curated playlists and many ideas.
+                    </div>
+                </div>
+                <div class="flex items-start pl-[2px]">
+                    <div class="text-center whitespace-nowrap flex items-center justify-center flex-shrink-0 min-h-[1.5em] h-[28px] w-[24px]">
+                        4.
+                    </div>
+                    <div class="flex-1 min-w-[1px] pl-[6px] pt-[2px]">
+                        <span class="font-semibold">Assigning a co-host</span> - Once you've started the meeting, <a href="https://support.zoom.us/hc/en-us/articles/206330935-Enabling-and-adding-a-co-host#h_9c3ee7f2-b70c-4061-8dcf-00dd836b2075" target="_blank" rel="noopener noreferrer" class="notion-link">assign someone to be a co-host</a> if you have someone on your team to help you with waiting room and breakout rooms.
+                    </div>
+                </div>
+                <div class="flex items-start pl-[2px]">
+                    <div class="text-center whitespace-nowrap flex items-center justify-center flex-shrink-0 min-h-[1.5em] h-[28px] w-[24px]">
+                        5.
+                    </div>
+                    <div class="flex-1 min-w-[1px] pl-[6px] pt-[2px]">
+                        <span class="font-semibold">Waiting room</span> - If you don't have a helper for managing Zoom, you may want to disable the waiting room feature so that people can easily enter the room; otherwise, you will have to pay attention to a pop-up on your Zoom screen that someone is in the waiting room and let them in. This can be hard to monitor and teach at the same time. Ideally though, you have the waiting room feature enabled for security purposes so that not just anyone can come in and Zoom bomb your meeting. The main purpose of the waiting room though is to see who is coming in so that your co-host helper can mark on the event tracker who is here and text all the people who haven't arrived yet (even though you should have automated text reminders prior to the event).
+                    </div>
+                </div>
+                <div class="flex items-start pl-[2px]">
+                    <div class="text-center whitespace-nowrap flex items-center justify-center flex-shrink-0 min-h-[1.5em] h-[28px] w-[24px]">
+                        6.
+                    </div>
+                    <div class="flex-1 min-w-[1px] pl-[6px] pt-[2px]">
+                        <span class="font-semibold">Breakout rooms</span> - You will need at least 3 or so people to practice breakout rooms, so if necessary join your live event meeting practice session from your different devices (desktop, laptop, tablet, and/or phone) to get enough attendees in the meeting. To intiate breakout rooms, just follow these <a href="https://support.zoom.us/hc/en-us/articles/206476313" target="_blank" rel="noopener noreferrer" class="notion-link">Zoom instructions on breakout rooms</a> (watch the video). There could be a maximum of 50 breakout rooms, so if you have 200 attendees for example, having 4 people to a room could be an issue being so close to that limit and you may want to increase it to 5 people per room and get the number of rooms closer to 40.
+                    </div>
+                </div>
+                <div class="flex items-start pl-[2px]">
+                    <div class="text-center whitespace-nowrap flex items-center justify-center flex-shrink-0 min-h-[1.5em] h-[28px] w-[24px]">
+                        7.
+                    </div>
+                    <div class="flex-1 min-w-[1px] pl-[6px] pt-[2px]">
+                        <span class="font-semibold">iPad screensharing for the pitch</span> - The last and most important part to practice is to make sure you can properly screenshare your iPad so that you can do your pitch from it using the software of your choice, such as Apple’s native <a href="https://apps.apple.com/us/app/freeform/id6443742539" target="_blank" rel="noopener noreferrer" class="notion-link">Freeform</a> (Zoom whiteboard is not recommended). Here is a <a href="https://www.youtube.com/watch?v=2sRFq2w2nwI" target="_blank" rel="noopener noreferrer" class="notion-link">video on how to share your iPad</a> onto Zoom for attendees to see. A couple of common troubleshooting issues is that your iPad must be on the same (wireless) network as the computer for your Zoom meeting and make sure you have the <a href="https://support.zoom.us/hc/en-us/articles/201362233-Upgrading-Zoom-to-the-latest-version" target="_blank" rel="noopener noreferrer" class="notion-link">latest version of Zoom</a> on your computer and iPad.
+                    </div>
+                </div>
+                <div class="flex items-start pl-[2px]">
+                    <div class="text-center whitespace-nowrap flex items-center justify-center flex-shrink-0 min-h-[1.5em] h-[28px] w-[24px]">
+                        8.
+                    </div>
+                    <div class="flex-1 min-w-[1px] pl-[6px] pt-[2px]">
+                        <span class="font-semibold">Cloud recording</span> - If you set up Zoom correctly, the event should have automatically recorded to the cloud. Check to make sure it recorded correctly with the intended views (gallery, active speaker, shared screen, etc.)
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="font-semibold text-[1.875em] leading-[1.3] mt-[24px]">Zoom Features and Etiquette</h2>
+
+            <p>Something you may want to incorporate into the beginning of your live event as part of the housekeeping is educating your audience on how to use Zoom:</p>
+
+            <div class="flex flex-col gap-1">
+                <div class="flex items-start pl-[2px]">
+                    <div class="text-center whitespace-nowrap flex items-center justify-center flex-shrink-0 min-h-[1.5em] h-[28px] w-[24px]">
+                        1.
+                    </div>
+                    <div class="flex-1 min-w-[1px] pl-[6px] pt-[2px]">
+                        How to raise hand to ask questions.
+                    </div>
+                </div>
+                <div class="flex items-start pl-[2px]">
+                    <div class="text-center whitespace-nowrap flex items-center justify-center flex-shrink-0 min-h-[1.5em] h-[28px] w-[24px]">
+                        2.
+                    </div>
+                    <div class="flex-1 min-w-[1px] pl-[6px] pt-[2px]">
+                        How to (un)mute themselves for participation and asking questions.
+                    </div>
+                </div>
+                <div class="flex items-start pl-[2px]">
+                    <div class="text-center whitespace-nowrap flex items-center justify-center flex-shrink-0 min-h-[1.5em] h-[28px] w-[24px]">
+                        3.
+                    </div>
+                    <div class="flex-1 min-w-[1px] pl-[6px] pt-[2px]">
+                        Loading and using the chat for participation.
+                    </div>
+                </div>
+                <div class="flex items-start pl-[2px]">
+                    <div class="text-center whitespace-nowrap flex items-center justify-center flex-shrink-0 min-h-[1.5em] h-[28px] w-[24px]">
+                        4.
+                    </div>
+                    <div class="flex-1 min-w-[1px] pl-[6px] pt-[2px]">
+                        Using the reactions as a fun way to let you know how things are going.
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="font-semibold text-[1.875em] leading-[1.3] mt-[24px]">Zoom Attendance Report</h2>
+            
+            <p>One thing worth mentioning here about Zoom is that you can pull a <a href="https://zoom.us/account/my/report" target="_blank" rel="noopener noreferrer" class="notion-link">report of all the attendees</a> of your event/meeting (after filtering to pull up your meeting, <a href="https://d.pr/i/tJLABr" target="_blank" rel="noopener noreferrer" class="notion-link">click on the number in the participants column</a>). This report is handy to track attendance, especially if you don’t have a helper on during the event to track this for you.</p>
+
+        </div>
+    </main>
+</body>
+</html>
