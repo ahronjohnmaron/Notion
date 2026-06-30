@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Templates</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .emoji-icon {
+            font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
+        }
+        
+        /* Subtle animation for the page transition */
+        .animate-fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+    <link rel="icon" type="image/png" href="../../media/icon.png">
+    <link rel="icon" type="image/png" href="../../media/icon.png">
+</head>
+<body class="bg-white text-[#37352f] font-sans antialiased pb-32 relative min-h-screen selection:bg-blue-100 pt-[60px]">
+
+<!-- BREADCRUMB_START -->
+<div class="fixed top-0 left-0 right-0 h-[45px] bg-white z-40 flex items-center px-3 text-[14px] text-[#37352f] whitespace-nowrap overflow-x-auto hide-scrollbar">
+    <a href="../../home.html" class="flex items-center hover:bg-gray-100 px-1.5 py-1 rounded-[4px] transition-colors font-medium">
+        <span class="mr-1.5 text-[16px] leading-none">📙</span> SMART Business Mastermind
+    </a>
+    <span class="mx-0.5 text-gray-300 font-light">/</span>
+    <a href="../Traffic.html" class="flex items-center hover:bg-gray-100 px-1.5 py-1 rounded-[4px] transition-colors font-medium">
+        <span class="mr-1.5 text-[16px] leading-none">🛣️</span> Traffic
+    </a>
+    <span class="mx-0.5 text-gray-300 font-light">/</span>
+    <a href="LinkedIn_DM_Automation.html" class="flex items-center hover:bg-gray-100 px-1.5 py-1 rounded-[4px] transition-colors font-medium">
+        <span class="mr-1.5 text-[16px] leading-none">📁</span> LinkedIn DM Automation
+    </a>
+    <span class="mx-0.5 text-gray-300 font-light">/</span>
+    <a href="Templates.html" class="flex items-center px-1.5 py-1 hover:bg-gray-100 rounded-[4px] transition-colors text-[#37352f] font-medium">
+        <span class="mr-1.5 text-[16px] leading-none">📄</span> Templates
+    </a>
+</div>
+<!-- BREADCRUMB_END -->
+
+<!-- BACK_BUTTON_START -->
+<div class="fixed bottom-6 right-6 md:bottom-auto md:top-[65px] md:left-6 z-50">
+    <button onclick="history.back()" class="flex items-center justify-center w-12 h-12 md:w-auto md:h-auto md:px-3 md:py-1.5 rounded-full md:rounded-md bg-white text-[#37352f] shadow-lg md:shadow-sm border border-gray-200 hover:bg-gray-50 transition-all group font-medium" aria-label="Go back">
+        <svg class="w-5 h-5 md:w-4 md:h-4 md:mr-1 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+        <span class="hidden md:block text-[14px]">Back</span>
+    </button>
+</div>
+<!-- BACK_BUTTON_END -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    <main class="max-w-[850px] w-full mx-auto px-12 md:px-24 mt-28 flex flex-col gap-6 animate-fade-in">
+
+        <div class="flex flex-col items-start gap-4 mb-4">
+            <div class="mb-2">
+                <span class="text-[78px] leading-none emoji-icon select-none">💌</span>
+            </div>
+            <h1 class="text-[40px] font-bold leading-[1.2] tracking-tight text-[#37352f]">Templates</h1>
+        </div>
+
+        <div class="w-full text-[16px] leading-[1.6] text-[#37352f] space-y-6">
+            
+            <h2 class="text-[30px] font-semibold leading-[1.3] mb-6 mt-8">Campaign</h2>
+            
+            <p class="mb-8">
+                Here are the messages you can copy paste and make your own before loading them into Ottomatey.
+            </p>
+
+            <div class="space-y-6 mb-12">
+                
+                <div class="bg-gray-50/50 p-5 rounded-lg border border-gray-200">
+                    <p class="font-semibold text-lg text-[#37352f] mb-3">Step #1 - Send Connection Request</p>
+                    <p class="text-gray-600 italic">[no message necessary]</p>
+                </div>
+
+                <div class="bg-gray-50/50 p-5 rounded-lg border border-gray-200 space-y-3">
+                    <p class="font-semibold text-lg text-[#37352f]">Step #2 - Send Message</p>
+                    <p class="font-semibold text-sm text-gray-500 uppercase tracking-wider mb-4">Wait after previous step: 4h</p>
+                    <p>Hey, {first_name}! Thanks for the connection! I’m always looking to grow my network with other coaches and consultants.</p>
+                    <p>Question for you, do you primarily work one-on-one or mostly with group coaching?</p>
+                </div>
+
+                <div class="bg-gray-50/50 p-5 rounded-lg border border-gray-200 space-y-3">
+                    <p class="font-semibold text-lg text-[#37352f]">Step #3 - Send Message</p>
+                    <p class="font-semibold text-sm text-gray-500 uppercase tracking-wider mb-4">Wait after previous step: 2d</p>
+                    <p>The reason I asked, {first_name}, about your model is because I run a mastermind and based on what you do I’d like to invite you to sit in with us.</p>
+                    <p>It’s $25k per client to be a part of but I’m inviting only a few other coaches to sit in on it for free.</p>
+                    <p>You can not buy anything and we'll be going over how to launch 100k workshops with small groups to grow a 7-fig biz.</p>
+                    <p>Would you be interested in this content?</p>
+                </div>
+
+                <div class="bg-gray-50/50 p-5 rounded-lg border border-gray-200 space-y-3">
+                    <p class="font-semibold text-lg text-[#37352f]">Step #4 - Send Message</p>
+                    <p class="font-semibold text-sm text-gray-500 uppercase tracking-wider mb-4">Wait after previous step: 2d</p>
+                    <p>Hey, {first_name}!</p>
+                    <p>Just a heads up, our mastermind training is coming up on how to launch 100k virtual events.</p>
+                    <p>As a reminder, you can’t buy anything and it’s an exclusive room for coaches and consultants.</p>
+                    <p>I’m personally inviting you to sit in free because I think you’d be a good fit based on what you do.</p>
+                    <p>Would you like to sit in with us?</p>
+                </div>
+
+                <div class="bg-gray-50/50 p-5 rounded-lg border border-gray-200 space-y-3">
+                    <p class="font-semibold text-lg text-[#37352f]">Step #5 - Send Message</p>
+                    <p class="font-semibold text-sm text-gray-500 uppercase tracking-wider mb-4">Wait after previous step: 3d</p>
+                    <p>Hey {first_name}! I made you this quick video!</p>
+                    <p class="font-semibold text-blue-600">INSERT VIDEO</p>
+                    <p class="text-gray-400">======</p>
+                    <p>Here is the video transcript for you to modify and create your own:</p>
+                    <p class="italic text-gray-700 bg-white p-4 rounded border border-gray-100 shadow-sm leading-relaxed">
+                        Hey, what's going on? It's Adam here. Great to be officially connected here on LinkedIn. I was scrolling through your profile and was loving all of your experience and love to see you in the in in this space and the work you're doing is so needed and meaningful. And so if you don't know who I am, I work with some of the top coaches and consultants in the world, helping them grow and scale their business, been able to build one of the top masterminds as well. And so the reason I'm reaching out to you. Is because we I think we have a strategy that would go really well with the work you're doing and we have a way on how we fill our rooms and how we run our events. In fact, I'm going to be running a training called how to launch 100K workshops. And I wanted to personally invite you as my guest. It would be an honor to host you and what we're going to be going over in that training is you know how to fill your rooms, how we're gamifying our offers, how we're constantly helping coaches and consultants at their biggest months. And it's pure training. You cannot buy anything and it would be an honor to have you as my guest. So I included my link here and my guest pass to sit in. With us and it would be great to have you join us if you do decide to. You just have to book a quick chat with our team. It's not a sales call. It's just to go over the ground rules of our event because we want to be able to make sure the room stays safe and it's our way of being able to make sure that the room stays high quality as well. And so it would be great to have you in the room if you'd be interested in joining us.
+                    </p>
+                    <p class="text-gray-400">======</p>
+                </div>
+
+                <div class="bg-gray-50/50 p-5 rounded-lg border border-gray-200 space-y-3">
+                    <p class="font-semibold text-lg text-[#37352f]">Step #6 - Send Message</p>
+                    <p class="font-semibold text-sm text-gray-500 uppercase tracking-wider mb-4">Wait after previous step: 2d</p>
+                    <p>Hey {first_name}, just bringing this to top of your feed 👆🏻</p>
+                </div>
+
+                <div class="bg-gray-50/50 p-5 rounded-lg border border-gray-200 space-y-3">
+                    <p class="font-semibold text-lg text-[#37352f]">Step #7 - Send Message</p>
+                    <p class="font-semibold text-sm text-gray-500 uppercase tracking-wider mb-4">Wait after previous step: 3d</p>
+                    <p>Just wanted to circle back around since I know how busy things can be 😊</p>
+                </div>
+
+                <div class="bg-gray-50/50 p-5 rounded-lg border border-gray-200 space-y-3">
+                    <p class="font-semibold text-lg text-[#37352f]">Step #8 - Send Message</p>
+                    <p class="font-semibold text-sm text-gray-500 uppercase tracking-wider mb-4">Wait after previous step: 3d</p>
+                    <p>Thought I’d check in {first_name} to see if you got my last message?</p>
+                </div>
+
+                <div class="bg-gray-50/50 p-5 rounded-lg border border-gray-200 space-y-3">
+                    <p class="font-semibold text-lg text-[#37352f]">Step #9 - Send Message</p>
+                    <p class="font-semibold text-sm text-gray-500 uppercase tracking-wider mb-4">Wait after previous step: 5d</p>
+                    <p>Hey {first_name} I know not everyone is open to attending live, so if I can send you the online training on how to launch 100k virtual events organically in exchange for your feedback when you have more time, would you be open for me to send it over to you?</p>
+                </div>
+
+                <div class="bg-gray-50/50 p-5 rounded-lg border border-gray-200 space-y-3">
+                    <p class="font-semibold text-lg text-[#37352f]">Step #10 - Send Message</p>
+                    <p class="font-semibold text-sm text-gray-500 uppercase tracking-wider mb-4">Wait after previous step: 7d</p>
+                    <p>Hey again {first_name},</p>
+                    <p>I assume now isn’t a good time for you and I don’t want to keep inviting you to something you may not be interested in.</p>
+                    <p>I understand as a business owner you’re probably spinning a lot of plates.</p>
+                    <p>If you ever want to take me up on any of the above offers, feel free to ping me here.</p>
+                    <p>Or if there’s anything I can do for you down the road to be a resource for you, don’t hesitate to ask.</p>
+                    <p>All the best,</p>
+                    <p>Adam</p>
+                </div>
+
+            </div>
+
+            <h2 class="text-[30px] font-semibold leading-[1.3] mb-6 mt-16 pt-8 border-t border-gray-100">Saved Replies</h2>
+            
+            <p class="mb-8">
+                Over time as you respond to the same replies over and over again, you’ll develop scripts for the most frequently used responses. Here are some of ours.
+            </p>
+
+            <div class="space-y-8">
+                
+                <div>
+                    <h3 class="font-semibold text-[20px] text-[#37352f] mb-3">Ice Breaker Reply: 1-on1</h3>
+                    <div class="border-l-4 border-[#d2a34f] pl-4 py-1 space-y-3 text-gray-700">
+                        <p>Hey {first_name}! So good to hear that you do 1-on-1 as clients need intimacy to get results.</p>
+                        <p>I was asking about your model because I run a Mastermind and based on what you do with 1-on-1s, I’d like to invite you to sit in with us. It’s $25k per student to be a part of but I’m inviting only a few other coaches to sit in on it for free.</p>
+                        <p>You can not buy anything and we'll be going over how to launch 100k+ workshops consistently even with a small audience.</p>
+                        <p>Would this content interest you?</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-semibold text-[20px] text-[#37352f] mb-3">Ice Breaker Reply: Group</h3>
+                    <div class="border-l-4 border-[#d2a34f] pl-4 py-1 space-y-3 text-gray-700">
+                        <p>Hey {first_name}! So good to hear that you do groups as it's a great way to leverage impact.</p>
+                        <p>I was asking about your model because I run a Mastermind and based on what you do with groups, I’d like to invite you to sit in with us. It’s $25k per student to be a part of but I’m inviting only a few other coaches to sit in on it for free.</p>
+                        <p>You can not buy anything and we'll be going over how to launch 100k+ workshops consistently with small groups.</p>
+                        <p>Would this content interest you?</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-semibold text-[20px] text-[#37352f] mb-3">Ice Breaker Reply: Both 1-on-1 and Group</h3>
+                    <div class="border-l-4 border-[#d2a34f] pl-4 py-1 space-y-3 text-gray-700">
+                        <p>Hey {first_name}! So good to hear that you do both 1-on-1 and groups as it's a great way to leverage your time while giving others who need it more intimacy for deeper impact.</p>
+                        <p>I was asking about your model because I run a Mastermind and based on the fact that you do 1-on-1 and group, I’d like to invite you to sit in with us. It’s $25k per student to be a part of but I’m inviting only a few other coaches to sit in on it for free.</p>
+                        <p>You can not buy anything and we'll be going over how to launch 100k+ workshops consistently with small groups.</p>
+                        <p>Would this content interest you?</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-semibold text-[20px] text-[#37352f] mb-3">Ice Breaker Reply: Individuals and Corporate</h3>
+                    <div class="border-l-4 border-[#d2a34f] pl-4 py-1 space-y-3 text-gray-700">
+                        <p>Hey {first_name}! So good to hear that you do both individual and corporate as it's a not often you find someone who is dynamic enought to serve b2b and b2c...</p>
+                        <p>I was asking about your model because I run a Mastermind and based on the fact that you do, I’d like to invite you to sit in with us. It’s $25k per student to be a part of but I’m inviting only a few other coaches to sit in on it for free.</p>
+                        <p>You can not buy anything and we'll be going over how to launch 100k+ workshops consistently with small groups.</p>
+                        <p>Would this content interest you?</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-semibold text-[20px] text-[#37352f] mb-3">Yes I’m interested. Can you share more details?</h3>
+                    <div class="border-l-4 border-[#d2a34f] pl-4 py-1 space-y-3 text-gray-700">
+                        <p>Okay awesome, {first_name}! Here’s the link to request your invite and learn more:</p>
+                        <p class="font-semibold">EVENT LINK</p>
+                        <p>It would be an honor to host you as my personal guest.</p>
+                        <p>To keep our room safe, we just ask you book a quick 15-minute chat with our community manager.</p>
+                        <p>This is not a sales call - it’s to (1) make sure the content is relevant to you, (2) go over the ground rules of the mastermind training, and (3) get you set up with your Zoom access link.</p>
+                        <p>Can you let me know once you book that call so I know you’re all taken care of?</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-semibold text-[20px] text-[#37352f] mb-3">More details reply.</h3>
+                    <div class="border-l-4 border-[#d2a34f] pl-4 py-1 space-y-3 text-gray-700">
+                        <p>Sure, {first_name}! Here are the details and strategies I'll be sharing at my free virtual event:</p>
+                        
+                        <p class="font-semibold mt-4">DAY #1: LAUNCHING YOUR WORKSHOP</p>
+                        <ul class="list-disc pl-6 space-y-2">
+                            <li>Why the “Traditional Event Model” of getting 100’s of registrants &amp; a 15% show rate is broken &amp; outdated</li>
+                            <li>The “Transformation Workshop Model” that is getting 90% showup rates</li>
+                            <li>How virtually anyone can be successful with this model (even if they have ZERO audience or following)</li>
+                            <li>The “Full House” method to virtually guarantee that people show up your workshop</li>
+                            <li>Learn our latest event marketing strategies to successfully fill your workshop even if you’re in the middle of launching other offers &amp; programs</li>
+                        </ul>
+
+                        <p class="font-semibold mt-6">DAY #2: SELLING YOUR OFFER</p>
+                        <ul class="list-disc pl-6 space-y-2">
+                            <li>How to add and sell $2-10k VIP Days as an upsell at your events</li>
+                            <li>How to successfully sell your offer using the “Genuine Pitch” Method</li>
+                            <li>Why the “Genuine Pitch” Method converts 30% of the room (on average) while the traditional method only converts 3-10%</li>
+                            <li>How to properly structure your workshop so that it’s high-value</li>
+                            <li>How to get them interested in working with you (before you ever share your offer)</li>
+                            <li>How to remove fear &amp; feel extremely confident and excited on the day of your workshop!</li>
+                        </ul>
+
+                        <p class="mt-6">Would you like to be my guest and join us?</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-semibold text-[20px] text-[#37352f] mb-3">No thank you. I’m not interested.</h3>
+                    <div class="border-l-4 border-[#d2a34f] pl-4 py-1 space-y-3 text-gray-700">
+                        <p>Hey {first_name}, thanks so much for getting back to me and I totally get why you’re not interested. I know that there are so many people always trying to promote their next webinar or trying to get you to buy something.</p>
+                        <p>I just want to let you know that is an invitation to actually sit in with the paid members of our mastermind to train at a high level. It would be an honor to have someone of your caliber at the table with us.</p>
+                        <p>You can’t buy anything and we’re going to be teaching strategies on how to get more clients into your program. So knowing that, would that shift your perspective on joining us or are you still a no for now?</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-semibold text-[20px] text-[#37352f] mb-3">Strong no.</h3>
+                    <div class="border-l-4 border-[#d2a34f] pl-4 py-1 space-y-3 text-gray-700">
+                        <p>Thanks {first_name}, looking forward to staying connected! 😊</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-semibold text-[20px] text-[#37352f] mb-3">I don’t have time right now.</h3>
+                    <div class="border-l-4 border-[#d2a34f] pl-4 py-1 space-y-3 text-gray-700">
+                        <p>I hear you, {first_name}. If I can send you the online training on how to launch 100k virtual events organically in exchange for your feedback, would you be open for me to send it over to you?</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-semibold text-[20px] text-[#37352f] mb-3">Sent invite link, but haven’t booked call.</h3>
+                    <div class="border-l-4 border-[#d2a34f] pl-4 py-1 space-y-3 text-gray-700">
+                        <p>Hey {first_name}, just circling back, did you get a chance to book with our community manager yet?</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-semibold text-[20px] text-[#37352f] mb-3">Depends on time and date.</h3>
+                    <div class="border-l-4 border-[#d2a34f] pl-4 py-1 space-y-3 text-gray-700">
+                        <p>Hi {first_name}, thanks for getting back to me. 😊</p>
+                        <p>The event is happening on DATE from TIME. The best part is, it's a virtual event that you can join from the comfort of your own space. If the event date and time do not work for you, no worries!</p>
+                        <p>You can still book a quick chat with our community manager. She can send you the replay version of the event, giving you a sneak peak on how we've grown one of the top masterminds in the world for coaches and consultants.</p>
+                        <p>This way you can get all of the valuable insights without attending the event itself.</p>
+                        <p>Here is the link to join us: EVENT LINK</p>
+                        <p>To keep our room safe with the right kind of people, we just need you to book a quick 15-minute chat with our community manager. This is not a sales call - it’s to (1) make sure the content is relevant to you, (2) go over the ground rules of the mastermind, and (3) get you set up with your link. Can you let me know once you book that call so I know you’re all taken care of?</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-semibold text-[20px] text-[#37352f] mb-3">After confirmation of booked call.</h3>
+                    <div class="border-l-4 border-[#d2a34f] pl-4 py-1 space-y-3 text-gray-700">
+                        <p>Okay great! INTERVIEWER NAME just let me know you booked with her. She is awesome and you are in good hands 😀</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-semibold text-[20px] text-[#37352f] mb-3">Yes I’d like to attend.</h3>
+                    <div class="border-l-4 border-[#d2a34f] pl-4 py-1 space-y-3 text-gray-700">
+                        <p>Okay awesome, {first_name}! Here’s the link to request your invite and learn more:</p>
+                        <p class="font-semibold">EVENT LINK</p>
+                        <p>It's such an honor to host you as my my personal guest.</p>
+                        <p>To keep our room safe with the right kind of people we just have all attendees book a quick 15-minute chat with our community manager.</p>
+                        <p>This is not a sales call - it’s to (1) make sure the content is relevant to you, (2) go over the ground rules of the mastermind, and (3) get you set up with your Zoom access link.</p>
+                        <p>Can you let me know once you book that call so I know you’re all taken care of? 😀</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+</body>
+</html>

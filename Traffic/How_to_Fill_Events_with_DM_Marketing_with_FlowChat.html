@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Fill Events with DM Marketing with FlowChat</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .emoji-icon {
+            font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
+        }
+        
+        /* Subtle animation for the page transition */
+        .animate-fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Links styling matching Notion */
+        .notion-link {
+            text-decoration: underline;
+            text-decoration-thickness: 0.05em;
+            text-underline-offset: 10%;
+            opacity: 0.7;
+            font-weight: inherit;
+            transition: opacity 0.2s ease;
+        }
+        .notion-link:hover {
+            opacity: 1;
+        }
+
+        /* Standard lists */
+        .notion-list {
+            padding-left: 1rem;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+            list-style-type: none;
+        }
+        .notion-list li {
+            position: relative;
+            padding-top: 0.15rem;
+            padding-bottom: 0.15rem;
+        }
+        .notion-list.bullets li::before {
+            content: "•";
+            position: absolute;
+            left: -1rem;
+            font-size: 1.5em;
+            line-height: 1;
+            color: #37352f;
+            top: 2px;
+        }
+        .notion-list.numbers {
+            counter-reset: my-counter;
+        }
+        .notion-list.numbers > li {
+            counter-increment: my-counter;
+        }
+        .notion-list.numbers > li::before {
+            content: counter(my-counter) ".";
+            position: absolute;
+            left: -1.25rem;
+            font-size: 1em;
+            color: #37352f;
+            top: 2px;
+        }
+
+        /* Custom link styling to match Notion's page links */
+        .notion-page-link {
+            display: flex;
+            align-items: center;
+            padding: 0.375rem 0.5rem;
+            margin-left: -0.5rem;
+            border-radius: 0.375rem;
+            transition: background-color 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+            width: fit-content;
+            min-width: 250px;
+        }
+        .notion-page-link:hover {
+            background-color: rgba(55, 53, 47, 0.08);
+        }
+        .notion-page-link-text {
+            border-bottom: 1px solid rgba(55, 53, 47, 0.16);
+            transition: border-color 0.2s ease;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-weight: 500;
+        }
+        .notion-page-link:hover .notion-page-link-text {
+            border-color: rgba(55, 53, 47, 0.4);
+        }
+        .notion-page-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            margin-right: 8px;
+            flex-shrink: 0;
+            font-size: 1.1em;
+        }
+    </style>
+    <link rel="icon" type="image/png" href="../media/icon.png">
+    <link rel="icon" type="image/png" href="../media/icon.png">
+</head>
+<body class="bg-[#fcfcfc] text-[#37352f] font-sans antialiased pb-32 relative min-h-screen pt-[60px]">
+
+<!-- BREADCRUMB_START -->
+<div class="fixed top-0 left-0 right-0 h-[45px] bg-white z-40 flex items-center px-3 text-[14px] text-[#37352f] whitespace-nowrap overflow-x-auto hide-scrollbar">
+    <a href="../home.html" class="flex items-center hover:bg-gray-100 px-1.5 py-1 rounded-[4px] transition-colors font-medium">
+        <span class="mr-1.5 text-[16px] leading-none">📙</span> SMART Business Mastermind
+    </a>
+    <span class="mx-0.5 text-gray-300 font-light">/</span>
+    <a href="Traffic.html" class="flex items-center hover:bg-gray-100 px-1.5 py-1 rounded-[4px] transition-colors font-medium">
+        <span class="mr-1.5 text-[16px] leading-none">🛣️</span> Traffic
+    </a>
+    <span class="mx-0.5 text-gray-300 font-light">/</span>
+    <a href="How_to_Fill_Events_with_DM_Marketing_with_FlowChat.html" class="flex items-center px-1.5 py-1 hover:bg-gray-100 rounded-[4px] transition-colors text-[#37352f] font-medium">
+        <span class="mr-1.5 text-[16px] leading-none">📄</span> How to Fill Events with DM Marketing with FlowChat
+    </a>
+</div>
+<!-- BREADCRUMB_END -->
+
+<!-- BACK_BUTTON_START -->
+<div class="fixed bottom-6 right-6 md:bottom-auto md:top-[65px] md:left-6 z-50">
+    <button onclick="history.back()" class="flex items-center justify-center w-12 h-12 md:w-auto md:h-auto md:px-3 md:py-1.5 rounded-full md:rounded-md bg-white text-[#37352f] shadow-lg md:shadow-sm border border-gray-200 hover:bg-gray-50 transition-all group font-medium" aria-label="Go back">
+        <svg class="w-5 h-5 md:w-4 md:h-4 md:mr-1 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+        <span class="hidden md:block text-[14px]">Back</span>
+    </button>
+</div>
+<!-- BACK_BUTTON_END -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    <main class="max-w-[900px] w-full mx-auto px-6 md:px-12 mt-24 flex flex-col animate-fade-in">
+
+        <div class="flex flex-col relative pb-8">
+            <div class="mb-4 flex">
+                <span class="text-[78px] leading-none emoji-icon drop-shadow-sm select-none">🚀</span>
+            </div>
+            <h1 class="text-[40px] font-bold leading-[1.2] tracking-tight text-[#37352f]">How to Fill Events with DM Marketing with FlowChat</h1>
+            
+            <div class="flex items-center text-gray-400 text-sm mt-4 cursor-pointer hover:text-gray-600 transition-colors">
+                <svg class="w-4 h-4 mr-1 transform -rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                4 backlinks
+            </div>
+        </div>
+
+        <div class="flex flex-col gap-2 text-[16px] leading-[1.5] w-full max-w-[770px]">
+            
+            <div>
+                <a href="https://www.flowchat.com/" target="_blank" rel="noopener noreferrer" class="notion-link font-semibold">FlowChat</a> - For your outsource team to each track prospects in the marketing funnel. Adam has an affiliate link - we would appreciate you using it if you decide to sign up!
+                <ul class="notion-list bullets ml-6 mt-1">
+                    <li>Monthly affiliate link: <a href="https://www.flowchat.com/subscribe?plan=9463a36cc8" target="_blank" rel="noopener noreferrer" class="notion-link text-blue-600">https://www.flowchat.com/subscribe?plan=9463a36cc8</a></li>
+                    <li>Annual affiliate link: <a href="https://www.flowchat.com/subscribe?plan=basic-annual&promocode=YEAR1497ADAM" target="_blank" rel="noopener noreferrer" class="notion-link text-blue-600">https://www.flowchat.com/subscribe?plan=basic-annual&promocode=YEAR1497ADAM</a></li>
+                </ul>
+            </div>
+
+            <p class="mt-4"><span class="font-semibold">Marketing Channels</span> - Email, text, podcast, speak & sweep, J/V system, and DM systems.</p>
+
+            <p class="font-semibold mt-4">Trainings, documents, & templates for DM Strategy and FlowChat below:</p>
+
+            <ul class="notion-list bullets mt-1">
+                <li><a href="https://dreamfactory.mykajabi.com/products/smart-business-mastermind/categories/2151305119/posts/2184118478" target="_blank" rel="noopener noreferrer" class="notion-link font-semibold">FlowChat End to End DM Process w Pamela</a></li>
+                <li>More DM Marketing trainings found <a href="https://dreamfactory.mykajabi.com/products/smart-business-mastermind/categories/2151305119" target="_blank" rel="noopener noreferrer" class="notion-link font-semibold">here</a></li>
+            </ul>
+
+            <div class="w-full mt-4 mb-4 rounded-md overflow-hidden relative group">
+                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors pointer-events-none z-10 rounded-md"></div>
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-20">
+                    <span class="bg-black/60 text-white text-sm font-medium px-3 py-1.5 rounded-full flex items-center shadow-lg backdrop-blur-sm">
+                        <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path></svg>
+                        Click to expand
+                    </span>
+                </div>
+                <img id="expandable-image" src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/aab86064-4a01-4c6a-8df2-5635b269a074/FlowChat_Example_Screenshot.png" alt="FlowChat Example Screenshot" class="w-full h-auto max-h-[333px] object-cover rounded-md border border-gray-200 shadow-sm cursor-pointer transform transition-transform duration-300 group-hover:scale-[1.01]" onerror="this.src='/media/Traffic_How_to_Fill_Events_with_DM_Marketing_with_FlowChat.webp'; this.alt='Placeholder Image'">
+            </div>
+
+            <p>FlowChat can scrape contacts from FB (people in a group, who commented a certain post, who liked a certain post, etc.), LinkedIn (articles, posts, and groups), IG (a certain user’s followers), Twitter, Telegram, and Discord and import them into the software.</p>
+
+            <ul class="notion-list bullets mt-3">
+                <li>Whether you use the software or not, you do want to filter out the people who aren’t good prospects so you’re only messaging those who are better candidates.</li>
+                <li><span class="italic">Example of Adam’s ideal candidate:</span> female entrepreneur, 30-55 yo, coaching/agency/selling content, and shares faith.</li>
+            </ul>
+
+            <p class="font-semibold mt-4">Creating a list of examples is important when it comes to training your VA. Such as:</p>
+            <p class="italic">“Free coaching call that I would normally do for paying clients, so I’d love to be able to offer that to you because you’re a mom and awesome in what you do.”</p>
+
+            <h4 class="font-semibold text-[1.25em] mt-6 mb-1">Here are scripts for Instagram, Facebook, and LinkedIN:</h4>
+
+            <ul class="notion-list bullets mt-2">
+                <li>
+                    <a href="https://docs.google.com/document/d/1xvF3tfv1aswLbdUNON2lm3IZ-0b7frFrynb11E50Hyg/edit" target="_blank" rel="noopener noreferrer" class="notion-link">Instagram Scripts</a> - 25 messages a day. No more than 10 messages within 10 minutes. Spread out the 25 messages over 30-60 minutes.
+                    <div class="mt-2 ml-4">
+                        <a href="Instagram_DM_Outreach_for_Mastermind_Guest_Invite.html" class="notion-page-link group">
+                            <div class="notion-page-icon text-[1.2em]">📄</div>
+                            <span class="notion-page-link-text">Instagram DM Outreach for Mastermind Guest Invite</span>
+                        </a>
+                    </div>
+                </li>
+                <li class="mt-2"><a href="https://docs.google.com/document/d/1A10GfLbbEX-xP4ZLhBK-57itgssKw_M8rRPqXxq2Tzk/edit" target="_blank" rel="noopener noreferrer" class="notion-link">Facebook Scripts</a> - Friend request first (and accepted) before messaging; otherwise, the message goes into a spam folder.</li>
+                <li class="mt-2"><a href="https://docs.google.com/document/d/1jpHCpEojZw-pJwsmlVa0_v6XX8KINE9sacPZMDNTVt4/edit" target="_blank" rel="noopener noreferrer" class="notion-link">LinkedIn Scripts</a> - In addition to the normal script, you can do a sponsored (paid) message into their inbox that <a href="https://d.pr/i/Ex5fw1" target="_blank" rel="noopener noreferrer" class="notion-link">looks like this</a>. <a href="https://business.linkedin.com/sales-solutions/sales-navigator" target="_blank" rel="noopener noreferrer" class="notion-link">LinkedIn Sales Navigator</a>.</li>
+            </ul>
+
+            <h4 class="font-semibold text-[1.25em] mt-6 mb-1">FlowChat Stages:</h4>
+
+            <ul class="notion-list numbers mt-2">
+                <li>Imported to Facebook - And then delete the ones who don’t fit the ideal candidate profile.</li>
+                <li>Friend Request Sent or follow</li>
+                <li>Ice Breaker Group Invite</li>
+                <li>Off Script Follow Up Replies Needed</li>
+                <li>Event Invitation</li>
+                <li>Next Step - Confirmation</li>
+                <li>48 Hour</li>
+            </ul>
+
+            <ul class="notion-list bullets mt-4">
+                <li>Expect 5-10% response rate on your initial message, which means 2-3 people you’re engaging with and starting new conversations.</li>
+                <li>Adam gives a bonus to his VA whenever someone enrolls.</li>
+            </ul>
+
+            <p class="mt-4">The goal is to have one VA start on one platform (like IG), then expand to the other platforms (like FB and LI), and then find marketing partners who will allow you to message through their account and you pay them a commission on sales less VA cost.</p>
+
+            <p class="mt-4">You can also utitlize voice chat marketing:</p>
+            
+            <div class="mt-2">
+                <a href="Voice_Chat_Marketing.html" class="notion-page-link group">
+                    <div class="notion-page-icon text-[1.2em]">🗣️</div>
+                    <span class="notion-page-link-text">Voice Chat Marketing</span>
+                </a>
+            </div>
+
+            <h4 class="font-semibold text-[1.25em] mt-6 mb-1">Notes on Effective DM Marketing:</h4>
+
+            <p class="font-semibold mt-2">Bad Messaging:</p>
+            <ul class="notion-list bullets mt-1">
+                <li>Asking a question that causes someone to have to think about the answer.</li>
+                <li>Asking a question that the prospect is not motivated to answer.</li>
+                <li>Asking questions that require vulnerability to answer “are you living in your most authentic self”</li>
+                <li>Leaving out, or offering a weak, bold promise.</li>
+            </ul>
+
+            <p class="font-semibold mt-4">An example of messaging that likely won’t work:</p>
+            <p class="italic mt-1">“Hey name, I run a mastermind training that is all about how to unlock your authenticity so you can feel good about yourself/feel aligned in your own body.”</p>
+            
+            <ul class="notion-list bullets mt-2">
+                <li><span class="font-semibold underline underline-offset-[10%] decoration-[0.05em]">Why won't it work?</span> Not everyone is ready for this, would understand it, is clear on what that would mean, or believe that it is worth putting aside time to learn about it.</li>
+            </ul>
+
+            <p class="font-semibold mt-5">Good Messaging:</p>
+            <ul class="notion-list bullets mt-1">
+                <li>Is it something your target audience can relate to?</li>
+                <li>Is there a clear ROI in your bold promise?</li>
+                <li>Is the bold promise highly desirable?</li>
+                <li>Is the promise worth putting life on hold for two days?</li>
+                <li>Is the bold promise something they already want?</li>
+                <li>Real Estate Example: <span class="italic">“Are you taking on more listings right now?”</span></li>
+            </ul>
+
+            <h4 class="font-semibold text-[1.25em] mt-6 mb-1">Principles of Effective DM Strategy:</h4>
+
+            <ul class="notion-list numbers mt-2">
+                <li>Ask a question someone is motivated to answer. For example, when targeting an entrepreneur: <span class="italic">“I was wondering if you were taking on new clients right now?”</span>
+                    <p class="mt-2">We then leverage their answer as the reason to offer help.</p>
+                </li>
+                
+                <li class="mt-4">Build the motivation, or desire, and then ask the question.
+                    <ul class="notion-list bullets mt-2 ml-6">
+                        <li>For example: <span class="italic">“Hey NAME, I am running a mastermind training that is all about how to unlock your authenticity <span class="font-semibold">to feel totally aligned so you can reach more of your goals without the fear of what others think</span>. After reviewing your profile I wanted to reach out because I’m hand selecting people that I would love to have sit in on our experience. It’s free and you can’t buy anything during this training. Would you consider sitting in with us?”</span></li>
+                        <li>This uses the bold promise to build desire and ask the question.</li>
+                    </ul>
+                </li>
+                
+                <li class="mt-4">Earn trust, follow up, and stay consistent. Follow up every 2-3 days with kind, thoughtful messages, such as: <span class="italic">“Hey just circling back, not sure if you saw this. Wanted to bump this up on your feed.”</span>
+                    <p class="mt-3">Engage with their content in between messages. Then continue follow up: <span class="italic">“Hey just circling back, I know things can get busy.”</span></p>
+                    <p class="mt-3">(Showing grace, consistency, thoughtfulness - all attributes that build trust, which is why the prospect is more inclined to respond after 3-5 follow ups)</p>
+                </li>
+            </ul>
+
+            <h4 class="font-semibold text-[1.25em] mt-6 mb-1">When things aren’t working…</h4>
+
+            <p class="mt-2">If you’re doing all this and not getting results, it could be due to your profile. Does your content relate to what you talk about in your DMs? If not, this could lack credibility. Also be sure to have signs of social proof… We have the SBM engagement group, so that people who want to get more social proof can have more people like and comment on their posts. Here’s the link to join:</p>
+            
+            <p class="mt-2"><a href="https://t.me/+7UqxksPKRYtmZGY5" target="_blank" rel="noopener noreferrer" class="notion-link text-blue-600">https://t.me/+7UqxksPKRYtmZGY5</a></p>
+
+        </div>
+    </main>
+
+    <div id="image-modal" class="fixed inset-0 z-[100] hidden bg-black/90 backdrop-blur-sm flex items-center justify-center opacity-0 transition-opacity duration-300">
+        
+        <button id="close-modal" class="absolute top-6 right-6 text-white hover:text-gray-300 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-md z-50 group">
+            <span class="sr-only">Close</span>
+            <svg class="w-6 h-6 transform transition-transform group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+
+        <div class="relative w-full h-full flex items-center justify-center p-4 md:p-8">
+            <img id="modal-image" src="" alt="Expanded View" class="max-w-full max-h-full object-contain rounded-sm shadow-2xl scale-95 transition-transform duration-300 ease-out">
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const img = document.getElementById('expandable-image');
+            const modal = document.getElementById('image-modal');
+            const modalImg = document.getElementById('modal-image');
+            const closeBtn = document.getElementById('close-modal');
+
+            // Open modal function
+            img.addEventListener('click', () => {
+                modalImg.src = img.src; // Set the modal image source to match the clicked image
+                modal.classList.remove('hidden');
+                
+                // Small delay to allow display:block to register before changing opacity/scale for transition
+                requestAnimationFrame(() => {
+                    modal.classList.remove('opacity-0');
+                    modalImg.classList.remove('scale-95');
+                    modalImg.classList.add('scale-100');
+                });
+                
+                // Prevent background scrolling
+                document.body.style.overflow = 'hidden'; 
+            });
+
+            // Close modal function
+            const closeModal = () => {
+                modal.classList.add('opacity-0');
+                modalImg.classList.remove('scale-100');
+                modalImg.classList.add('scale-95');
+                
+                // Wait for the transition to finish before hiding completely
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                    document.body.style.overflow = ''; // Restore scrolling
+                    modalImg.src = ''; // Clear source to prevent ghost image on next load
+                }, 300);
+            };
+
+            // Close when clicking the close button
+            closeBtn.addEventListener('click', closeModal);
+
+            // Close when clicking the backdrop (outside the image)
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal || e.target.parentElement === modal) {
+                    closeModal();
+                }
+            });
+            
+            // Close with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                    closeModal();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

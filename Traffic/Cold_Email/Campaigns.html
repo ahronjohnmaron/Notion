@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campaigns</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .emoji-icon {
+            font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
+        }
+        
+        /* Subtle animation for the page transition */
+        .animate-fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+    <link rel="icon" type="image/png" href="../../media/icon.png">
+    <link rel="icon" type="image/png" href="../../media/icon.png">
+</head>
+<body class="bg-white text-[#37352f] font-sans antialiased pb-32 relative min-h-screen selection:bg-blue-100 pt-[60px]">
+
+<!-- BREADCRUMB_START -->
+<div class="fixed top-0 left-0 right-0 h-[45px] bg-white z-40 flex items-center px-3 text-[14px] text-[#37352f] whitespace-nowrap overflow-x-auto hide-scrollbar">
+    <a href="../../home.html" class="flex items-center hover:bg-gray-100 px-1.5 py-1 rounded-[4px] transition-colors font-medium">
+        <span class="mr-1.5 text-[16px] leading-none">📙</span> SMART Business Mastermind
+    </a>
+    <span class="mx-0.5 text-gray-300 font-light">/</span>
+    <a href="../Traffic.html" class="flex items-center hover:bg-gray-100 px-1.5 py-1 rounded-[4px] transition-colors font-medium">
+        <span class="mr-1.5 text-[16px] leading-none">🛣️</span> Traffic
+    </a>
+    <span class="mx-0.5 text-gray-300 font-light">/</span>
+    <a href="Cold_Email.html" class="flex items-center hover:bg-gray-100 px-1.5 py-1 rounded-[4px] transition-colors font-medium">
+        <span class="mr-1.5 text-[16px] leading-none">📁</span> Cold Email
+    </a>
+    <span class="mx-0.5 text-gray-300 font-light">/</span>
+    <a href="Campaigns.html" class="flex items-center px-1.5 py-1 hover:bg-gray-100 rounded-[4px] transition-colors text-[#37352f] font-medium">
+        <span class="mr-1.5 text-[16px] leading-none">📄</span> Campaigns
+    </a>
+</div>
+<!-- BREADCRUMB_END -->
+
+<!-- BACK_BUTTON_START -->
+<div class="fixed bottom-6 right-6 md:bottom-auto md:top-[65px] md:left-6 z-50">
+    <button onclick="history.back()" class="flex items-center justify-center w-12 h-12 md:w-auto md:h-auto md:px-3 md:py-1.5 rounded-full md:rounded-md bg-white text-[#37352f] shadow-lg md:shadow-sm border border-gray-200 hover:bg-gray-50 transition-all group font-medium" aria-label="Go back">
+        <svg class="w-5 h-5 md:w-4 md:h-4 md:mr-1 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+        <span class="hidden md:block text-[14px]">Back</span>
+    </button>
+</div>
+<!-- BACK_BUTTON_END -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    <main class="max-w-[850px] w-full mx-auto px-12 md:px-24 mt-28 flex flex-col gap-6 animate-fade-in">
+
+        <div class="flex flex-col items-start gap-4 mb-4">
+            <div class="mb-2">
+                <span class="text-[78px] leading-none emoji-icon select-none">📬</span>
+            </div>
+            <h1 class="text-[40px] font-bold leading-[1.2] tracking-tight text-[#37352f]">Campaigns</h1>
+        </div>
+
+        <div class="w-full text-[16px] leading-[1.6] text-[#37352f] space-y-6">
+            
+            <h2 class="text-[30px] font-semibold leading-[1.3] mb-6 mt-8">What a Cold Email Campaign Actually Looks Like</h2>
+            
+            <p>
+                Here’s a simplified example of how a real cold email campaign might look if you were promoting a <span class="font-semibold">virtual event</span>.
+            </p>
+            <p>
+                This is not “salesy blast email.”
+            </p>
+            <p>
+                It’s <span class="font-semibold">personalized, relevant, and value-driven outreach</span>.
+            </p>
+
+            <h2 class="text-[30px] font-semibold leading-[1.3] mb-6 mt-12">Sample Cold Email (Template)</h2>
+            
+            <div class="bg-gray-50/50 p-6 rounded-lg border border-gray-100 space-y-4 mb-10">
+                <p><span class="font-semibold">Subject:</span> question</p>
+                
+                <p>Hello {{First Name}},</p>
+                
+                <p>I came across your work and thought this might be relevant to you. <span class="italic text-gray-600">(This is a great place to personalize by referencing their LinkedIn profile or website, e.g. “because you work with eCommerce brands” or “because you run a fractional CFO practice”)</span>.</p>
+                
+                <p>Our team is hosting a virtual workshop for {{ their Job Title so that they realize it’s made just for their niche }} to teach them how to {{ what benefit attendees of your virtual event will walk away with }}.</p>
+                
+                <p>It’s based on the same core framework you’ve probably seen used by well-known leaders in the {{Their Industry / Market Space as social proof}}.</p>
+                
+                <p>We’re inviting a small group of experienced experts to attend on a complimentary basis in exchange for their feedback, before we open it up as a paid program. Given your background, we’d really value your perspective.</p>
+                
+                <p>Would you like a complimentary pass to join us?</p>
+                
+                <p>Best,</p>
+                <p>{{ Email Account Name }}</p>
+                <p>{{ Title - Examples are Workshop Partnerships, Program Partnerships, Program Experience }}</p>
+                
+                <p class="pt-4 text-sm text-gray-500">If I reached the wrong person, please let me know and I won’t follow up again. Thank you.</p>
+                <p class="text-sm text-gray-500">{{ Your physical address - It’s important to include this for cold email compliance }}</p>
+            </div>
+
+            <h2 class="text-[30px] font-semibold leading-[1.3] mb-6 mt-12">Email Sequence Followups</h2>
+            
+            <p>
+                Cold email software allows you to automatically send followup emails within the same thread if they do not reply to any of your previous emails. So in the previous example above, if they don’t reply to that first email, you can program follow up emails. We suggest a second email 3-4 days later and a third email 5-7 days later. After those emails are done, wait 30-45 days and start a new campaign angle.
+            </p>
+
+            <ol class="list-decimal pl-8 space-y-4 my-8 marker:text-[#37352f]">
+                <li class="pl-2">
+                    <span class="font-semibold">Bump email</span> - This is the second email and it’s 1-2 sentences max “bumping up” your initial email. Example - Any thoughts on this?
+                </li>
+                <li class="pl-2">
+                    <span class="font-semibold">Breakup email</span> - This is the third email that hits their aversion to loss (like I’m breaking up with you) and should similarly be 1-2 sentences. Example - Would you like us to give your complimentary seat to someone else instead?
+                </li>
+            </ol>
+
+            <h2 class="text-[30px] font-semibold leading-[1.3] mb-6 mt-12">Best Practices</h2>
+            
+            <p class="mb-6">
+                Without getting too much into the weeds, here are some simple guidelines you can follow when creating your first campaign. We understand you can’t always hit all of these perfectly, but doing as many of them as possible will help.
+            </p>
+
+            <ol class="list-decimal pl-8 space-y-2 mb-10 marker:text-[#37352f]">
+                <li class="pl-2">Subject line should be 1 to 5 words using boring and short words so that it looks like an internal email from a colleague. Avoid anything that looks like marketing/promo.</li>
+                <li class="pl-2">The body of your email should be under 80 words.</li>
+                <li class="pl-2">Single sentence paragraphs.</li>
+                <li class="pl-2">Should be very conversational and easy to read with no complicated or long difficult words.</li>
+                <li class="pl-2">Plain text. No HTML (images, fonts, bold, italics, etc.).</li>
+                <li class="pl-2">It should look good and easy to read on mobile.</li>
+                <li class="pl-2">No images, links, dashes (like - or —) or phone numbers in your campaign to avoid hitting their spam filter. Once they reply to your email, you can then add these items.</li>
+                <li class="pl-2">Add personalization whenever possible like we did in the opening line in the example above.</li>
+                <li class="pl-2">Overall structure of email is: personalized intro, problem we think you and your niche is experiencing, what we’ve done to solve that, CTA/offer.</li>
+                <li class="pl-2">CTA/offer should be a very simple close ended question inviting them to something easy to say yes to. Example - Interested in learning more?</li>
+                <li class="pl-2">Something a little more advanced but important for your campaigns is to use spintax on your final copy.</li>
+                <li class="pl-2">If possible, immediately call someone who replied positively or is interested if you want to maximize conversions.</li>
+                <li class="pl-2"><a href="https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business" target="_blank" rel="noopener noreferrer" class="text-gray-500 underline decoration-gray-300 underline-offset-[3px] hover:opacity-80 transition-opacity">CAN-SPAM Act compliance</a> - be sure to include a way for them to unsubscribe (in our example it’s reply if you’re the wrong recipient) and include a physical mailing address.</li>
+            </ol>
+
+            <h2 class="text-[30px] font-semibold leading-[1.3] mb-6 mt-12">Split Testing</h2>
+            
+            <p>Once your first campaign is off the ground, the real optimization work begins and that means split testing.</p>
+            <p>But don’t just tweak one word, swap a synonym, change a comma, and call it a test.</p>
+            <p>Real split testing means testing completely different angles. So let’s say your first campaign has a CTA with a free event invite:</p>
+            
+            <p class="italic text-gray-700 bg-gray-50 border-l-4 border-gray-300 pl-4 py-2 my-4">Would you like a free invite to our upcoming event on [topic]?</p>
+
+            <h3 class="text-[24px] font-semibold leading-[1.3] mb-4 mt-8">Loom Video</h3>
+            <p>That means a second variant should come from a completely different place, such as a “custom” Loom video on something you noticed specifically about them.</p>
+            
+            <div class="italic text-gray-700 bg-gray-50 border-l-4 border-gray-300 pl-4 py-2 my-4 space-y-2">
+                <p>I was doing some research online and came across your profile and website.</p>
+                <p>I noticed something that I think is missing that could make a real difference for your business.</p>
+                <p>I went ahead and made a short video about it. Want me to send it over?</p>
+            </div>
+
+            <p>Same goal (to start a conversation), but a totally different psychological hook. The first angle positions you as someone hosting an event. The second positions you as someone who did their homework and has something specific to say about them.</p>
+            <p>Two very different angles to split test.</p>
+
+            <h3 class="text-[24px] font-semibold leading-[1.3] mb-4 mt-8">One Sentence</h3>
+            <p>Another angle worth testing on the complete opposite end of the spectrum is the one-sentence email.</p>
+            <p>No fluff. Just direct straight to the CTA offer.</p>
+            
+            <p class="italic text-gray-700 bg-gray-50 border-l-4 border-gray-300 pl-4 py-2 my-4">Would it make sense to get you 10 qualified sales calls booked this month?</p>
+            
+            <p>That’s it. Nothing else. No intro, no company name, no three-paragraph backstory about who you are and why you’re reaching out. Just a result and an implicit question.</p>
+
+            <h3 class="text-[24px] font-semibold leading-[1.3] mb-4 mt-8">The Takeaway on Angles</h3>
+            <p>You now have three very different variants worth testing against each other:</p>
+            <ol class="list-decimal pl-8 space-y-2 marker:text-[#37352f]">
+                <li class="pl-2">The event invite.</li>
+                <li class="pl-2">The Loom video.</li>
+                <li class="pl-2">The one-liner.</li>
+            </ol>
+            <p class="mt-4">Each one is fishing in the same pond with a completely different lure. That’s the point. When you find the one that gets the most replies, then you can start fine-tuning. But you have to cast wide first.</p>
+
+        </div>
+    </main>
+</body>
+</html>
