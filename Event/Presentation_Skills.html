@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentation Skills</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .emoji-icon {
+            font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
+        }
+        
+        /* Subtle animation for the page transition */
+        .animate-fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Notion-like list styling */
+        .notion-list {
+            list-style-type: none;
+            padding-left: 1rem;
+        }
+        .notion-list li {
+            position: relative;
+            padding-top: 0.25rem;
+            padding-bottom: 0.25rem;
+        }
+        .notion-list.numbers {
+            counter-reset: my-counter;
+            margin-left: 0.5rem;
+        }
+        .notion-list.numbers > li {
+            counter-increment: my-counter;
+        }
+        .notion-list.numbers > li::before {
+            content: counter(my-counter) ".";
+            position: absolute;
+            left: -1.5rem;
+            font-size: 1em;
+            color: #37352f;
+            top: 4px;
+        }
+    </style>
+    <link rel="icon" type="image/png" href="../media/icon.png">
+    <link rel="icon" type="image/png" href="../media/icon.png">
+</head>
+<body class="bg-[#fcfcfc] text-[#37352f] font-sans antialiased pb-32 relative min-h-screen pt-[60px]">
+
+<!-- BREADCRUMB_START -->
+<div class="fixed top-0 left-0 right-0 h-[45px] bg-white z-40 flex items-center px-3 text-[14px] text-[#37352f] whitespace-nowrap overflow-x-auto hide-scrollbar">
+    <a href="../home.html" class="flex items-center hover:bg-gray-100 px-1.5 py-1 rounded-[4px] transition-colors font-medium">
+        <span class="mr-1.5 text-[16px] leading-none">📙</span> SMART Business Mastermind
+    </a>
+    <span class="mx-0.5 text-gray-300 font-light">/</span>
+    <a href="Event.html" class="flex items-center hover:bg-gray-100 px-1.5 py-1 rounded-[4px] transition-colors font-medium">
+        <span class="mr-1.5 text-[16px] leading-none">🎉</span> Event
+    </a>
+    <span class="mx-0.5 text-gray-300 font-light">/</span>
+    <a href="Presentation_Skills.html" class="flex items-center px-1.5 py-1 hover:bg-gray-100 rounded-[4px] transition-colors text-[#37352f] font-medium">
+        <span class="mr-1.5 text-[16px] leading-none">📄</span> Presentation Skills
+    </a>
+</div>
+<!-- BREADCRUMB_END -->
+
+<!-- BACK_BUTTON_START -->
+<div class="fixed bottom-6 right-6 md:bottom-auto md:top-[65px] md:left-6 z-50">
+    <button onclick="history.back()" class="flex items-center justify-center w-12 h-12 md:w-auto md:h-auto md:px-3 md:py-1.5 rounded-full md:rounded-md bg-white text-[#37352f] shadow-lg md:shadow-sm border border-gray-200 hover:bg-gray-50 transition-all group font-medium" aria-label="Go back">
+        <svg class="w-5 h-5 md:w-4 md:h-4 md:mr-1 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+        <span class="hidden md:block text-[14px]">Back</span>
+    </button>
+</div>
+<!-- BACK_BUTTON_END -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Floating Back Button -->
+    
+
+    <!-- Main Content Container -->
+    <main class="max-w-[900px] w-full mx-auto px-6 md:px-12 mt-24 flex flex-col animate-fade-in">
+
+        <!-- Page Header -->
+        <div class="flex flex-col relative pb-8 border-b border-gray-100 mb-6">
+            <div class="mb-4 flex">
+                <span class="text-[78px] leading-none emoji-icon drop-shadow-sm select-none">🗣️</span>
+            </div>
+            <h1 class="text-[40px] font-bold leading-[1.2] tracking-tight text-[#37352f]">Presentation Skills</h1>
+        </div>
+
+        <!-- Page Content -->
+        <div class="flex flex-col text-[16px] leading-[1.6] w-full max-w-[770px]">
+            
+            <p class="mb-6">Adam is a phenomenal trainer. It’s his gift. We constantly get feedback about how incredible his trainings are. But what makes him so great? And more importantly, how can those same skills be transferred to you so that you can be great/greater?</p>
+
+            <ul class="notion-list numbers space-y-3">
+                <li>Ability to speak slow enough so that the information hits the recipient’s brain and allows them to process it. You might be a fast speaker because you are intelligent and can process information very quickly, but most groups of people aren’t so you may need to slow down. On a one-on-one basis if they’re a fast talker, then you need to speed up. But in a group environment, most people aren’t and you’ll need to pace it at a level that works for mostly everyone.</li>
+                
+                <li>Not using difficult or big words because it feels good to show people how smart you are. Instead, it makes it difficult to understand and you can be perceived as obnoxious. Use easy to understand words.</li>
+                
+                <li>No fluff. Remember when you were in English class in school and you had to write an essay that was had a 3-page minimum requirement? You finished in 2-pages, so then it was all about padding everything you wrote with useless fluff just to get your page count up? Don’t do that here. Use the least amount of words to get the point you need across. No filler or anything irrelevant. This includes rambling and going off onto a tangent.</li>
+                
+                <li>No filler words. Eliminate the ahhs and umms. It makes you look unsure like you don’t know what you’re talking about. Reduces credibility. This takes practice. Instead learn to pause and not say anything instead of the filler word.</li>
+                
+                <li>Using analogies. The ability to use something they know to relate it to something they don’t know (what you’re teaching) is very helpful for learning. For example, if you’re teaching a how-to or process, use the analogy of cooking - these are your ingredients and these are your steps. Everyone understands the concept and general process of cooking. Use that knowledge they already know and relate it to what you’re teaching so that it’s easier to understand.</li>
+                
+                <li>Don’t be monotone. Especially when you’re at a part teaching something because it’ll be dry and difficult to learn. Have some vocal variety.</li>
+                
+                <li>Talk often in a soft and welcoming voice where you’re not talking at them, to them, or down to them with your superior knowledge. That’s what puts their guard up and prevents your information from being received. Instead, you’re sharing information in a way that welcomes them and you’re inviting them to check out this information you have. Here come take a look. You’re not force feeding them your information or shoving it down their throat. No one wants that. Can’t lead a horse to water and make them drink.</li>
+                
+                <li>At the same time, don’t end your sentences with a high pitch at the end because it sounds like a question and being unsure of yourself instead of you stating a fact or something they need to learn. “The sky is blue.” Not “the sky is blue?”</li>
+                
+                <li>Checking the pulse and asking often does that make sense or do you have any questions or need any clarity.</li>
+                
+                <li>Being ok with letting go and eliminating parts of your pre-planned agenda if you need to because people are stuck at a certain part. What’s more important is not that you get through everything you wanted to say, but that your guests are getting the takeaway they need.</li>
+                
+                <li>Another part of this is being experienced and having enough knowledge about your craft that you can go off script a bit (deviating from your agenda) if the content isn’t hitting with the crowd and you need to pivot into a short detour. Don’t completely change your topic, but try to tie it back in and circle back to your original intended content whenever possible. This is a more advanced skill to learn later, but be aware of this skillset.</li>
+                
+                <li>Having them share their ah has, which is forcing them to process the information you delivered, interpret it through their lens, and repeating it back to you. This allows you to reaffirm their understanding (or make adjustment) and that confirmation will complete the loop for them and what makes it sink in and register in their mind as “oh i learned something here.”</li>
+                
+                <li>Not too much information. Doesn’t jam pack the training where it’s like drinking out of a fire hydrant. Overwhelm leads to confusion (so much information that i don’t know what to do with it) and paralysis (won’t take any action after your training). Instead, after your training, it should give them inspiration that they can do what you just taught them.</li>
+                
+                <li>But also not afraid to share “secrets”. If it’s too advanced and not appropriate for the level of experience in the room, that’s one thing. But don’t have a scarcity mindset for the most part. Sharing the good stuff shows your mastery of the topic and increases the likelihood that people will buy because you know what you’re doing and you can shortcut their learning curve. It’s ok that you share and people know because you’re not selling the information, you’re selling the implementation. People are going to buy because you’re going to do a better job of helping them apply all the information you have versus them trying to do it on their own.</li>
+                
+                <li>In terms of sales though, you are also demonstrating through your training that you know what you’re doing and you can help them do what you taught them to much higher levels if they paid you.</li>
+                
+                <li>In your training, you shouldn’t say (or at least minimize) anything that is judgmental or putting someone else’s thing down. As they say, when you throw dirt, you lose ground. You can talk about things that don’t work in your experience or research, but don’t talk badly about people because this is an important ingredient to making your training a safe space for people to participate and ask questions. Otherwise, people will be afraid to share because they think you might criticize and embarrass them in front of everyone. Public speaking is already scary, raising your hand and asking a question can be scary, and it may have taken them a lot of effort to muster up the courage to ask and participate, so acknowledge them, recognize them.</li>
+                
+                <li>Poised. Not being rattled by something someone says and showing that you don’t have control of your emotions. You need to be the rock of the room. If you get asked a question that you don’t know the answer, confidently say and acknowledge that’s a good question, let me find out and get back to you or something like that. If your tech breaks, slide doesn’t work, ipad doesn’t work, something goes wrong, don’t freak out. Stay poised. Having a backup plan to anything that you see that could go wrong helps.</li>
+                
+                <li>But also be great with technology. Know how to share computer sound in Zoom, do breakout rooms, mirror your iPad for the pitch, not handwrite messy with your stylus pen (practice penmanship), know how to freehand draw versus using the shapes, add color so it’s not black and white boring, know how to erase, know how to change thickness of the pen when necessary, know how to move objects.</li>
+                
+                <li>Delivering one golden nugget chunk of information and then taking a break or going into an exercise. Recognizing when people are getting glossy eyed and need a break from your lecture.</li>
+                
+                <li>If someone is talking too much, learn to cut them off and reel it back in so you can stay on track and schedule.</li>
+                
+                <li>Starting and ending on time. This shows integrity and builds trust.  If you say it starts at 2 PM and ends at 5 PM. Do it. If you want to wait a few minutes at the beginning for the late people, you can “start” with ice breakers, small talk, things like type in the chat where you’re joining us from, and things like that.</li>
+                
+                <li>Also deliver on what you promised as that contributes to trust as well. If you say you’re going to cover X or you will have Y outcome by attending your training, then you better do it. If you don’t do that, they won’t trust you during the presentation so that by the time you get to your pitch, they won’t trust what you’re promising to deliver in your paid product because you couldn’t even do it in your free event.</li>
+                
+                <li>Ability to make small jokes. This is one of those not critical, but nice to have skillsets. You don’t have to be a stand up comedian, but being able to turn any situation or comment into a light hearted laugh eases the tension in the room and makes it fun to be there and pay attention. This also makes you likable. As they say, people do business with people who they like and trust.</li>
+                
+                <li>Before doing the training, having a conscious intention of what you want the person to get out of the experience with you. Not thinking about yourself (oh how do i look, oh i wonder if they’ll buy, etc.) and thinking about them and having the commitment, determination, flexibility, creativeness to impact them.</li>
+                
+                <li>Releasing and letting go to a higher power or your higher self or your unconscious mind that it will “take over” and take you where you need to go in your training. Trust that this entity, whether it’s your higher self or a higher being, will never let you down and will always come through for you that you’ll be ok at this thing you’re about to do. Quick thing you say to yourself or a quick prayer before you start to help switch into game time.</li>
+                
+                <li>Be careful when it comes to answering audience question because it can do more harm than good. I know it’s tempting to coach and help on the spot, but it can open a rabbit hole of despair, questioning their business, etc. Instead, you want people to only share their ah has, what they learned, what was powerful for them, etc. You can decline questions by saying “For respect of the room, I want to stay focused on ah has and distinctions so that everyone can get value from what is being shared. It’s a great question and better answered inside our program where we give clarity on these types of things or during your feedback call.” By doing this, it keeps the energy towards buying your program.</li>
+            </ul>
+
+            <p class="mt-6 border-t border-gray-100 pt-6">Record your training and watch it back and grade yourself on the above like a professional athlete would do with their game footage.</p>
+
+        </div>
+    </main>
+
+</body>
+</html>
