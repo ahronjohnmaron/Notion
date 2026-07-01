@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DM Marketing - Course Player</title>
+  
+  <!-- Bootstrap 4 CSS for layout -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  
+  <!-- FontAwesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <style>
+    body {
+      background-color: #f4f5f7;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: #333;
+      line-height: 1.6;
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+    
+    /* Breadcrumbs */
+    .breadcrumbs-container {
+      background: #fff;
+      padding: 15px 25px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+      border: 1px solid #eaeaea;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .breadcrumbs {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      margin: 0;
+    }
+    .breadcrumbs__crumb { color: #111; }
+    .breadcrumbs__crumb a, .breadcrumbs__crumb--divider { color: #666; text-decoration: none; }
+    .breadcrumbs__crumb a:hover { color: #e67e22; }
+    .nav-arrows a {
+      color: #333;
+      font-size: 1.2rem;
+      margin-left: 15px;
+      text-decoration: none;
+    }
+    .nav-arrows a:hover { color: #e67e22; }
+
+    /* Video Player (Now an Iframe) */
+    .video-wrapper {
+      background: #fff;
+      padding: 20px;
+      border-radius: 6px;
+      margin-bottom: 25px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+      border: 1px solid #eaeaea;
+    }
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+      height: 0;
+      overflow: hidden;
+      border-radius: 6px;
+      background: #000;
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      outline: none;
+      border: none;
+    }
+
+    /* Playlist */
+    .playlist-container {
+      background: #fff;
+      padding: 25px;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+      border: 1px solid #eaeaea;
+    }
+    .playlist-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #f4f5f7;
+      padding-bottom: 15px;
+      margin-bottom: 15px;
+    }
+    .playlist-header h2 { font-size: 1.4rem; font-weight: bold; margin: 0; color: #111; }
+    .playlist-header h3 { font-size: 1rem; color: #888; margin: 0; font-weight: normal; }
+    
+    .track {
+      display: flex;
+      align-items: center;
+      padding: 15px 10px;
+      border-bottom: 1px solid #f4f5f7;
+      color: #333;
+      cursor: pointer;
+      text-decoration: none !important;
+      transition: background 0.2s;
+    }
+    .track:hover { background-color: #fafafa; }
+    .track:last-child { border-bottom: none; }
+    
+    .track__count {
+      font-weight: bold;
+      font-size: 1.1rem;
+      width: 30px;
+      text-align: center;
+      margin: 0;
+      color: #333;
+    }
+    .track__thumb {
+      width: 90px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 4px;
+      margin: 0 20px;
+      background: #eee;
+    }
+    .track__info {
+      flex: 1;
+    }
+    .track__title {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #111;
+      transition: color 0.2s;
+    }
+
+    /* Active Track Styling */
+    .track--active { background-color: #fffaf6; }
+    .track--active .track__count { color: #e67e22; }
+    .track--active .track__title { color: #e67e22; }
+    .progress-bar-placeholder {
+      height: 4px;
+      background: #eee;
+      border-radius: 2px;
+      margin-top: 6px;
+      width: 100px;
+      display: none;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: #e67e22;
+      width: 30%; /* Placeholder width */
+      border-radius: 2px;
+    }
+    .track--active .progress-bar-placeholder { display: block; }
+
+    /* Next Category Button */
+    .next-category {
+      display: block;
+      text-align: center;
+      padding: 20px 0 5px 0;
+      color: #333;
+      font-weight: bold;
+      text-decoration: none !important;
+    }
+    .next-category:hover { color: #e67e22; }
+
+  </style>
+</head>
+<body>
+
+<div class="container">
+  
+  <!-- Breadcrumbs -->
+  <div class="row">
+    <div class="col-12">
+      <div class="breadcrumbs-container">
+        <div class="breadcrumbs">
+          <div class="breadcrumbs__crumb"><a href="#">SMART Business Mastermind</a></div>
+          <div class="breadcrumbs__crumb breadcrumbs__crumb--divider">/</div>
+          <div class="breadcrumbs__crumb"><a href="#">Categories</a></div>
+          <div class="breadcrumbs__crumb breadcrumbs__crumb--divider">/</div>
+          <div class="breadcrumbs__crumb"><a href="#">DM Marketing</a></div>
+          <div class="breadcrumbs__crumb breadcrumbs__crumb--divider">/</div>
+          <div class="breadcrumbs__crumb" style="color: #111;" id="breadcrumb-title">
+            How to Fill Your Events Through LinkedIn + DM Follow Up! ft. Ann Carden
+          </div>
+        </div>
+        <div class="nav-arrows">
+          <a href="#" id="btn-prev"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+          <a href="#" id="btn-next"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Video Player (Using Iframe for Google Drive / YouTube support) -->
+  <div class="row">
+    <div class="col-12">
+      <div class="video-wrapper">
+        <div class="video-container">
+          <!-- Lesson 1 source loaded by default -->
+          <iframe id="main-video-iframe" 
+                  src="https://fast.wistia.net/embed/iframe/2e23cawc5r" 
+                  frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Playlist -->
+  <div class="row">
+    <div class="col-12">
+      <div class="playlist-container">
+        
+        <div class="playlist-header">
+          <h2>DM Marketing</h2>
+          <h3>13 Lessons</h3>
+        </div>
+
+        <div class="playlist-body" id="playlist">
+          
+          <!-- Lesson 1 (Active by Default) -->
+          <a href="javascript:void(0)" class="track track--active playlist-item" 
+             data-src="https://fast.wistia.net/embed/iframe/2e23cawc5r" 
+             data-title="How to Fill Your Events Through LinkedIn + DM Follow Up! ft. Ann Carden">
+            <p class="track__count"><i class="fa fa-play"></i></p>
+            <img src="https://kajabi-storefronts-production.kajabi-cdn.com/kajabi-storefronts-production/file-uploads/site/818/products/1ad542-4d3e-3d8b-2dc6-d38fd17e0bd1_SBM_Kajabi_Thumbnails-6.png" class="track__thumb">
+            <div class="track__info">
+              <p class="track__title">How to Fill Your Events Through LinkedIn + DM Follow Up! ft. Ann Carden</p>
+              <div class="progress-bar-placeholder"><div class="progress-bar-fill"></div></div>
+            </div>
+          </a>
+
+          <!-- Lesson 2 -->
+          <a href="javascript:void(0)" class="track playlist-item" 
+             data-src="https://fast.wistia.net/embed/iframe/nfp6ich10i" 
+             data-title="Use This FlowChat End-to-End DM Process">
+            <p class="track__count">2</p>
+            <img src="https://kajabi-storefronts-production.kajabi-cdn.com/kajabi-storefronts-production/file-uploads/site/818/products/850b57-77a5-b4d-3367-8868b8b2733a_SBM_Kajabi_Thumbnails-6.png" class="track__thumb">
+            <div class="track__info">
+              <p class="track__title">Use This FlowChat End-to-End DM Process</p>
+              <div class="progress-bar-placeholder"><div class="progress-bar-fill"></div></div>
+            </div>
+          </a>
+
+          <!-- Lesson 3 -->
+          <a href="javascript:void(0)" class="track playlist-item" 
+             data-src="https://fast.wistia.net/embed/iframe/96lk3rqsts" 
+             data-title="Using the SBM FlowChat Pipeline to Invite Guests to Your Event">
+            <p class="track__count">3</p>
+            <img src="https://kajabi-storefronts-production.kajabi-cdn.com/kajabi-storefronts-production/file-uploads/site/818/products/6d027-1db6-476a-2f0d-ef4c0e3d34c4_SBM_Kajabi_Thumbnails_5_.png" class="track__thumb">
+            <div class="track__info">
+              <p class="track__title">Using the SBM FlowChat Pipeline to Invite Guests to Your Event</p>
+              <div class="progress-bar-placeholder"><div class="progress-bar-fill"></div></div>
+            </div>
+          </a>
+
+          <!-- Lesson 4 -->
+          <a href="javascript:void(0)" class="track playlist-item" 
+             data-src="https://fast.wistia.net/embed/iframe/r8p1ba9n32" 
+             data-title="Leverage Instagram to Drive Growth Using This FlowChat Automation With Chris Baden">
+            <p class="track__count">4</p>
+            <img src="https://kajabi-storefronts-production.kajabi-cdn.com/kajabi-storefronts-production/file-uploads/site/818/products/76f5b20-0b5e-6e-500f-2741b21bfbaa_SBM_Kajabi_Thumbnails-20.png" class="track__thumb">
+            <div class="track__info">
+              <p class="track__title">Leverage Instagram to Drive Growth Using This FlowChat Automation With Chris Baden</p>
+              <div class="progress-bar-placeholder"><div class="progress-bar-fill"></div></div>
+            </div>
+          </a>
+
+          <!-- Lesson 5 -->
+          <a href="javascript:void(0)" class="track playlist-item" 
+             data-src="https://fast.wistia.net/embed/iframe/y592pg5ckq" 
+             data-title="LinkedIn DM Automation">
+            <p class="track__count">5</p>
+            <img src="https://kajabi-storefronts-production.kajabi-cdn.com/kajabi-storefronts-production/file-uploads/site/818/products/4dd64da-7f15-336c-36cd-df5214a000_SBM_Kajabi_Thumbnails-6.png" class="track__thumb">
+            <div class="track__info">
+              <p class="track__title">LinkedIn DM Automation</p>
+              <div class="progress-bar-placeholder"><div class="progress-bar-fill"></div></div>
+            </div>
+          </a>
+
+          <!-- Lesson 6 -->
+          <a href="javascript:void(0)" class="track playlist-item" 
+             data-src="https://fast.wistia.net/embed/iframe/yalrkosn97" 
+             data-title="DM Marketing Update Training for Instagram & Facebook">
+            <p class="track__count">6</p>
+            <img src="https://kajabi-storefronts-production.kajabi-cdn.com/kajabi-storefronts-production/file-uploads/site/818/products/0c28a63-5042-d7aa-4574-c0bfa20cf72_SBM_Kajabi_Thumbnails-8.png" class="track__thumb">
+            <div class="track__info">
+              <p class="track__title">DM Marketing Update Training for Instagram & Facebook</p>
+              <div class="progress-bar-placeholder"><div class="progress-bar-fill"></div></div>
+            </div>
+          </a>
+
+          <!-- Lesson 7 -->
+          <a href="javascript:void(0)" class="track playlist-item" 
+             data-src="https://fast.wistia.net/embed/iframe/ry08efuht0" 
+             data-title="Facebook DM's & Mindset to Win in the Inbox!">
+            <p class="track__count">7</p>
+            <img src="https://kajabi-storefronts-production.kajabi-cdn.com/kajabi-storefronts-production/file-uploads/site/818/products/1ec0a55-5015-cd-2605-0ecc8e517a7_SBM_Kajabi_Thumbnails-3.png" class="track__thumb">
+            <div class="track__info">
+              <p class="track__title">Facebook DM's & Mindset to Win in the Inbox!</p>
+              <div class="progress-bar-placeholder"><div class="progress-bar-fill"></div></div>
+            </div>
+          </a>
+
+          <!-- Lesson 8 -->
+          <a href="javascript:void(0)" class="track playlist-item" 
+             data-src="https://fast.wistia.net/embed/iframe/usnfbhavb3" 
+             data-title="Inbound DM Marketing">
+            <p class="track__count">8</p>
+            <img src="https://kajabi-storefronts-production.kajabi-cdn.com/kajabi-storefronts-production/file-uploads/site/818/products/ab124eb-3242-7517-6a2-865ae4784a3_SBM_DM_Marketing.jpg" class="track__thumb">
+            <div class="track__info">
+              <p class="track__title">Inbound DM Marketing</p>
+              <div class="progress-bar-placeholder"><div class="progress-bar-fill"></div></div>
+            </div>
+          </a>
+
+          <!-- Lesson 9 -->
+          <a href="javascript:void(0)" class="track playlist-item" 
+             data-src="https://fast.wistia.net/embed/iframe/vakyfppszm" 
+             data-title="Scaling Events & Outreach with FlowChat Automations with Chris Baden">
+            <p class="track__count">9</p>
+            <img src="https://kajabi-storefronts-production.kajabi-cdn.com/kajabi-storefronts-production/file-uploads/site/818/products/f83a05-8860-22c3-acba-c420ceb5f_SBM_Kajabi_Thumbnails-32.png" class="track__thumb">
+            <div class="track__info">
+              <p class="track__title">Scaling Events & Outreach with FlowChat Automations with Chris Baden</p>
+              <div class="progress-bar-placeholder"><div class="progress-bar-fill"></div></div>
+            </div>
+          </a>
+
+          <!-- Lesson 10 -->
+          <a href="javascript:void(0)" class="track playlist-item" 
+             data-src="https://fast.wistia.net/embed/iframe/e3c1ciz0c6" 
+             data-title="Inbound VS Outbound With Chris Baden">
+            <p class="track__count">10</p>
+            <img src="https://kajabi-storefronts-production.kajabi-cdn.com/kajabi-storefronts-production/file-uploads/site/818/products/a5602e-4667-a46f-8f43-7fd3dfcd7d38_SBM_Kajabi_Thumbnails.png" class="track__thumb">
+            <div class="track__info">
+              <p class="track__title">Inbound VS Outbound With Chris Baden</p>
+              <div class="progress-bar-placeholder"><div class="progress-bar-fill"></div></div>
+            </div>
+          </a>
+
+          <!-- Lesson 11 -->
+          <a href="javascript:void(0)" class="track playlist-item" 
+             data-src="https://fast.wistia.net/embed/iframe/vwai16hcss" 
+             data-title="Hand Raising Post 2.0 + DM Follow Up with Chris Baden">
+            <p class="track__count">11</p>
+            <img src="https://kajabi-storefronts-production.kajabi-cdn.com/kajabi-storefronts-production/file-uploads/site/818/products/0ba0d7c-dd0a-c2f2-c753-af6740e632_SBM_Kajabi_Thumbnails-11.png" class="track__thumb">
+            <div class="track__info">
+              <p class="track__title">Hand Raising Post 2.0 + DM Follow Up with Chris Baden</p>
+              <div class="progress-bar-placeholder"><div class="progress-bar-fill"></div></div>
+            </div>
+          </a>
+
+          <!-- Lesson 12 -->
+          <a href="javascript:void(0)" class="track playlist-item" 
+             data-src="https://fast.wistia.net/embed/iframe/zhw6ue43mk" 
+             data-title="2-Step Post with Chris Baden">
+            <p class="track__count">12</p>
+            <img src="https://kajabi-storefronts-production.kajabi-cdn.com/kajabi-storefronts-production/file-uploads/site/818/products/004350a-04a5-eaa4-77fb-52fe417aeb_SBM_Kajabi_Thumbnails-20.png" class="track__thumb">
+            <div class="track__info">
+              <p class="track__title">2-Step Post with Chris Baden</p>
+              <div class="progress-bar-placeholder"><div class="progress-bar-fill"></div></div>
+            </div>
+          </a>
+
+          <!-- Lesson 13 -->
+          <a href="javascript:void(0)" class="track playlist-item" 
+             data-src="https://fast.wistia.net/embed/iframe/is5fwinma7" 
+             data-title="Getting Leads Daily! What Needs to Happen in YOU, Your Message, and Your Strategy!">
+            <p class="track__count">13</p>
+            <img src="https://kajabi-storefronts-production.kajabi-cdn.com/kajabi-storefronts-production/file-uploads/sites/818/images/8a1be03-7aea-5d5-bbef-16f52c3570_SBM_Kajabi_Thumbnails-2.png" class="track__thumb">
+            <div class="track__info">
+              <p class="track__title">Getting Leads Daily! What Needs to Happen in YOU, Your Message, and Your Strategy!</p>
+              <div class="progress-bar-placeholder"><div class="progress-bar-fill"></div></div>
+            </div>
+          </a>
+
+          <!-- Next Category Link -->
+          <a class="next-category" href="#">
+            Next Category <i class="fa fa-arrow-right ml-1"></i>
+          </a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- JavaScript to handle Iframe Switching -->
+<script>
+  const iframePlayer = document.getElementById('main-video-iframe');
+  const breadcrumbTitle = document.getElementById('breadcrumb-title');
+  const playlistItems = document.querySelectorAll('.playlist-item');
+  const btnPrev = document.getElementById('btn-prev');
+  const btnNext = document.getElementById('btn-next');
+  
+  let currentIndex = 0; // Starts at index 0 (Lesson 1)
+
+  function playLesson(index) {
+    if (index < 0 || index >= playlistItems.length) return;
+    
+    // 1. Reset all items
+    playlistItems.forEach((item, i) => {
+      item.classList.remove('track--active');
+      item.querySelector('.track__count').innerHTML = i + 1; // Restore the number
+    });
+
+    // 2. Set the clicked item to active
+    const activeItem = playlistItems[index];
+    activeItem.classList.add('track--active');
+    
+    // 3. Change number to Play Icon
+    activeItem.querySelector('.track__count').innerHTML = '<i class="fa fa-play"></i>';
+
+    // 4. Update the Iframe Source and Title
+    const newSrc = activeItem.getAttribute('data-src');
+    const newTitle = activeItem.getAttribute('data-title');
+    
+    iframePlayer.src = newSrc;
+    breadcrumbTitle.textContent = newTitle;
+    
+    // 5. Update global index
+    currentIndex = index;
+    
+    // Optional: Scroll to the top to see the video when clicked
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // Add click events to all playlist items
+  playlistItems.forEach((item, index) => {
+    item.addEventListener('click', () => playLesson(index));
+  });
+
+  // Top Arrows Navigation (Prev/Next)
+  btnPrev.addEventListener('click', (e) => {
+    e.preventDefault();
+    playLesson(currentIndex - 1);
+  });
+  
+  btnNext.addEventListener('click', (e) => {
+    e.preventDefault();
+    playLesson(currentIndex + 1);
+  });
+
+</script>
+
+</body>
+</html>
